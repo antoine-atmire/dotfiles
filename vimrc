@@ -44,7 +44,7 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <leader>r :so $MYVIMRC<cr>
 " \q - @ 
 nnoremap <leader>q @
-
+" new line with spaces until the cursor
 nnoremap <leader>n y0opVr $
 
 
@@ -52,3 +52,16 @@ nnoremap <leader>n y0opVr $
 autocmd CursorHold,CursorHoldI * update
 " Undo all changes since opening buffer in vim
 nnoremap <leader>zq :u1<bar>u
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint']
+
+nnoremap <leader>s :SyntasticCheck
