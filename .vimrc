@@ -50,3 +50,5 @@ nnoremap <leader>n y0opVr $
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI * update
+" Undo all changes since opening buffer in vim
+nnoremap <leader>zq :u1<bar>u
