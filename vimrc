@@ -17,6 +17,7 @@ set completeopt=longest,menuone
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set modelines=0
 
 colorscheme molokai
 
