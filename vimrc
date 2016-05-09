@@ -65,4 +65,4 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint']
 
-nnoremap <leader>s :SyntasticCheck
+nnoremap <leader>s :w<bar>SyntasticCheck
