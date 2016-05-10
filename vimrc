@@ -66,3 +66,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint']
 
 nnoremap <leader>s :w<bar>SyntasticCheck
+
+" command-t
+let g:CommandTWildIgnore=&wildignore . ",**/overlays/**,**/target/**"
