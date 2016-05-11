@@ -18,6 +18,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set modelines=0
+set colorcolumn=80
 
 colorscheme molokai
 
@@ -50,7 +51,7 @@ nnoremap <leader>n y0opVr $
 
 
 " auto save on FocusLost
-autocmd CursorHold,CursorHoldI * update
+autocmd CursorHold,CursorHoldI ?* silent update
 " Undo all changes since opening buffer in vim
 nnoremap <leader>zq :u1<bar>u
 

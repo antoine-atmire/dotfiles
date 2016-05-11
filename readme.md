@@ -12,7 +12,8 @@ if it matches you're good to proceed:
 * `ruby extconf.rb`
 * `make`
 * and inside vim: `:call pathogen#helptags()`
-try <leader>-t
+
+try `<leader>-t`
 
 
 Install **jshint** for **syntastic**:
