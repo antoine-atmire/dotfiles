@@ -19,6 +19,7 @@ set shiftwidth=2
 set expandtab
 set modelines=0
 set colorcolumn=80
+set ignorecase
 
 colorscheme molokai
 
@@ -48,7 +49,8 @@ nnoremap <leader>r :so $MYVIMRC<cr>
 nnoremap <leader>q @
 " new line with spaces until the cursor
 nnoremap <leader>n y0opVr $
-
+" copy all lines to clipboard
+nnoremap <leader>cc gg"+yG
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI ?* silent update
