@@ -1,5 +1,6 @@
 I'm still new to vim and tmux. These configs may not be optimal.
 
+`git submodule --init --recursive`
 
 To compile **command-t** (on mac):
 * `ruby --version` #ruby 1.9.3p484
@@ -18,3 +19,7 @@ try `<leader>-t`
 
 Install **jshint** for **syntastic**:
 `npm install -g jshint`
+
+Make YouCompleteMe:
+* `cd vim/bundle/YouCompleteMe`
+* `make`
