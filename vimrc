@@ -1,3 +1,7 @@
+" azerty shortcuts
+noremap é @
+let mapleader = ","
+
 let g:pathogen_disabled = ['nerdtree']
 execute pathogen#infect()
 syntax on
