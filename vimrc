@@ -70,9 +70,12 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jshint', 'tsuquyomi']
 
-nnoremap <leader>s :w<bar>SyntasticCheck
+nnoremap <leader>s :w<bar>SyntasticCheck<cr>
 
 " command-t
 let g:CommandTWildIgnore=&wildignore . ",**/overlays/**,**/target/**"
+
+" integrate tsuquyomi with syntastic
+let g:tsuquyomi_disable_quickfix = 1
