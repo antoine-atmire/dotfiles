@@ -3,7 +3,13 @@ noremap é @
 let mapleader = ","
 
 " command-t and YCM seem to be mutually exclusive on mac os x
-"let g:pathogen_disabled = ['YouCompleteMe']
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    " Do Mac stuff here
+		let g:pathogen_disabled = ['YouCompleteMe']
+  endif
+endif
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
