@@ -17,7 +17,7 @@ filetype plugin indent on
 set encoding=utf-8
 set nocompatible
 set laststatus=2
-set statusline+=%F
+set statusline+=%f
 set showcmd
 set number
 set relativenumber
