@@ -31,6 +31,7 @@ set expandtab
 set modelines=0
 set colorcolumn=80
 set ignorecase
+set paste
 
 colorscheme molokai
 
