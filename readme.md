@@ -1,6 +1,6 @@
 I'm still new to vim and tmux. These configs may not be optimal.
 
-`git submodule --init --recursive`
+`git submodule update --init --recursive`
 
 To compile **command-t** (on mac):
 * `ruby --version` #ruby 1.9.3p484
@@ -14,12 +14,17 @@ if it matches you're good to proceed:
 * `make`
 * and inside vim: `:call pathogen#helptags()`
 
-try `<leader>-t`
+try `<leader>t`
 
 
 Install **jshint** for **syntastic**:
 `npm install -g jshint`
 
-Make YouCompleteMe:
-* `cd vim/bundle/YouCompleteMe`
+Make vimproc:
+* `cd ~/.vim/bundle/vimproc.vim`
 * `make`
+
+Install YouCompleteMe:
+* `brew install cmake` / `sudo apt-get install build-essential cmake python-dev python3-dev`
+* `cd vim/bundle/YouCompleteMe`
+* `./install.py --tern-completer`

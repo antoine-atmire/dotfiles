@@ -2,7 +2,8 @@
 noremap é @
 let mapleader = ","
 
-let g:pathogen_disabled = ['nerdtree']
+" command-t and YCM seem to be mutually exclusive on mac os x
+"let g:pathogen_disabled = ['YouCompleteMe']
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -26,9 +27,6 @@ set colorcolumn=80
 set ignorecase
 
 colorscheme molokai
-
-map <silent> <C-p> :NERDTreeToggle<CR>
-map <silent> <Leader>f ::NERDTreeFind<CR>
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>

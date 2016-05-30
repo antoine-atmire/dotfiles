@@ -2,7 +2,7 @@
 search in project files assocatied with a specific language `:Ack --js search_term`
 
 # command-t
-quickly open another file in the project `<leader>-t`
+quickly open another file in the project `<leader>t`
 
 # nerdcommenter
 toggle comment with `<leader>c<space>`
