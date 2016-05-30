@@ -83,3 +83,8 @@ let g:CommandTWildIgnore=&wildignore . ",**/overlays/**,**/target/**"
 
 " integrate tsuquyomi with syntastic
 let g:tsuquyomi_disable_quickfix = 1
+
+" vim-js-pretty-template
+autocmd FileType javascript JsPreTmpl html
+autocmd FileType typescript JsPreTmpl html
+autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vim users only.
