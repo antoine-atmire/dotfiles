@@ -54,7 +54,7 @@ nnoremap <leader>q @
 " new line with spaces until the cursor
 nnoremap <leader>n y0opVr $
 " copy all lines to clipboard
-nnoremap <leader>cc gg"+yG
+nnoremap <leader>cx gg"+yG
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI ?* silent update
