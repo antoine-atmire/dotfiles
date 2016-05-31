@@ -76,6 +76,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'tsuquyomi']
+let g:syntastic_typescript_tsc_fname = ''
 
 nnoremap <leader>s :w<bar>SyntasticCheck<cr>
 
