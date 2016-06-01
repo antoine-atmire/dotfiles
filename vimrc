@@ -31,7 +31,8 @@ set expandtab
 set modelines=0
 set colorcolumn=80
 set ignorecase
-set paste
+"set paste
+"set list
 
 colorscheme molokai
 
@@ -73,7 +74,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'tsuquyomi']
 let g:syntastic_typescript_tsc_fname = ''
@@ -90,3 +91,7 @@ let g:tsuquyomi_disable_quickfix = 1
 autocmd FileType javascript JsPreTmpl html
 autocmd FileType typescript JsPreTmpl html
 autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vim users only.
+
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-n>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-p>']
+let g:UltiSnipsExpandTrigger = '<C-y>'
