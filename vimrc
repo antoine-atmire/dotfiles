@@ -61,6 +61,9 @@ nnoremap <leader>q @
 nnoremap <leader>n y0opVr $
 " copy all lines to clipboard
 nnoremap <leader>cx gg"+yG
+" resync syntax highlighting
+noremap <F5> <Esc>:syntax sync fromstart<cr>
+inoremap <F5> <C-o>:syntax sync fromstart<cr>
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI ?* silent update
