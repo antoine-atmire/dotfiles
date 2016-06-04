@@ -33,6 +33,8 @@ set colorcolumn=80
 set ignorecase
 "set paste
 "set list
+set exrc
+set secure
 
 colorscheme molokai
 
@@ -85,7 +87,7 @@ let g:syntastic_typescript_tsc_fname = ''
 nnoremap <leader>s :w<bar>SyntasticCheck<cr>
 
 " command-t
-let g:CommandTWildIgnore=&wildignore . ",**/overlays/**,**/target/**"
+let g:CommandTWildIgnore=&wildignore . ",**/overlays/**,**/target/**,**/node_modules/*"
 
 " integrate tsuquyomi with syntastic
 let g:tsuquyomi_disable_quickfix = 1
