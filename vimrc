@@ -82,12 +82,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'tsuquyomi']
+"let g:syntastic_typescript_checkers = ['tsuquyomi']
 let g:syntastic_typescript_tsc_fname = ''
 
 nnoremap <leader>s :w<bar>SyntasticCheck<cr>
 
 " command-t
-let g:CommandTWildIgnore=&wildignore . ",**/overlays/**,**/target/**,**/node_modules/*"
+let g:CommandTWildIgnore=&wildignore . ",**/overlays/**,**/target/**,**/node_modules/*,**/node_modules/**"
 
 " integrate tsuquyomi with syntastic
 let g:tsuquyomi_disable_quickfix = 1
