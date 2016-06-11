@@ -2,6 +2,8 @@
 noremap é @
 let mapleader = ","
 
+"let g:pathogen_disabled = ['command-t']
+
 " command-t and YCM seem to be mutually exclusive on mac os x
 if has("unix")
   let s:uname = system("uname")
@@ -101,3 +103,13 @@ autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vi
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-n>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-p>']
 let g:UltiSnipsExpandTrigger = '<C-y>'
+
+" Unite
+"nnoremap <C-m> :Unite file file_rec/git:--cached:--others:--exclude-standard file_mru<cr>
+nnoremap <C-m> :Unite file_mru grep:.<cr>
+" Use ag for search
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
