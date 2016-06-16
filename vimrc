@@ -106,7 +106,9 @@ let g:UltiSnipsExpandTrigger = '<C-y>'
 
 " Unite
 "nnoremap <C-m> :Unite file file_rec/git:--cached:--others:--exclude-standard file_mru<cr>
-nnoremap <C-m> :Unite file_mru grep:.<cr>
+nnoremap <C-m> :Unite grep:.<cr>
+nnoremap <leader>ff :Unite file<cr>
+nnoremap <leader>m :Unite file_mru<cr>
 " Use ag for search
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
