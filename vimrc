@@ -106,7 +106,7 @@ let g:UltiSnipsExpandTrigger = '<C-y>'
 
 " Unite
 "nnoremap <C-m> :Unite file file_rec/git:--cached:--others:--exclude-standard file_mru<cr>
-nnoremap <C-m> :Unite grep:.<cr>
+nnoremap <leader>a :Unite grep:.<cr>
 nnoremap <leader>ff :Unite file<cr>
 nnoremap <leader>m :Unite file_mru<cr>
 " Use ag for search
