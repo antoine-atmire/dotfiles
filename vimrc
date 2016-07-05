@@ -117,4 +117,4 @@ if executable('ag')
 endif
 
 set rtp+=~/.fzf
-nnoremap <leader>t :FZF<cr>
+nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*"', 'sink':'e'})<cr>
