@@ -1,8 +1,8 @@
 " azerty shortcuts
 noremap é @
-let mapleader = ","
+"let mapleader = ","
 
-"let g:pathogen_disabled = ['command-t']
+let g:pathogen_disabled = ['command-t']
 
 " command-t and YCM seem to be mutually exclusive on mac os x
 if has("unix")
@@ -115,3 +115,6 @@ if executable('ag')
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
 endif
+
+set rtp+=~/.fzf
+nnoremap <leader>t :FZF<cr>

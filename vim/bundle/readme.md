@@ -1,3 +1,5 @@
+todo: update this readme 
+
 # ack
 search in project files assocatied with a specific language `:Ack --js search_term`
 
