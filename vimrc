@@ -4,12 +4,13 @@ noremap é @
 
 let g:pathogen_disabled = ['command-t']
 
-" command-t and YCM seem to be mutually exclusive on mac os x
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
     " Do Mac stuff here
-		let g:pathogen_disabled = ['YouCompleteMe']
+    " command-t and YCM seem to be mutually exclusive on mac os x
+    " but I replaced command-t by fzf so it seems to be fine now
+		"let g:pathogen_disabled = ['YouCompleteMe']
   endif
 endif
 execute pathogen#infect()
