@@ -69,6 +69,8 @@ nnoremap <leader>cx gg"+yG
 " resync syntax highlighting
 noremap <F5> <Esc>:syntax sync fromstart<cr>
 inoremap <F5> <C-o>:syntax sync fromstart<cr>
+" let's not stumble into ex mode
+nnoremap Q <nop>
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI ?* silent update
@@ -118,4 +120,5 @@ if executable('ag')
 endif
 
 set rtp+=~/.fzf
-nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*"', 'sink':'e'})<cr>
+"nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"', 'sink':'e'})<cr>
+nnoremap <leader>t :call fzf#run({'source':'/usr/bin/ag -g ""', 'sink':'e'})<cr>
