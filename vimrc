@@ -20,7 +20,6 @@ filetype plugin indent on
 set encoding=utf-8
 set nocompatible
 set laststatus=2
-set statusline+=%f
 set showcmd
 set number
 set relativenumber
@@ -38,6 +37,10 @@ set ignorecase
 "set list
 set exrc
 set secure
+
+set statusline+=%f " relative file path
+set statusline+=\ %l/%L " total lines
+set statusline+=\ %v " column number
 
 colorscheme molokai
 
