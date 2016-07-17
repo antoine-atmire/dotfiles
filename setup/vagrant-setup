@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# this is done by the root user
+
+# dependencies setup
+export DEBIAN_FRONTEND=noninteractive
+apt-get update > /dev/null
+apt-get install -y tmux vim-nox git-core zsh curl silversearcher-ag
+apt-get install -y build-essential cmake python-dev python3-dev
+
+apt-get install tofrodos
+ln -s /usr/bin/fromdos /usr/bin/dos2unix
+find /vagrant -type f -not -path /vagrant/.git/* -exec dos2unix {} \;
+
+printf "\nauth       sufficient   pam_wheel.so trust group=chsh" >> /etc/pam.d/chsh
+groupadd chsh
+usermod -a -G chsh vagrant
+
+su -c "/vagrant/setup/setup" vagrant
+
+chsh -s /usr/bin/zsh vagrant
