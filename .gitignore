@@ -1,4 +1,4 @@
-# Created by https://www.gitignore.io/api/vim,osx
+# Created by https://www.gitignore.io/api/vim,osx,vagrant
 
 ### Vim ###
 # swap
@@ -40,3 +40,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+### Vagrant ###
+.vagrant/

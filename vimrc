@@ -38,7 +38,8 @@ set ignorecase
 set exrc
 set secure
 
-set statusline+=%f " relative file path
+set statusline+=%y " file type
+set statusline+=\ %f " relative file path
 set statusline+=\ %l/%L " total lines
 set statusline+=\ %v " column number
 
