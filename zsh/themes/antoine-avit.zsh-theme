@@ -1,7 +1,13 @@
 # AVIT ZSH Theme
 
+dswhich() {
+  if [ -n "$DSNAME" ]; then
+    echo " {$DSNAME}"
+  fi
+}
+
 PROMPT='
-$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
+$(_user_host)$( _current_dir ) $(git_prompt_info) $(_ruby_version) $(dswhich)
 %{$fg[$CARETCOLOR]%}>>%{$resetcolor%} '
 
 PROMPT2='%{$fg[$CARETCOLOR]%}<<%{$reset_color%} '
