@@ -10,7 +10,7 @@ apt-get install -y build-essential cmake python-dev python3-dev
 
 apt-get install tofrodos
 ln -s /usr/bin/fromdos /usr/bin/dos2unix
-find /vagrant -type f -not -path /vagrant/.git/* -exec dos2unix {} \;
+find /vagrant -type f -not -path "*/.git/*" -exec /usr/bin/fromdos {} \;
 
 printf "\nauth       sufficient   pam_wheel.so trust group=chsh" >> /etc/pam.d/chsh
 groupadd chsh
