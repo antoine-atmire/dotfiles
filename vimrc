@@ -125,4 +125,4 @@ endif
 
 set rtp+=~/.fzf
 "nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"', 'sink':'e'})<cr>
-nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/ag -g ""', 'sink':'e'})<cr>
+nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/ag --hidden -g ""', 'sink':'e'})<cr>
