@@ -38,10 +38,10 @@ set ignorecase
 set exrc
 set secure
 
-set statusline+=%y " file type
+set statusline=%y " file type
 set statusline+=\ %f " relative file path
-set statusline+=\ %l/%L " total lines
-set statusline+=\ %v " column number
+set statusline+=\ line\ %l/%L " total lines
+set statusline+=\ col\ %v " column number
 
 colorscheme molokai
 
@@ -82,19 +82,23 @@ autocmd CursorHold,CursorHoldI ?* silent update
 nnoremap <leader>zq :u1<bar>u
 
 " syntastic
-set statusline+=%#warningmsg#
+set statusline+=\ %#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint', 'tsuquyomi']
 "let g:syntastic_typescript_checkers = ['tsuquyomi']
 let g:syntastic_typescript_tsc_fname = ''
+" custom syntastic mappings
+nnoremap <leader>ss :w<bar>SyntasticCheck<cr>
+nnoremap <leader>so :Errors<cr>
+nnoremap <leader>sc :lclose<cr>
+nnoremap <leader>sn :lnext<cr>
+nnoremap <leader>sp :lprevious<cr>
 
-nnoremap <leader>s :w<bar>SyntasticCheck<cr>
 
 " command-t
 let g:CommandTWildIgnore=&wildignore . ",**/overlays/**,**/target/**,**/node_modules/*,**/node_modules/**"
@@ -109,6 +113,10 @@ autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vi
 
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-n>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-p>']
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
+
 let g:UltiSnipsExpandTrigger = '<C-y>'
 
 " Unite
@@ -126,3 +134,6 @@ endif
 set rtp+=~/.fzf
 "nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"', 'sink':'e'})<cr>
 nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'e'})<cr>
+
+let g:elm_setup_keybindings = 0
+let g:elm_syntastic_show_warnings = 1
