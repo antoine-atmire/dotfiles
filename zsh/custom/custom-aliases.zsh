@@ -5,6 +5,11 @@ alias gpo='git push origin'
 alias gpom='git push origin master'
 alias grso="git remote show origin | grep Fetch | awk '{print \$3}'"
 alias gbC="echo $(git_current_branch) | pbcopy"
+function gcoff () { 
+  local TOCHECKOUT=$(git branch -a | fzf)
+  TOCHECKOUT=${TOCHECKOUT// /}
+  git checkout $TOCHECKOUT
+}
 
 alias git-branch-ordered="git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname) %(committerdate) %(authorname)' | sed 's/refs\/heads\///g' | head -n"
 alias pushdev='echo "➜ git checkout atmire-DEV" && git checkout atmire-DEV && echo "➜ git fetch" && git fetch && echo "➜ git pull" && git pull && echo "➜ git merge -" && git merge - && echo "➜ git push origin atmire-DEV" && git push origin atmire-DEV && echo "➜ git checkout - " &&git checkout -'
@@ -25,4 +30,3 @@ alias -g T='| tail -n'
 alias -g G='| grep'
 alias -g L="| less"
 alias -g M="| most"
-
