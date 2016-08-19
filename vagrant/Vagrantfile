@@ -4,7 +4,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "debian/jessie64"
   config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
   config.vm.provision "shell" do |s|
-       s.path = File.join(File.dirname(__FILE__), "setup", "vagrant-setup")
+       s.path = File.join(File.dirname(__FILE__), "vagrant-setup")
        s.binary = true
    end
   config.vm.network :forwarded_port, guest:3000, host:3000

@@ -41,18 +41,17 @@ ln -s $NODE_DIR/bin/npm $TARGET_HOME/bin/npm
 
 # dotfiles setup
 
-DOTFILES=/vagrant
+DOTFILES=/home/vagrant/dotfiles
+git clone --recursive https://github.com/antoine-atmire/dotfiles $DOTFILES
 
-cp -r $DOTFILES/oh-my-zsh $TARGET_HOME/.oh-my-zsh
-cp $DOTFILES/zsh/custom/*.zsh $TARGET_HOME/.oh-my-zsh/custom
-cp $DOTFILES/zsh/themes/*.zsh-theme $TARGET_HOME/.oh-my-zsh/themes
-cp $DOTFILES/zshrc $TARGET_HOME/.zshrc
+ln -s $DOTFILES/oh-my-zsh $TARGET_HOME/.oh-my-zsh
+ln -s $DOTFILES/zshrc $TARGET_HOME/.zshrc
 
-cp $DOTFILES/vimrc $TARGET_HOME/.vimrc
-cp -r $DOTFILES/vim $TARGET_HOME/.vim
-cp $DOTFILES/tmux.conf $TARGET_HOME/.tmux.conf
+ln -s $DOTFILES/vimrc $TARGET_HOME/.vimrc
+ln -s $DOTFILES/vim $TARGET_HOME/.vim
+ln -s $DOTFILES/tmux.conf $TARGET_HOME/.tmux.conf
 
-cp -r $DOTFILES/fzf $TARGET_HOME/.fzf
+ln -s $DOTFILES/fzf $TARGET_HOME/.fzf
 $TARGET_HOME/.fzf/install
 
 cd $TARGET_HOME/.vim/bundle/vimproc.vim
