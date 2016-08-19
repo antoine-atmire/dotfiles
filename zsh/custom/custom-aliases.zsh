@@ -4,11 +4,16 @@ alias gt='git tag'
 alias gpo='git push origin'
 alias gpom='git push origin master'
 alias grso="git remote show origin | grep Fetch | awk '{print \$3}'"
-alias gbC="echo $(git_current_branch) | pbcopy"
+function gbC () {echo $(git_current_branch) | pbcopy}
 function gcoff () { 
   local TOCHECKOUT=$(git branch -a | fzf)
   TOCHECKOUT=${TOCHECKOUT// /}
   git checkout $TOCHECKOUT
+}
+function glpff () {
+  local REVISION=$(git log --pretty=oneline | fzf | cut -d ' ' -f 1)
+  echo $REVISION
+  git show $REVISION | vim -
 }
 
 alias git-branch-ordered="git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname) %(committerdate) %(authorname)' | sed 's/refs\/heads\///g' | head -n"
