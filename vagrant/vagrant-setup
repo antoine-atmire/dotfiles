@@ -21,3 +21,4 @@ chmod +x /vagrant/setup
 su -c "/vagrant/setup" vagrant
 
 chsh -s /usr/bin/zsh vagrant
+ln -s /usr/bin/ag /usr/local/bin/ag
