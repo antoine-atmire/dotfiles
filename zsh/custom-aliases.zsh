@@ -15,6 +15,11 @@ function glpff () {
   echo $REVISION
   git show $REVISION | vim -
 }
+function gitlab () {
+  local GITLAB_URL="$(grso | rev | cut -c 5- | rev)/blob/$(git_current_branch)/$1"
+  echo $GITLAB_URL copied to the clipboard
+  echo $GITLAB_URL | pbcopy
+}
 
 alias git-branch-ordered="git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname) %(committerdate) %(authorname)' | sed 's/refs\/heads\///g' | head -n"
 alias pushdev='echo "➜ git checkout atmire-DEV" && git checkout atmire-DEV && echo "➜ git fetch" && git fetch && echo "➜ git pull" && git pull && echo "➜ git merge -" && git merge - && echo "➜ git push origin atmire-DEV" && git push origin atmire-DEV && echo "➜ git checkout - " &&git checkout -'
