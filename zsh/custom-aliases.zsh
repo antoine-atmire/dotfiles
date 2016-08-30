@@ -16,7 +16,7 @@ function glpff () {
   git show $REVISION | vim -
 }
 function gitlab () {
-  local GITLAB_URL="$(grso | rev | cut -c 5- | rev)/blob/$(git_current_branch)/$1"
+  local GITLAB_URL="$(grso | rev | cut -c 5- | rev)/blob/$(git_current_branch)/$(fzf)"
   echo $GITLAB_URL copied to the clipboard
   echo $GITLAB_URL | pbcopy
 }
