@@ -40,3 +40,6 @@ alias -g T='| tail -n'
 alias -g G='| grep'
 alias -g L="| less"
 alias -g M="| most"
+
+# docker build -t vim-antoine .
+alias v='docker run -ti --rm -v $(pwd):/home/developer/workspace vim-antoine'
