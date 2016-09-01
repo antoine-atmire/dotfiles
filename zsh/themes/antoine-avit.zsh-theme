@@ -85,9 +85,11 @@ function _git_time_since_commit() {
 }
 
 # from https://raw.githubusercontent.com/tnwinc/omz-git/master/omz-git.plugin.zsh
+# with my own modifications
 function git_prompt_info() {
   if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
     ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+    ref=$(command git name-rev --name-only --no-undefined --always HEAD 2> /dev/null) || \
     ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
     ref="$(command echo ${ref#refs/heads/})"
     length=${#ref}
