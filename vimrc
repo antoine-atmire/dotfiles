@@ -43,7 +43,10 @@ set statusline+=\ %f " relative file path
 set statusline+=\ line\ %l/%L " total lines
 set statusline+=\ col\ %v " column number
 
-colorscheme molokai
+set background=dark
+
+"colorscheme molokai
+colorscheme gruvbox
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
