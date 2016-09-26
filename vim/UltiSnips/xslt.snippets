@@ -1,0 +1,29 @@
+snippet tm "template match" b
+<xsl:template match="${1:data}">
+	${2}
+</xsl:template>
+endsnippet
+
+snippet text "xsl:text" b
+<xsl:text>${1}</xsl:text>
+endsnippet
+
+snippet wp "with-param" b
+<xsl:with-param name="${1}" select="${2}"/>
+endsnippet
+
+snippet param "xsl:param" b
+<xsl:param name="${1}" select="${2}"/>
+endsnippet
+
+snippet if "xsl:if" b
+<xsl:if test="${1}">
+	${2}
+</xsl:if>
+endsnippet
+
+snippet attr "xsl:attribute" b
+<xsl:attribute name="${1}">
+${2}
+</xsl:attribute>
+endsnippet
