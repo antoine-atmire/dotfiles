@@ -37,6 +37,7 @@ set ignorecase
 "set list
 set exrc
 set secure
+set backupcopy=yes
 
 set statusline=%y " file type
 set statusline+=\ %f " relative file path
@@ -102,6 +103,7 @@ nnoremap <leader>so :Errors<cr>
 nnoremap <leader>sc :lclose<cr>
 nnoremap <leader>sn :lnext<cr>
 nnoremap <leader>sp :lprevious<cr>
+nnoremap <leader>se :ElmErrorDetail<cr>
 
 
 " command-t
