@@ -78,6 +78,7 @@ noremap <F5> <Esc>:syntax sync fromstart<cr>
 inoremap <F5> <C-o>:syntax sync fromstart<cr>
 " let's not stumble into ex mode
 nnoremap Q <nop>
+nnoremap <leader>= gg=G<c-o><c-o>
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI ?* silent update
@@ -127,6 +128,7 @@ let g:UltiSnipsExpandTrigger = '<C-y>'
 nnoremap <leader>a :Unite grep:.<cr>
 nnoremap <leader>ff :Unite file<cr>
 nnoremap <leader>m :Unite file_mru<cr>
+nnoremap <leader><tab> :Unite file_mru<cr>j
 " Use ag for search
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
