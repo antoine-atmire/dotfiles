@@ -131,7 +131,7 @@ nnoremap <leader>a :Unite grep:.<cr>
 nnoremap <leader>ff :Unite file<cr>
 nnoremap <leader>m :Unite file_mru<cr>
 nnoremap <leader><tab> :Unite file_mru<cr>j
-" Use ag for search
+
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column --hidden'
@@ -139,8 +139,27 @@ if executable('ag')
 endif
 
 set rtp+=~/.fzf
-"nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"', 'sink':'e'})<cr>
-nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'e'})<cr>
+
+"if executable('rg')
+"nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/rg --files --hidden .', 'sink':'e'})<cr>
+"elseif executable('ag')
+if executable('ag')
+  nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'e'})<cr>
+else
+  nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"', 'sink':'e'})<cr>
+endif
+
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+elseif executable('ag')
+"if executable('ag')
+  set grepprg=ag\ --vimgrep\ --ignore=\"**.min.js\"
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+elseif executable('ack')
+  set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
 let g:elm_setup_keybindings = 0
 let g:elm_syntastic_show_warnings = 1
