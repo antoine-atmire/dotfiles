@@ -1,6 +1,7 @@
 " azerty shortcuts
 noremap é @
 "let mapleader = ","
+let mapleader = " "
 
 let g:pathogen_disabled = ['command-t']
 
@@ -17,6 +18,10 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+" move vertically visually and not line-wise (for wrapped lines)
+nnoremap j gj
+nnoremap k gk
+
 set encoding=utf-8
 set nocompatible
 set laststatus=2
@@ -24,7 +29,8 @@ set showcmd
 set number
 set relativenumber
 set ruler
-set scrolloff=10
+"set scrolloff=10
+set scrolloff=999
 set cursorline
 set completeopt=longest,menuone
 set tabstop=2
@@ -49,6 +55,8 @@ set background=dark
 "colorscheme molokai
 colorscheme gruvbox
 
+" use jk as escape in insert mode, to actually type jk: type j -wait- type k
+inoremap jk <esc> 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -65,9 +73,11 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " \ev - edit .vimrc
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+"nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>ev :new $MYVIMRC<cr>
+nnoremap <leader>ez :new ~/.zshrc<cr>
 " \r - reload .vimrc
-nnoremap <leader>r :so $MYVIMRC<cr>
+nnoremap <leader>r :source $MYVIMRC<cr>
 " \q - @ 
 nnoremap <leader>q @
 " new line with spaces until the cursor
@@ -80,11 +90,19 @@ inoremap <F5> <C-o>:syntax sync fromstart<cr>
 " let's not stumble into ex mode
 nnoremap Q <nop>
 nnoremap <leader>= gg=G<c-o><c-o>
+" when space is leader the default won't work
+nnoremap <leader>cv <Plug>NERDCommenterToggle
+" highlight last inserted text
+nnoremap gV `[v`]
+
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI ?* silent update
 " Undo all changes since opening buffer in vim
 nnoremap <leader>zq :u1<bar>u
+
+
+
 
 " syntastic
 set statusline+=\ %#warningmsg#
@@ -164,3 +182,10 @@ endif
 let g:elm_setup_keybindings = 0
 let g:elm_syntastic_show_warnings = 1
 let g:elm_format_autosave = 1
+
+
+
+" ideas
+
+" gundo.vim plugin  
+" noremap <leader>u :GundoToggle<CR>
