@@ -75,6 +75,7 @@ nnoremap <C-l> <C-w>l
 " \ev - edit .vimrc
 "nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <leader>ev :new $MYVIMRC<cr>
+nnoremap <leader>et :new ~/.tmux.conf<cr>
 nnoremap <leader>ez :new ~/.zshrc<cr>
 " \r - reload .vimrc
 nnoremap <leader>r :source $MYVIMRC<cr>
