@@ -172,7 +172,7 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m
 elseif executable('ag')
 "if executable('ag')
-  set grepprg=ag\ --vimgrep\ --ignore=\"**.min.js\"
+  set grepprg=ag\ --vimgrep\ --hidden\ --ignore\ .git
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 elseif executable('ack')
   set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
