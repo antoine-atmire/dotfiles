@@ -44,6 +44,7 @@ set ignorecase
 set exrc
 set secure
 set backupcopy=yes
+set backspace=indent,eol,start
 
 set statusline=%y " file type
 set statusline+=\ %f " relative file path
