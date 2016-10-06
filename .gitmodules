@@ -13,9 +13,6 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/vim-expand-region"]
-	path = vim/bundle/vim-expand-region
-	url = https://github.com/terryma/vim-expand-region.git
 [submodule "vim/bundle/typescript-vim"]
 	path = vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
