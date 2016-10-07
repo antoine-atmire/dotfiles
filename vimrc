@@ -96,6 +96,8 @@ nnoremap <leader>= gg=G<c-o><c-o>
 nnoremap <leader>cv <Plug>NERDCommenterToggle
 " highlight last inserted text
 nnoremap gV `[v`]
+" pretty-print selected xml
+vmap <leader> px !xmllint --format -<CR>
 
 
 " auto save on FocusLost
