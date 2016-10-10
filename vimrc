@@ -66,7 +66,7 @@ set background=dark
 colorscheme gruvbox
 
 " use jk as escape in insert mode, to actually type jk: type j -wait- type k
-inoremap jk <esc> 
+inoremap jk <esc><bs>l
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
