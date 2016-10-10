@@ -10,6 +10,11 @@ function gcoff () {
   TOCHECKOUT=${TOCHECKOUT// /}
   git checkout $TOCHECKOUT
 }
+function gmff () { 
+  local TOCHECKOUT=$(git branch -a | fzf)
+  TOCHECKOUT=${TOCHECKOUT// /}
+  git merge $TOCHECKOUT
+}
 function glpff () {
   local REVISION=$(git log --pretty=oneline | fzf | cut -d ' ' -f 1)
   echo $REVISION

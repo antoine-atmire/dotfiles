@@ -52,6 +52,9 @@ set exrc
 set secure
 
 
+set backupcopy=yes
+set backspace=indent,eol,start
+
 set statusline=%y " file type
 set statusline+=\ %f " relative file path
 set statusline+=\ line\ %l/%L " total lines
@@ -82,6 +85,7 @@ nnoremap <C-l> <C-w>l
 " \ev - edit .vimrc
 "nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <leader>ev :new $MYVIMRC<cr>
+nnoremap <leader>et :new ~/.tmux.conf<cr>
 nnoremap <leader>ez :new ~/.zshrc<cr>
 " \r - reload .vimrc
 nnoremap <leader>r :source $MYVIMRC<cr>
@@ -101,6 +105,8 @@ nnoremap <leader>= gg=G<c-o><c-o>
 nnoremap <leader>cv <Plug>NERDCommenterToggle
 " highlight last inserted text
 nnoremap gV `[v`]
+" pretty-print selected xml
+vmap <leader> px !xmllint --format -<CR>
 
 
 " auto save on FocusLost
@@ -181,7 +187,7 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m
 elseif executable('ag')
 "if executable('ag')
-  set grepprg=ag\ --vimgrep\ --ignore=\"**.min.js\"
+  set grepprg=ag\ --vimgrep\ --hidden\ --ignore\ .git
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 elseif executable('ack')
   set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
