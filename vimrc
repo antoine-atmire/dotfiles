@@ -41,9 +41,16 @@ set colorcolumn=80
 set ignorecase
 "set paste
 "set list
-set exrc
-set secure
 set backupcopy=yes
+" wait a little longer when leader is pressed
+set timeoutlen=3000
+
+
+" use project specific .vimrc
+set exrc
+" must be used when using exrc
+set secure
+
 
 set statusline=%y " file type
 set statusline+=\ %f " relative file path
@@ -146,7 +153,7 @@ let g:UltiSnipsExpandTrigger = '<C-y>'
 " Unite
 "nnoremap <C-m> :Unite file file_rec/git:--cached:--others:--exclude-standard file_mru<cr>
 nnoremap <leader>a :Unite grep:.<cr>
-nnoremap <leader>ff :Unite file<cr>
+"nnoremap <leader>ff :Unite file<cr>
 nnoremap <leader>m :Unite file_mru<cr>
 nnoremap <leader><tab> :Unite file_mru<cr>j
 
@@ -157,6 +164,8 @@ if executable('ag')
 endif
 
 set rtp+=~/.fzf
+
+nnoremap <leader>ff :call fzf#run({'source':"sed '/^\\!/d;s/\t.*//' ".join(tagfiles()),'sink':'tag'})<cr>
 
 "if executable('rg')
 "nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/rg --files --hidden .', 'sink':'e'})<cr>
