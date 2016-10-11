@@ -199,6 +199,26 @@ let g:elm_syntastic_show_warnings = 1
 let g:elm_format_autosave = 1
 
 
+if has("conceal")
+  " set conceallevel otherwise it doesn't do anything
+  setlocal conceallevel=2
+  " specify modes in which to use the conceal feature
+  setlocal concealcursor=cnvi
+
+  nnoremap <leader>c0 :setlocal conceallevel=0<cr>
+  nnoremap <leader>c2 :setlocal conceallevel=2<cr>
+
+  syntax match arrowRight /->/ conceal cchar=→
+  syntax match greaterThan />=/ conceal cchar=≧
+  syntax match lessThan /<=/ conceal cchar=≦
+  "syntax match lessThan /==/ conceal cchar==
+  "syntax match lessThan /===/ conceal cchar=≡
+  "syntax match doubleDash /--/ conceal cchar=−
+
+  syntax match elmLambda /\\/ conceal cchar=λ
+  syntax match elmPipeRight /|>/ conceal cchar=▶
+  syntax match elmPipeLeft /<|/ conceal cchar=◀
+endif
 
 " ideas
 
