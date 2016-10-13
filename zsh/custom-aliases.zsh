@@ -26,6 +26,7 @@ function gitlab () {
   echo $GITLAB_URL | pbcopy
 }
 function glomd () {
+  echo "**$(git_current_branch)**"
   local urlPre=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')"/commit/"
   git log --format=format:"- [%s]($urlPre%H)" $@
 }
