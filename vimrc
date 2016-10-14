@@ -11,7 +11,7 @@ if has("unix")
     " Do Mac stuff here
     " command-t and YCM seem to be mutually exclusive on mac os x
     " but I replaced command-t by fzf so it seems to be fine now
-		"let g:pathogen_disabled = ['YouCompleteMe']
+    "let g:pathogen_disabled = ['YouCompleteMe']
   endif
 endif
 execute pathogen#infect()
@@ -26,8 +26,8 @@ set encoding=utf-8
 set nocompatible
 set laststatus=2
 set showcmd
-set number
-set relativenumber
+"set number
+"set relativenumber
 set ruler
 "set scrolloff=10
 set scrolloff=999
@@ -44,6 +44,7 @@ set ignorecase
 set backupcopy=yes
 " wait a little longer when leader is pressed
 set timeoutlen=3000
+set confirm
 
 
 " use project specific .vimrc
@@ -151,8 +152,8 @@ autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vi
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-n>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-p>']
 let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
+      \ 'elm' : ['.'],
+      \}
 
 let g:UltiSnipsExpandTrigger = '<C-y>'
 
@@ -186,7 +187,7 @@ if executable('rg')
   set grepprg=rg\ --vimgrep
   set grepformat=%f:%l:%c:%m
 elseif executable('ag')
-"if executable('ag')
+  "if executable('ag')
   set grepprg=ag\ --vimgrep\ --hidden\ --ignore\ .git
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 elseif executable('ack')
@@ -202,22 +203,23 @@ let g:elm_format_autosave = 1
 if has("conceal")
   " set conceallevel otherwise it doesn't do anything
   setlocal conceallevel=2
-  " specify modes in which to use the conceal feature
-  setlocal concealcursor=cnvi
+  " specify modes in which to use the conceal feature: cnvi
+  setlocal concealcursor=cnv
 
   nnoremap <leader>c0 :setlocal conceallevel=0<cr>
+  nnoremap <leader>c1 :setlocal conceallevel=1<cr>
   nnoremap <leader>c2 :setlocal conceallevel=2<cr>
+  nnoremap <leader>c3 :setlocal conceallevel=3<cr>
 
-  syntax match arrowRight /->/ conceal cchar=→
-  syntax match greaterThan />=/ conceal cchar=≧
-  syntax match lessThan /<=/ conceal cchar=≦
-  "syntax match lessThan /==/ conceal cchar==
-  "syntax match lessThan /===/ conceal cchar=≡
-  "syntax match doubleDash /--/ conceal cchar=−
-
-  syntax match elmLambda /\\/ conceal cchar=λ
-  syntax match elmPipeRight /|>/ conceal cchar=▶
-  syntax match elmPipeLeft /<|/ conceal cchar=◀
+  autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowRight /->/ conceal cchar=→
+  autocmd BufnewFile,BufRead,BufWrite * syntax match greaterThan />=/ conceal cchar=≧
+  autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /<=/ conceal cchar=≦
+  "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /==/ conceal cchar==
+  "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /===/ conceal cchar=≡
+  "autocmd BufnewFile,BufRead,BufWrite * syntax match doubleDash /--/ conceal cchar=−
+  autocmd BufnewFile,BufRead,BufWrite * syntax match elmLambda /\\/ conceal cchar=λ
+  autocmd BufnewFile,BufRead,BufWrite * syntax match elmPipeRight /|>/ conceal cchar=▶
+  autocmd BufnewFile,BufRead,BufWrite * syntax match elmPipeLeft /<|/ conceal cchar=◀
 endif
 
 " ideas
