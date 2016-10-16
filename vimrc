@@ -3,7 +3,7 @@ noremap é @
 "let mapleader = ","
 let mapleader = " "
 
-let g:pathogen_disabled = ['command-t']
+let g:pathogen_disabled = ['command-t','YouCompleteMe']
 
 if has("unix")
   let s:uname = system("uname")

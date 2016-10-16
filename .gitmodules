@@ -58,3 +58,6 @@
 [submodule "vim/bundle/vim-SimpleSmoothScroll"]
 	path = vim/bundle/vim-SimpleSmoothScroll
 	url = https://github.com/Kazark/vim-SimpleSmoothScroll.git
+[submodule "vim/bundle/completor.vim"]
+	path = vim/bundle/completor.vim
+	url = https://github.com/maralla/completor.vim.git
