@@ -93,7 +93,7 @@ nnoremap <leader>r :source $MYVIMRC<cr>
 " \q - @ 
 nnoremap <leader>q @
 " new line with spaces until the cursor
-nnoremap <leader>n y0opVr $
+nnoremap <leader>o y0opVr $
 " copy all lines to clipboard
 nnoremap <leader>cx gg"+yG
 " resync syntax highlighting
@@ -108,6 +108,8 @@ nnoremap <leader>cv <Plug>NERDCommenterToggle
 nnoremap gV `[v`]
 " pretty-print selected xml
 vmap <leader> px !xmllint --format -<CR>
+" toggle relativenumber
+nnoremap <leader>n :set relativenumber!<cr>
 
 
 " auto save on FocusLost
@@ -204,7 +206,7 @@ if has("conceal")
   " set conceallevel otherwise it doesn't do anything
   setlocal conceallevel=2
   " specify modes in which to use the conceal feature: cnvi
-  setlocal concealcursor=cnv
+  setlocal concealcursor=cnvi
 
   nnoremap <leader>c0 :setlocal conceallevel=0<cr>
   nnoremap <leader>c1 :setlocal conceallevel=1<cr>
@@ -224,5 +226,10 @@ endif
 
 " ideas
 
-" gundo.vim plugin  
+" gundo.vim plugin (not convinced yet, but I guess I need to try before
+" making up my mind)
 " noremap <leader>u :GundoToggle<CR>
+"
+" switch to vim8 with these goodies
+" https://github.com/skywind3000/asyncrun.vim (I'm thinking <leader>! :AsyncRun )
+" https://github.com/maralla/completor.vim ( to replace YCM )
