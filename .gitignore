@@ -1,3 +1,7 @@
+# seems to be the back up dir for vim
+vim/view
+
+
 # Created by https://www.gitignore.io/api/vim,osx,vagrant
 
 ### Vim ###
