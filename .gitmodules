@@ -61,3 +61,9 @@
 [submodule "vim/bundle/completor.vim"]
 	path = vim/bundle/completor.vim
 	url = https://github.com/maralla/completor.vim.git
+[submodule "vim/bundle/base16-vim"]
+	path = vim/bundle/base16-vim
+	url = https://github.com/chriskempson/base16-vim.git
+[submodule "base16-shell"]
+	path = base16-shell
+	url = https://github.com/chriskempson/base16-shell.git

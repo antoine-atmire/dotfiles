@@ -65,6 +65,7 @@ set background=dark
 
 "colorscheme molokai
 colorscheme gruvbox
+"colorscheme base16-default-dark
 
 " use jk as escape in insert mode, to actually type jk: type j -wait- type k
 inoremap jk <esc><bs>l
@@ -175,6 +176,7 @@ endif
 set rtp+=~/.fzf
 
 nnoremap <leader>ff :call fzf#run({'source':"sed '/^\\!/d;s/\t.*//' ".join(tagfiles()),'sink':'tag'})<cr>
+nnoremap <leader>fc :call fzf#run({'source': map(split(globpath(&rtp, 'colors/*.vim')), 'fnamemodify(v:val, ":t:r")'), 'sink': 'colo', 'left': '35%'})<cr>
 
 "if executable('rg')
 "nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/rg --files --hidden .', 'sink':'e'})<cr>
@@ -232,4 +234,6 @@ endif
 "
 " switch to vim8 with these goodies
 " https://github.com/skywind3000/asyncrun.vim (I'm thinking <leader>! :AsyncRun )
-" https://github.com/maralla/completor.vim ( to replace YCM )
+" https://github.com/maralla/completor.vim ( to replace YCM ) -- done
+" https://github.com/w0rp/ale.git (to replace
+" syntastichttps://github.com/w0rp/ale.git (to replace syntastic)
