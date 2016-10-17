@@ -175,7 +175,7 @@ endif
 
 set rtp+=~/.fzf
 
-nnoremap <leader>ff :call fzf#run({'source':"sed '/^\\!/d;s/\t.*//' ".join(tagfiles()),'sink':'tag'})<cr>
+nnoremap <leader>ff :call fzf#run({'source':"sed '/^\\!/d;s/\t.*//' ".join(tagfiles()),'sink':'tag', 'right':'50%'})<cr>
 nnoremap <leader>fc :call fzf#run({'source': map(split(globpath(&rtp, 'colors/*.vim')), 'fnamemodify(v:val, ":t:r")'), 'sink': 'colo', 'left': '35%'})<cr>
 
 "if executable('rg')
