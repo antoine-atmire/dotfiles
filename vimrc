@@ -36,21 +36,35 @@ set modelines=0
 set colorcolumn=80
 set ignorecase
 "set paste
-"set list
-set backupcopy=yes
 " wait a little longer when leader is pressed
 set timeoutlen=3000
-set confirm
-
+set confirm "confirmation dialog when closing a file with changes
+set backspace=indent,eol,start
+set breakindent
+set formatoptions+=j "remove comment leader when joining lines
+set nojoinspaces "don't add double space when joining lines after . ! ...
+set shortmess+=A "no swapfile warning
 
 " use project specific .vimrc
 set exrc
 " must be used when using exrc
 set secure
 
+" toggle relativenumber
+"nnoremap <leader>n :set relativenumber!<cr>
+" replaced by vim-unimpaired ]or [or
+" toggle visible whitepace
+"nnoremap <leader>w :set list!<cr>
+" replaced by vim-unimpaired ]ol [ol
 
-set backupcopy=yes
-set backspace=indent,eol,start
+if exists('$SUDO_USER')
+  set noundofile
+  set noswapfile
+  set nobackup
+else
+  set backupcopy=yes "maybe add a set backupdir ?
+  " enable undofile swapfile and set their dirs ?
+endif
 
 set statusline=%y " file type
 set statusline+=\ %f " relative file path
@@ -74,7 +88,6 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -108,13 +121,12 @@ nnoremap <leader>cv <Plug>NERDCommenterToggle
 nnoremap gV `[v`]
 " pretty-print selected xml
 vmap <leader>px !xmllint --format -<CR>
-" toggle relativenumber
-nnoremap <leader>n :set relativenumber!<cr>
 " replace current word and go to the next occurrence (n. combo)
 nnoremap c* *Ncgn
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI ?* silent update
+"if you remove this one day, you may consider set hidden
 " Undo all changes since opening buffer in vim
 nnoremap <leader>zq :u1<bar>u
 
@@ -217,6 +229,12 @@ if has("conceal")
   autocmd BufnewFile,BufRead,BufWrite * syntax match elmPipeRight /|>/ conceal cchar=▶
   autocmd BufnewFile,BufRead,BufWrite * syntax match elmPipeLeft /<|/ conceal cchar=◀
 endif
+
+" gruvbox tuning for elm
+hi! link elmType GruvBoxYellow
+hi! link elmTypedef GruvBoxRed
+hi! link elmImport GruvBoxRed
+
 
 " ideas
 
