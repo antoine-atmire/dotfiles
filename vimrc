@@ -79,6 +79,11 @@ colorscheme gruvbox
 
 " use jk as escape in insert mode, to actually type jk: type j -wait- type k
 inoremap jk <esc><bs>l
+" ZZZ in insert mode will also save and quit
+" just so you don't have to correct yourself when accidentally typing ZZ in
+" insert mode
+inoremap ZZZ <esc>ZZ
+
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
