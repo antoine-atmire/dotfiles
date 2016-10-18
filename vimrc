@@ -107,7 +107,7 @@ nnoremap <leader>cv <Plug>NERDCommenterToggle
 " highlight last inserted text
 nnoremap gV `[v`]
 " pretty-print selected xml
-vmap <leader> px !xmllint --format -<CR>
+vmap <leader>px !xmllint --format -<CR>
 " toggle relativenumber
 nnoremap <leader>n :set relativenumber!<cr>
 " replace current word and go to the next occurrence (n. combo)
