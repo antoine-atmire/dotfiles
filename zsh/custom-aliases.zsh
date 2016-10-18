@@ -1,7 +1,7 @@
 alias ag='ag --hidden'
 
 alias gt='git tag'
-alias gsur='git submodule update --recursive'
+alias gsur='git submodule update --remote --merge'
 alias gpo='git push origin'
 alias gpom='git push origin master'
 alias grso="git remote show origin | grep Fetch | awk '{print \$3}'"
