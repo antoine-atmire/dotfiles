@@ -3,14 +3,10 @@ noremap é @
 "let mapleader = ","
 let mapleader = " "
 
-let g:pathogen_disabled = ['command-t','YouCompleteMe']
-
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
     " Do Mac stuff here
-    " command-t and YCM seem to be mutually exclusive on mac os x
-    " but I replaced command-t by fzf so it seems to be fine now
     "let g:pathogen_disabled = ['YouCompleteMe']
   endif
 endif
@@ -86,9 +82,12 @@ nnoremap <C-l> <C-w>l
 
 " \ev - edit .vimrc
 "nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-nnoremap <leader>ev :new $MYVIMRC<cr>
-nnoremap <leader>et :new ~/.tmux.conf<cr>
-nnoremap <leader>ez :new ~/.zshrc<cr>
+nnoremap <leader>ev :tabe $MYVIMRC<cr>
+nnoremap <leader>et :tabe ~/.tmux.conf<cr>
+nnoremap <leader>ez :tabe ~/.zshrc<cr>
+nnoremap <leader>ee :e<cr>
+" help in a tab
+nnoremap <leader>h :tab help 
 " \r - reload .vimrc
 nnoremap <leader>r :source $MYVIMRC<cr>
 " \q - @ 
@@ -111,7 +110,8 @@ nnoremap gV `[v`]
 vmap <leader> px !xmllint --format -<CR>
 " toggle relativenumber
 nnoremap <leader>n :set relativenumber!<cr>
-
+" replace current word and go to the next occurrence (n. combo)
+nnoremap c* *Ncgn
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI ?* silent update
@@ -141,9 +141,6 @@ nnoremap <leader>sp :lprevious<cr>
 nnoremap <leader>se :ElmErrorDetail<cr>
 
 
-" command-t
-let g:CommandTWildIgnore=&wildignore . ",**/overlays/**,**/target/**,**/node_modules/*,**/node_modules/**"
-
 " integrate tsuquyomi with syntastic
 let g:tsuquyomi_disable_quickfix = 1
 
@@ -151,12 +148,6 @@ let g:tsuquyomi_disable_quickfix = 1
 autocmd FileType javascript JsPreTmpl html
 autocmd FileType typescript JsPreTmpl html
 autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vim users only.
-
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-n>']
-let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-p>']
-let g:ycm_semantic_triggers = {
-      \ 'elm' : ['.'],
-      \}
 
 let g:UltiSnipsExpandTrigger = '<C-y>'
 
@@ -218,6 +209,7 @@ if has("conceal")
   autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowRight /->/ conceal cchar=→
   autocmd BufnewFile,BufRead,BufWrite * syntax match greaterThan />=/ conceal cchar=≧
   autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /<=/ conceal cchar=≦
+  autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowLeft /<!-/ conceal cchar=←
   "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /==/ conceal cchar==
   "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /===/ conceal cchar=≡
   "autocmd BufnewFile,BufRead,BufWrite * syntax match doubleDash /--/ conceal cchar=−
