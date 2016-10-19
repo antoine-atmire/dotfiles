@@ -3,6 +3,9 @@ noremap é @
 "let mapleader = ","
 let mapleader = " "
 
+"this is being prepared in the validator branch
+let g:pathogen_disabled = ['validator']
+
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
