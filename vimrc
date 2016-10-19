@@ -3,8 +3,8 @@ noremap é @
 "let mapleader = ","
 let mapleader = " "
 
-"this is being prepared in the validator branch
-let g:pathogen_disabled = ['validator']
+"this is being prepared in the ale branch
+let g:pathogen_disabled = ['ale']
 
 if has("unix")
   let s:uname = system("uname")
