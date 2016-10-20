@@ -126,8 +126,12 @@ nnoremap <leader>= gg=G<c-o><c-o>
 nnoremap <leader>cv <Plug>NERDCommenterToggle
 " highlight last inserted text
 nnoremap gV `[v`]
-" pretty-print selected xml
+" pretty-print selected xml, px 'pretty xml'
 vmap <leader>px !xmllint --format -<CR>
+" split on &, not 'nore' because this is recursive, pq 'pretty query'
+nmap <leader>pq 0f&r<leader>pq
+" toggle relativenumber
+nnoremap <leader>n :set relativenumber!<cr>
 " replace current word and go to the next occurrence (n. combo)
 nnoremap c* *Ncgn
 
