@@ -1,4 +1,3 @@
-" azerty shortcuts
 noremap é @
 "let mapleader = ","
 let mapleader = " "
@@ -140,26 +139,16 @@ nnoremap <leader>zq :u1<bar>u
 
 
 
+nnoremap <leader>lc :lclose<cr>
+nnoremap <leader>lo :lopen<cr>
+"nnoremap <leader>le :ElmErrorDetail<cr>
+nnoremap <leader>pe :ElmFormat<cr>
+nnoremap <leader>le :call ale_linters#elm#make#MessageDetails()<cr>
 
-" syntastic
-set statusline+=\ %#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint', 'tsuquyomi']
-"let g:syntastic_typescript_checkers = ['tsuquyomi']
-let g:syntastic_typescript_tsc_fname = ''
-" custom syntastic mappings
-nnoremap <leader>ss :w<bar>SyntasticCheck<cr>
-nnoremap <leader>so :Errors<cr>
-nnoremap <leader>sc :lclose<cr>
-nnoremap <leader>sn :lnext<cr>
-nnoremap <leader>sp :lprevious<cr>
-nnoremap <leader>se :ElmErrorDetail<cr>
 
+" ale plugin
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '→'
 
 " integrate tsuquyomi with syntastic
 let g:tsuquyomi_disable_quickfix = 1
