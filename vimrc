@@ -2,9 +2,6 @@ noremap é @
 "let mapleader = ","
 let mapleader = " "
 
-"this is being prepared in the ale branch
-let g:pathogen_disabled = ['ale']
-
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
