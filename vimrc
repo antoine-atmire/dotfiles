@@ -21,12 +21,12 @@ set encoding=utf-8
 set nocompatible
 set laststatus=2
 set showcmd
-"set number
-"set relativenumber
+set number
+set relativenumber
 set ruler
 "set scrolloff=10
 set scrolloff=999
-set cursorline
+"set cursorline
 set completeopt=longest,menuone
 set tabstop=2
 set shiftwidth=2
@@ -34,6 +34,7 @@ set expandtab
 set modelines=0
 set colorcolumn=80
 set ignorecase
+set smartcase
 "set paste
 " wait a little longer when leader is pressed
 set timeoutlen=3000
@@ -43,18 +44,12 @@ set breakindent
 set formatoptions+=j "remove comment leader when joining lines
 set nojoinspaces "don't add double space when joining lines after . ! ...
 set shortmess+=A "no swapfile warning
+set shiftround  " When at 3 spaces, and I hit > ... go to 4, not 5
 
 " use project specific .vimrc
 set exrc
 " must be used when using exrc
 set secure
-
-" toggle relativenumber
-"nnoremap <leader>n :set relativenumber!<cr>
-" replaced by vim-unimpaired ]or [or
-" toggle visible whitepace
-"nnoremap <leader>w :set list!<cr>
-" replaced by vim-unimpaired ]ol [ol
 
 if exists('$SUDO_USER')
   set noundofile
@@ -67,8 +62,9 @@ endif
 
 set statusline=%y " file type
 set statusline+=\ %f " relative file path
-set statusline+=\ line\ %l/%L " total lines
-set statusline+=\ col\ %v " column number
+set statusline+=\ %L\ lines "total lines
+set statusline+=\ %l:%v " current line:column
+set statusline+=\ %{ALEGetStatusLine()}
 
 set background=dark
 
@@ -82,6 +78,8 @@ inoremap jk <esc><bs>l
 " just so you don't have to correct yourself when accidentally typing ZZ in
 " insert mode
 inoremap ZZZ <esc>ZZ
+"this happens quite enough to warrant a mapping
+nnoremap <leader>w :w<cr>
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -131,6 +129,8 @@ nmap <leader>pq 0f&r<leader>pq
 nnoremap <leader>n :set relativenumber!<cr>
 " replace current word and go to the next occurrence (n. combo)
 nnoremap c* *Ncgn
+" ctags command
+nnoremap <leader>ct :!ctags -R 
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI ?* silent update
@@ -138,10 +138,14 @@ autocmd CursorHold,CursorHoldI ?* silent update
 " Undo all changes since opening buffer in vim
 nnoremap <leader>zq :u1<bar>u
 
+" Keep selection after indent/unindent
+vnoremap < <gv
+vnoremap > >gv
 
 
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :lopen<cr>
+nnoremap <leader>lf :lfirst<cr>
 "nnoremap <leader>le :ElmErrorDetail<cr>
 nnoremap <leader>pe :ElmFormat<cr>
 nnoremap <leader>le :call ale_linters#elm#make#MessageDetails()<cr>
@@ -209,7 +213,7 @@ if has("conceal")
   " set conceallevel otherwise it doesn't do anything
   setlocal conceallevel=2
   " specify modes in which to use the conceal feature: cnvi
-  setlocal concealcursor=cnvi
+  setlocal concealcursor=cnv
 
   nnoremap <leader>c0 :setlocal conceallevel=0<cr>
   nnoremap <leader>c1 :setlocal conceallevel=1<cr>
