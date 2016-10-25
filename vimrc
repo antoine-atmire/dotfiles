@@ -223,7 +223,7 @@ if has("conceal")
   autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowRight /->/ conceal cchar=→
   autocmd BufnewFile,BufRead,BufWrite * syntax match greaterThan />=/ conceal cchar=≧
   autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /<=/ conceal cchar=≦
-  autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowLeft /<!-/ conceal cchar=←
+  "autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowLeft /<!-/ conceal cchar=← "this breaks xml comment highlighting
   "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /==/ conceal cchar==
   "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /===/ conceal cchar=≡
   "autocmd BufnewFile,BufRead,BufWrite * syntax match doubleDash /--/ conceal cchar=−
