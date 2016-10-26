@@ -81,7 +81,7 @@ inoremap ZZZ <esc>ZZ
 "this happens quite enough to warrant a mapping
 nnoremap <leader>w :w<cr>
 
-nnoremap <up> <nop>
+nnoremap <up> :<up>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
