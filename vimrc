@@ -35,6 +35,7 @@ set modelines=0
 set colorcolumn=80
 set ignorecase
 set smartcase
+set incsearch
 "set paste
 " wait a little longer when leader is pressed
 set timeoutlen=3000
