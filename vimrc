@@ -103,10 +103,10 @@ nnoremap <leader>et :tabe ~/.tmux.conf<cr>
 nnoremap <leader>ez :tabe ~/.zshrc<cr>
 nnoremap <leader>ee :e<cr>
 " help in a tab
-nnoremap <leader>h :tab help 
+nnoremap <leader>h :tab help<space>
 " \r - reload .vimrc
 nnoremap <leader>r :source $MYVIMRC<cr>
-" \q - @ 
+" \q - @
 nnoremap <leader>q @
 " new line with spaces until the cursor
 nnoremap <leader>o y0opVr $
@@ -131,24 +131,29 @@ nnoremap <leader>n :set relativenumber!<cr>
 " replace current word and go to the next occurrence (n. combo)
 nnoremap c* *Ncgn
 " ctags command
-nnoremap <leader>ct :!ctags -R 
+nnoremap <leader>ct :!ctags -R<space>
+" list of buffers, ready to chooseone by number
+nnoremap <leader>m :buffers<cr>:buffer<space>
+
+
 
 " auto save on FocusLost
-autocmd CursorHold,CursorHoldI ?* silent update
+autocmd CursorHold,CursorHoldI,BufLeave ?* silent update
 "if you remove this one day, you may consider set hidden
 " Undo all changes since opening buffer in vim
 nnoremap <leader>zq :u1<bar>u
+
 
 " Keep selection after indent/unindent
 vnoremap < <gv
 vnoremap > >gv
 
 
+" location list mappings
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>lf :lfirst<cr>
 "nnoremap <leader>le :ElmErrorDetail<cr>
-nnoremap <leader>pe :ElmFormat<cr>
 nnoremap <leader>le :call ale_linters#elm#make#MessageDetails()<cr>
 
 
@@ -170,8 +175,8 @@ let g:UltiSnipsExpandTrigger = '<C-y>'
 "nnoremap <C-m> :Unite file file_rec/git:--cached:--others:--exclude-standard file_mru<cr>
 nnoremap <leader>a :Unite grep:.<cr>
 "nnoremap <leader>ff :Unite file<cr>
-nnoremap <leader>m :Unite file_mru<cr>
-nnoremap <leader><tab> :Unite file_mru<cr>j
+"nnoremap <leader>m :Unite file_mru<cr>
+"nnoremap <leader><tab> :Unite file_mru<cr>j
 
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
@@ -247,6 +252,3 @@ hi! link elmImport GruvBoxRed
 "
 " switch to vim8 with these goodies
 " https://github.com/skywind3000/asyncrun.vim (I'm thinking <leader>! :AsyncRun )
-" https://github.com/maralla/completor.vim ( to replace YCM ) -- done
-" https://github.com/w0rp/ale.git (to replace
-" syntastichttps://github.com/w0rp/ale.git (to replace syntastic)
