@@ -116,7 +116,7 @@ nnoremap <leader>cx gg"+yG
 noremap <F5> <Esc>:syntax sync fromstart<cr>
 inoremap <F5> <C-o>:syntax sync fromstart<cr>
 " let's not stumble into ex mode
-nnoremap Q <nop>
+nnoremap Q @q
 nnoremap <leader>= gg=G<c-o><c-o>
 " when space is leader the default won't work
 nnoremap <leader>cv <Plug>NERDCommenterToggle
