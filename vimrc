@@ -132,10 +132,14 @@ nnoremap <leader>n :set relativenumber!<cr>
 nnoremap c* *Ncgn
 " ctags command
 nnoremap <leader>ct :!ctags -R<space>
-" list of buffers, ready to chooseone by number
+" list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:buffer<space>
-
-
+" go to the previous buffer
+nnoremap <leader><tab> :buffer #<cr>
+" go to the next double empty lines
+nnoremap <leader>} }/\n\n\n/1<cr>
+" go to the previous double empty lines
+nnoremap <leader>{ {?\n\n\n?1<cr>
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI,BufLeave ?* silent update
