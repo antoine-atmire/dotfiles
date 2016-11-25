@@ -101,6 +101,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
 nnoremap <leader>et :tabe ~/.tmux.conf<cr>
 nnoremap <leader>ez :tabe ~/.zshrc<cr>
+nnoremap <leader>em :tabe ~/.m2/settings.xml<cr>
 nnoremap <leader>ee :e<cr>
 " help in a tab
 nnoremap <leader>h :tab help<space>
@@ -231,13 +232,14 @@ if has("conceal")
   autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowRight /->/ conceal cchar=→
   autocmd BufnewFile,BufRead,BufWrite * syntax match greaterThan />=/ conceal cchar=≧
   autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /<=/ conceal cchar=≦
+  autocmd BufnewFile,BufRead,BufWrite * syntax match elmLambda /\\/ conceal cchar=λ
+  autocmd BufnewFile,BufRead,BufWrite * syntax match elmPipeRight /|>/ conceal cchar=▶
+  autocmd BufnewFile,BufRead,BufWrite * syntax match elmPipeLeft /<|/ conceal cchar=◀
+
   "autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowLeft /<!-/ conceal cchar=← "this breaks xml comment highlighting
   "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /==/ conceal cchar==
   "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /===/ conceal cchar=≡
   "autocmd BufnewFile,BufRead,BufWrite * syntax match doubleDash /--/ conceal cchar=−
-  autocmd BufnewFile,BufRead,BufWrite * syntax match elmLambda /\\/ conceal cchar=λ
-  autocmd BufnewFile,BufRead,BufWrite * syntax match elmPipeRight /|>/ conceal cchar=▶
-  autocmd BufnewFile,BufRead,BufWrite * syntax match elmPipeLeft /<|/ conceal cchar=◀
 endif
 
 " gruvbox tuning for elm
