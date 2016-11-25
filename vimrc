@@ -118,8 +118,6 @@ inoremap <F5> <C-o>:syntax sync fromstart<cr>
 " let's not stumble into ex mode
 nnoremap Q @q
 nnoremap <leader>= gg=G<c-o><c-o>
-" when space is leader the default won't work
-nnoremap <leader>cv <Plug>NERDCommenterToggle
 " highlight last inserted text
 nnoremap gV `[v`]
 " pretty-print selected xml, px 'pretty xml'
