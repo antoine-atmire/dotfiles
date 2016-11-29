@@ -33,8 +33,8 @@ function glomd () {
 }
 
 alias git-branch-ordered="git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname) %(committerdate) %(authorname)' | sed 's/refs\/heads\///g' | head -n"
-alias gpad='echo "➜ git checkout atmire-DEV" && git checkout atmire-DEV && echo "➜ git fetch" && git fetch && echo "➜ git pull" && git pull && echo "➜ git merge -" && git merge - && echo "➜ git push origin atmire-DEV" && git push origin atmire-DEV && echo "➜ git checkout - " &&git checkout -'
-alias gpm='echo "➜ git checkout master" && git checkout master && echo "➜ git fetch" && git fetch && echo "➜ git pull" && git pull && echo "➜ git merge -" && git merge - && echo "➜ git push origin master" && git push origin master && echo "➜ git checkout - " &&git checkout -'
+alias gpad='echo "➜ git checkout atmire-DEV" && git checkout atmire-DEV && echo "➜ git fetch" && git fetch && echo "➜ git pull" && git pull && echo "➜ git merge --no-edit -" && git merge --no-edit - && echo "➜ git push origin atmire-DEV" && git push origin atmire-DEV && echo "➜ git checkout - " &&git checkout -'
+alias gpm='echo "➜ git checkout master" && git checkout master && echo "➜ git fetch" && git fetch && echo "➜ git pull" && git pull && echo "➜ git merge --no-edit -" && git merge - && echo "➜ git push origin master" && git push origin master && echo "➜ git checkout - " &&git checkout -'
 
 alias echopath="echo $PATH | tr -s ':' '\n'"
 alias ant_update='cd . && ant clean_backups && ant update -Doverwrite=true'
