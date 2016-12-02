@@ -149,6 +149,10 @@ inoremap ZZZ <esc>ZZ
 " up and down can be useful, left and right is best avoided in insert mode
 inoremap <c-j> <Down>
 inoremap <c-k> <Up>
+" xml tags
+inoremap <c-x>t <esc>ciW<lt><c-r>"></<C-R>"><Esc>F<i
+inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-<i
+
 
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI,BufLeave ?* silent update
