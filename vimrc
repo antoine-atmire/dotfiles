@@ -73,14 +73,6 @@ set background=dark
 colorscheme gruvbox
 "colorscheme base16-default-dark
 
-" use jk as escape in insert mode, to actually type jk: type j -wait- type k
-inoremap jk <esc><bs>l
-" ZZZ in insert mode will also save and quit
-" just so you don't have to correct yourself when accidentally typing ZZ in
-" insert mode
-inoremap ZZZ <esc>ZZ
-"this happens quite enough to warrant a mapping
-nnoremap <leader>w :w<cr>
 
 nnoremap <up> :<up>
 nnoremap <down> <nop>
@@ -96,6 +88,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+
+"this happens quite enough to warrant a mapping
+nnoremap <leader>w :w<cr>
 " \ev - edit .vimrc
 "nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
@@ -140,16 +135,25 @@ nnoremap <leader>} }/\n\n\n/1<cr>
 " go to the previous double empty lines
 nnoremap <leader>{ {?\n\n\n?1<cr>
 
+" Keep selection after indent/unindent
+vnoremap < <gv
+vnoremap > >gv
+
+" use jk as escape in insert mode, to actually type jk: type j -wait- type k
+inoremap jk <esc><bs>l
+" ZZZ in insert mode will also save and quit
+" just so you don't have to correct yourself when accidentally typing ZZ in
+" insert mode
+inoremap ZZZ <esc>ZZ
+" up and down can be useful, left and right is best avoided in insert mode
+inoremap <c-j> <Down>
+inoremap <c-k> <Up>
+
 " auto save on FocusLost
 autocmd CursorHold,CursorHoldI,BufLeave ?* silent update
 "if you remove this one day, you may consider set hidden
 " Undo all changes since opening buffer in vim
 nnoremap <leader>zq :u1<bar>u
-
-
-" Keep selection after indent/unindent
-vnoremap < <gv
-vnoremap > >gv
 
 
 " location list mappings
