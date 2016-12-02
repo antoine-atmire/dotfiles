@@ -10,6 +10,7 @@ if has("unix")
   endif
 endif
 execute pathogen#infect()
+" silent! execute pathogen#helptags()
 syntax on
 filetype plugin indent on
 
