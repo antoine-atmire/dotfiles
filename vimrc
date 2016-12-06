@@ -184,18 +184,15 @@ autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vi
 
 let g:UltiSnipsExpandTrigger = '<C-y>'
 
-" Unite
-"nnoremap <C-m> :Unite file file_rec/git:--cached:--others:--exclude-standard file_mru<cr>
-nnoremap <leader>a :Unite grep:.<cr>
-"nnoremap <leader>ff :Unite file<cr>
-"nnoremap <leader>m :Unite file_mru<cr>
-"nnoremap <leader><tab> :Unite file_mru<cr>j
 
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column --hidden'
-  let g:unite_source_grep_recursive_opt = ''
-endif
+" Denite (replaces Unite)
+nnoremap <leader>dl :Denite line<cr>
+nnoremap <leader>dc :Denite colorscheme<cr>
+nnoremap <leader>dq :Denite command<cr>
+nnoremap <leader>dg :Denite grep<cr>
+" nnoremap <leader>dh :Denite help<cr> "I would use <leader>h<cr><leader>ff anyway
+" nnoremap <leader>dm :Denite menu<cr>
+
 
 set rtp+=~/.fzf
 
