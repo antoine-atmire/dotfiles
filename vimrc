@@ -192,7 +192,22 @@ nnoremap <leader>dc :Denite colorscheme<cr>
 nnoremap <leader>dq :Denite command<cr>
 nnoremap <leader>dg :Denite grep<cr>
 " nnoremap <leader>dh :Denite help<cr> "I would use <leader>h<cr><leader>ff anyway
-" nnoremap <leader>dm :Denite menu<cr>
+nnoremap <leader>dm :Denite menu<cr>
+
+let s:menus = {}
+
+let s:menus.dotfiles = {
+      \ 'description': 'Edit your dotfiles'
+      \ }
+let s:menus.dotfiles.file_candidates = [
+      \ ['vimrc', '~/.vimrc'],
+      \ ['tmux.conf', '~/.tmux.conf'],
+      \ ['zshrc', '~/.zshrc'],
+      \ ['m2/settings.xml', '~/.m2/settings.xml']
+      \ ]
+
+call denite#custom#var('menu', 'menus', s:menus)
+
 
 
 set rtp+=~/.fzf
@@ -262,7 +277,6 @@ hi! link elmImport GruvBoxRed
 " (not convinced yet, but I guess I need to try before making up my mind)
 " noremap <leader>u :GundoToggle<CR>
 "
-" switch to vim8 with these goodies
 " https://github.com/skywind3000/asyncrun.vim
 " (I'm thinking <leader>! :AsyncRun )
 "
