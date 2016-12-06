@@ -186,6 +186,7 @@ let g:UltiSnipsExpandTrigger = '<C-y>'
 
 
 " Denite (replaces Unite)
+nnoremap <leader>db :Denite buffer<cr>
 nnoremap <leader>dl :Denite line<cr>
 nnoremap <leader>dc :Denite colorscheme<cr>
 nnoremap <leader>dq :Denite command<cr>
