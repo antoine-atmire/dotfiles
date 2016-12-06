@@ -27,6 +27,7 @@ set relativenumber
 set ruler
 "set scrolloff=10
 set scrolloff=999
+set scrolljump=-30
 "set cursorline
 set completeopt=longest,menuone
 set tabstop=2
