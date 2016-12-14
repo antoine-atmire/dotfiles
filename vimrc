@@ -150,7 +150,7 @@ inoremap ZZZ <esc>ZZ
 " up and down can be useful, left and right is best avoided in insert mode
 inoremap <c-j> <Down>
 inoremap <c-k> <Up>
-" xml tags
+" xml tags (taken from ragtag)
 inoremap <c-x>t <esc>ciW<lt><c-r>"></<C-R>"><Esc>F<i
 inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-<i
 
@@ -283,3 +283,5 @@ hi! link elmImport GruvBoxRed
 " highlight the indent line
 " https://github.com/Yggdroot/indentLine
 " example options: http://www.lucianofiandesio.com/vim-configuration-for-happy-java-coding
+"
+" https://github.com/kana/vim-textobj-user
