@@ -130,8 +130,8 @@ nnoremap c* *Ncgn
 nnoremap <leader>ct :!ctags -R<space>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:buffer<space>
-" go to the previous buffer
-nnoremap <leader><tab> :buffer #<cr>
+" go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
+" nnoremap <leader><tab> :buffer #<cr>
 " go to the next double empty lines
 nnoremap <leader>} }/\n\n\n/1<cr>
 " go to the previous double empty lines
@@ -140,6 +140,8 @@ nnoremap <leader>{ {?\n\n\n?1<cr>
 " Keep selection after indent/unindent
 vnoremap < <gv
 vnoremap > >gv
+" search for selected text
+vnoremap / y/<c-r>"
 
 " use jk as escape in insert mode, to actually type jk: type j -wait- type k
 inoremap jk <esc><bs>l
@@ -153,6 +155,13 @@ inoremap <c-k> <Up>
 " xml tags (taken from ragtag)
 inoremap <c-x>t <esc>ciW<lt><c-r>"></<C-R>"><Esc>F<i
 inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-<i
+
+" operator pending mode mappping
+" works with y, d, c, ... not v (just make another mapping for that one)
+" :help omap-info
+" custom-line
+onoremap <silent> cl :<c-u>normal ^v$h<cr>
+nnoremap vcl ^v$h
 
 
 " auto save on FocusLost
