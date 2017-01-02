@@ -1,0 +1,20 @@
+snippet scan "new Scanner" b
+Scanner scan = new Scanner(${1:String-or-File});
+while(scan.hasNextLine()) {
+	String lineIn = scan.nextLine();
+}
+endsnippet
+
+snippet sb "new StringBuilder" b
+StringBuilder ${1:output} = new StringBuilder();
+endsnippet
+
+snippet sout "System.out.println" b
+System.out.println(${1});
+endsnippet
+
+snippet fun "function" b
+${1}(${2}) {
+	${3}
+}
+endsnippet

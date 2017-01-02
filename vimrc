@@ -70,10 +70,12 @@ set statusline+=\ %l:%v " current line:column
 set statusline+=\ %{ALEGetStatusLine()}
 
 set background=dark
+" set background=light
 
-"colorscheme molokai
+" colorscheme molokai
 colorscheme gruvbox
-"colorscheme base16-default-dark
+" colorscheme base16-default-dark
+" colorscheme flattened_dark
 
 
 nnoremap <up> :<up>
@@ -196,12 +198,14 @@ let g:UltiSnipsExpandTrigger = '<C-y>'
 
 " Denite (replaces Unite)
 nnoremap <leader>db :Denite buffer<cr>
+nnoremap <leader>dm :Denite file_mru<cr>
 nnoremap <leader>dl :Denite line<cr>
 nnoremap <leader>dc :Denite colorscheme<cr>
 nnoremap <leader>dq :Denite command<cr>
 nnoremap <leader>dg :Denite grep<cr>
 " nnoremap <leader>dh :Denite help<cr> "I would use <leader>h<cr><leader>ff anyway
-nnoremap <leader>dm :Denite menu<cr>
+nnoremap <leader>dd :Denite menu<cr>
+nnoremap <leader>dt :Denite filetype<cr>
 
 let s:menus = {}
 
@@ -212,7 +216,9 @@ let s:menus.dotfiles.file_candidates = [
       \ ['vimrc', '~/.vimrc'],
       \ ['tmux.conf', '~/.tmux.conf'],
       \ ['zshrc', '~/.zshrc'],
-      \ ['m2/settings.xml', '~/.m2/settings.xml']
+      \ ['profile', '~/.profile'],
+      \ ['m2/settings.xml', '~/.m2/settings.xml'], 
+      \ ['snippets', '~/.vim/UltiSnips']
       \ ]
 
 call denite#custom#var('menu', 'menus', s:menus)
