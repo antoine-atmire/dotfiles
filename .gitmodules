@@ -73,3 +73,6 @@
 [submodule "vim/bundle/denite.vim"]
 	path = vim/bundle/denite.vim
 	url = https://github.com/Shougo/denite.nvim.git
+[submodule "zsh/plugins/zsh-autosuggestions"]
+	path = zsh/plugins/zsh-autosuggestions
+	url = git://github.com/zsh-users/zsh-autosuggestions
