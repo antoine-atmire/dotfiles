@@ -30,8 +30,8 @@ set scrolloff=999
 set scrolljump=-30
 "set cursorline
 set completeopt=longest,menuone
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set modelines=0
 set colorcolumn=80
@@ -61,6 +61,7 @@ if exists('$SUDO_USER')
 else
   set backupcopy=yes "maybe add a set backupdir ?
   " enable undofile swapfile and set their dirs ?
+  set noswapfile
 endif
 
 set statusline=%y " file type
@@ -133,7 +134,7 @@ nnoremap <leader>ct :!ctags -R<space>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:buffer<space>
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
-" nnoremap <leader><tab> :buffer #<cr>
+nnoremap <leader><tab> :buffer #<cr>
 " go to the next double empty lines
 nnoremap <leader>} }/\n\n\n/1<cr>
 " go to the previous double empty lines
