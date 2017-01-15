@@ -56,3 +56,8 @@ alias -g N="> /dev/null 2> /dev/null"
 
 # docker build -t vim-antoine .
 #alias v='docker run -ti --rm -v $(pwd):/home/developer/workspace vim-antoine'
+
+
+function findmod() {
+    find $1 -type f -exec stat --format '%Y :%y %n' "{}" \; | sort -nr | cut -d: -f2-
+}

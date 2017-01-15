@@ -1,5 +1,6 @@
 # seems to be the back up dir for vim
 vim/view
+vim/.undo
 
 
 # Created by https://www.gitignore.io/api/vim,osx,vagrant

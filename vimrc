@@ -48,6 +48,8 @@ set formatoptions+=j "remove comment leader when joining lines
 set nojoinspaces "don't add double space when joining lines after . ! ...
 set shortmess+=A "no swapfile warning
 set shiftround  " When at 3 spaces, and I hit > ... go to 4, not 5
+set hidden
+set lazyredraw
 
 " use project specific .vimrc
 set exrc
@@ -59,9 +61,15 @@ if exists('$SUDO_USER')
   set noswapfile
   set nobackup
 else
-  set backupcopy=yes "maybe add a set backupdir ?
-  " enable undofile swapfile and set their dirs ?
   set noswapfile
+  set nobackup
+  " set backupcopy=yes "maybe add a set backupdir ?
+  " enable undofile swapfile and set their dirs ?
+  " set noundofile
+  set undofile
+  set undodir=$HOME/.vim/.undo
+  set undolevels=1000
+  set undoreload=10000
 endif
 
 set statusline=%y " file type
@@ -94,8 +102,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 
-"this happens quite enough to warrant a mapping
-nnoremap <leader>w :w<cr>
+" save all buffers
+nnoremap <leader>w :wa<cr>
 " \ev - edit .vimrc
 "nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
@@ -105,6 +113,8 @@ nnoremap <leader>em :tabe ~/.m2/settings.xml<cr>
 nnoremap <leader>ee :e<cr>
 " help in a tab
 nnoremap <leader>h :tab help<space>
+" grep word under cursor
+nnoremap <leader>g :grep <c-r><c-w><cr>
 " \r - reload .vimrc
 nnoremap <leader>r :source $MYVIMRC<cr>
 " \q - @
@@ -168,7 +178,7 @@ nnoremap vcl ^v$h
 
 
 " auto save on FocusLost
-autocmd CursorHold,CursorHoldI,BufLeave ?* silent update
+" autocmd CursorHold,CursorHoldI,BufLeave ?* silent update
 "if you remove this one day, you may consider set hidden
 " Undo all changes since opening buffer in vim
 nnoremap <leader>zq :u1<bar>u
@@ -178,8 +188,6 @@ nnoremap <leader>zq :u1<bar>u
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>lf :lfirst<cr>
-"nnoremap <leader>le :ElmErrorDetail<cr>
-nnoremap <leader>le :call ale_linters#elm#make#MessageDetails()<cr>
 
 
 " ale plugin
@@ -252,10 +260,10 @@ elseif executable('ack')
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
+" elm setup
 let g:elm_setup_keybindings = 0
 let g:elm_syntastic_show_warnings = 1
 let g:elm_format_autosave = 1
-
 
 if has("conceal")
   " set conceallevel otherwise it doesn't do anything
@@ -285,6 +293,10 @@ endif
 hi! link elmType GruvBoxYellow
 hi! link elmTypedef GruvBoxRed
 hi! link elmImport GruvBoxRed
+
+" elm keybindings
+nnoremap <leader>pe :ElmFormat<cr>
+" nnoremap <leader>pe mMggVG:!elm-format --stdin<cr>`M:w<cr>
 
 
 " ideas
