@@ -134,7 +134,7 @@ nnoremap <leader>= gg=G<c-o><c-o>
 " highlight last inserted text
 nnoremap gV `[v`]
 " pretty-print selected xml, px 'pretty xml'
-vmap <leader>px !xmllint --format -<CR>
+vnoremap <leader>px !xmllint --format -<CR>
 " split on &, not 'nore' because this is recursive, pq 'pretty query'
 nmap <leader>pq 0f&r<leader>pq
 " toggle relativenumber
@@ -158,7 +158,7 @@ vnoremap > >gv
 " search for selected text
 vnoremap / y/<c-r>"
 
-" use jk as escape in insert mode, to actually type jk: type j -wait- type k
+" use jk as escape in insert mode, to actually type jk: type j<c-v>k
 inoremap jk <esc><bs>l
 " ZZZ in insert mode will also save and quit
 " just so you don't have to correct yourself when accidentally typing ZZ in
@@ -176,7 +176,7 @@ inoremap [c []<esc>i
 inoremap {c {}<esc>i
 
 " operator pending mode mappping
-" works with y, d, c, ... not v (just make another mapping for that one)
+" works with y, d, c, =, ... not v (just make another mapping for that one)
 " :help omap-info
 
 " custom-line

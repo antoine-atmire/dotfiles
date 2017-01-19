@@ -61,3 +61,7 @@ alias -g N="> /dev/null 2> /dev/null"
 function findmod() {
     find $1 -type f -exec stat --format '%Y :%y %n' "{}" \; | sort -nr | cut -d: -f2-
 }
+
+function history_stats() {
+    history | cut -c 8- | grep "^$1" | cut -f 1 -d " " | sort | uniq -c | sort -bgr 
+}
