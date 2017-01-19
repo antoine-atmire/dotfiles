@@ -188,12 +188,12 @@ nnoremap vA ggvG$
 onoremap <silent> A :<c-u>normal ggvG$<cr>
 
 " java inner method
-nnoremap vim ]Mv[m
-onoremap <silent> im :<c-u>normal ]Mv[m<cr>
+nnoremap vim <bs>]Mv[m
+onoremap <silent> im :<c-u>normal <bs>]Mv[m<cr>
 
 " java outer method
-nnoremap vam ]M^v[map
-onoremap <silent> am :<c-u>normal ]M^v[map<cr>
+nnoremap vam <bs>]Mv[m{
+onoremap <silent> am :<c-u>normal <bs>]Mv[m{<cr>
 
 
 " auto save on FocusLost
