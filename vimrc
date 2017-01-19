@@ -3,11 +3,11 @@ noremap é @
 let mapleader = " "
 
 if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    " Do Mac stuff here
-    "let g:pathogen_disabled = ['YouCompleteMe']
-  endif
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+        " Do Mac stuff here
+        "let g:pathogen_disabled = ['YouCompleteMe']
+    endif
 endif
 execute pathogen#infect()
 " silent! execute pathogen#helptags()
@@ -17,6 +17,8 @@ filetype plugin indent on
 " move vertically visually and not line-wise (for wrapped lines)
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 set encoding=utf-8
 set nocompatible
@@ -57,19 +59,19 @@ set exrc
 set secure
 
 if exists('$SUDO_USER')
-  set noundofile
-  set noswapfile
-  set nobackup
+    set noundofile
+    set noswapfile
+    set nobackup
 else
-  set noswapfile
-  set nobackup
-  " set backupcopy=yes "maybe add a set backupdir ?
-  " enable undofile swapfile and set their dirs ?
-  " set noundofile
-  set undofile
-  set undodir=$HOME/.vim/.undo
-  set undolevels=1000
-  set undoreload=10000
+    set noswapfile
+    set nobackup
+    " set backupcopy=yes "maybe add a set backupdir ?
+    " enable undofile swapfile and set their dirs ?
+    " set noundofile
+    set undofile
+    set undodir=$HOME/.vim/.undo
+    set undolevels=1000
+    set undoreload=10000
 endif
 
 set statusline=%y " file type
@@ -168,13 +170,30 @@ inoremap <c-k> <Up>
 " xml tags (taken from ragtag)
 inoremap <c-x>t <esc>ciW<lt><c-r>"></<C-R>"><Esc>F<i
 inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-<i
+" close brackets and place cursor inside
+inoremap (c ()<esc>i
+inoremap [c []<esc>i
+inoremap {c {}<esc>i
 
 " operator pending mode mappping
 " works with y, d, c, ... not v (just make another mapping for that one)
 " :help omap-info
+
 " custom-line
-onoremap <silent> cl :<c-u>normal ^v$h<cr>
 nnoremap vcl ^v$h
+onoremap <silent> cl :<c-u>normal ^v$h<cr>
+
+" All file
+nnoremap vA ggvG$
+onoremap <silent> A :<c-u>normal ggvG$<cr>
+
+" java inner method
+nnoremap vim [mv]M
+onoremap <silent> im :<c-u>normal [mv]M<cr>
+
+" java outer method
+nnoremap vom [m^v]M
+onoremap <silent> om :<c-u>normal [m^v]M<cr>
 
 
 " auto save on FocusLost
@@ -189,6 +208,9 @@ nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>lf :lfirst<cr>
 
+
+"completor plugin
+let g:completor_auto_trigger = 0
 
 " ale plugin
 let g:ale_sign_column_always = 1
@@ -219,16 +241,16 @@ nnoremap <leader>dt :Denite filetype<cr>
 let s:menus = {}
 
 let s:menus.dotfiles = {
-      \ 'description': 'Edit your dotfiles'
-      \ }
+            \ 'description': 'Edit your dotfiles'
+            \ }
 let s:menus.dotfiles.file_candidates = [
-      \ ['vimrc', '~/.vimrc'],
-      \ ['tmux.conf', '~/.tmux.conf'],
-      \ ['zshrc', '~/.zshrc'],
-      \ ['profile', '~/.profile'],
-      \ ['m2/settings.xml', '~/.m2/settings.xml'], 
-      \ ['snippets', '~/.vim/UltiSnips']
-      \ ]
+            \ ['vimrc', '~/.vimrc'],
+            \ ['tmux.conf', '~/.tmux.conf'],
+            \ ['zshrc', '~/.zshrc'],
+            \ ['profile', '~/.profile'],
+            \ ['m2/settings.xml', '~/.m2/settings.xml'], 
+            \ ['snippets', '~/.vim/UltiSnips']
+            \ ]
 
 call denite#custom#var('menu', 'menus', s:menus)
 
@@ -243,61 +265,59 @@ nnoremap <leader>fc :call fzf#run({'source': map(split(globpath(&rtp, 'colors/*.
 "nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/rg --files --hidden .', 'sink':'e'})<cr>
 "elseif executable('ag')
 if executable('ag')
-  nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'e'})<cr>
+    nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'e'})<cr>
 else
-  nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"', 'sink':'e'})<cr>
+    nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"', 'sink':'e'})<cr>
 endif
 
 if executable('rg')
-  set grepprg=rg\ --vimgrep
-  set grepformat=%f:%l:%c:%m
+    set grepprg=rg\ --vimgrep
+    set grepformat=%f:%l:%c:%m
 elseif executable('ag')
-  "if executable('ag')
-  set grepprg=ag\ --vimgrep\ --hidden\ --ignore\ .git
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
+    "if executable('ag')
+    set grepprg=ag\ --vimgrep\ --hidden\ --ignore\ .git
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 elseif executable('ack')
-  set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
+    set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
+
 
 " elm setup
 let g:elm_setup_keybindings = 0
-let g:elm_syntastic_show_warnings = 1
-let g:elm_format_autosave = 1
+let g:elm_format_autosave = 0
+" elm keybindings
+nnoremap <leader>pe :ElmFormat<cr>
+" autocmd FileType elm nnoremap <leader>pe <Plug>(elm-make)
 
 if has("conceal")
-  " set conceallevel otherwise it doesn't do anything
-  setlocal conceallevel=2
-  " specify modes in which to use the conceal feature: cnvi
-  setlocal concealcursor=cnv
+    " set conceallevel otherwise it doesn't do anything
+    setlocal conceallevel=2
+    " specify modes in which to use the conceal feature: cnvi
+    setlocal concealcursor=cnv
 
-  nnoremap <leader>c0 :setlocal conceallevel=0<cr>
-  nnoremap <leader>c1 :setlocal conceallevel=1<cr>
-  nnoremap <leader>c2 :setlocal conceallevel=2<cr>
-  nnoremap <leader>c3 :setlocal conceallevel=3<cr>
+    nnoremap <leader>c0 :setlocal conceallevel=0<cr>
+    nnoremap <leader>c1 :setlocal conceallevel=1<cr>
+    nnoremap <leader>c2 :setlocal conceallevel=2<cr>
+    nnoremap <leader>c3 :setlocal conceallevel=3<cr>
 
-  autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowRight /->/ conceal cchar=→
-  autocmd BufnewFile,BufRead,BufWrite * syntax match greaterThan />=/ conceal cchar=≧
-  autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /<=/ conceal cchar=≦
-  autocmd BufnewFile,BufRead,BufWrite * syntax match elmLambda /\\/ conceal cchar=λ
-  autocmd BufnewFile,BufRead,BufWrite * syntax match elmPipeRight /|>/ conceal cchar=▶
-  autocmd BufnewFile,BufRead,BufWrite * syntax match elmPipeLeft /<|/ conceal cchar=◀
+    autocmd FileType elm syntax match arrowRight /->/ conceal cchar=➛
+    autocmd FileType elm syntax match greaterThan />=/ conceal cchar=≧
+    autocmd FileType elm syntax match lessThan /<=/ conceal cchar=≦
+    autocmd FileType elm syntax match elmLambda /\\/ conceal cchar=λ
+    autocmd FileType elm syntax match elmPipeRight /|>/ conceal cchar=▶
+    autocmd FileType elm syntax match elmPipeLeft /<|/ conceal cchar=◀
 
-  "autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowLeft /<!-/ conceal cchar=← "this breaks xml comment highlighting
-  "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /==/ conceal cchar==
-  "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /===/ conceal cchar=≡
-  "autocmd BufnewFile,BufRead,BufWrite * syntax match doubleDash /--/ conceal cchar=−
+    "autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowLeft /<!-/ conceal cchar=← "this breaks xml comment highlighting
+    "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /==/ conceal cchar==
+    "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /===/ conceal cchar=≡
+    "autocmd BufnewFile,BufRead,BufWrite * syntax match doubleDash /--/ conceal cchar=−
 endif
 
 " gruvbox tuning for elm
 hi! link elmType GruvBoxYellow
 hi! link elmTypedef GruvBoxRed
 hi! link elmImport GruvBoxRed
-
-" elm keybindings
-nnoremap <leader>pe :ElmFormat<cr>
-" nnoremap <leader>pe mMggVG:!elm-format --stdin<cr>`M:w<cr>
-
 
 " ideas
 
