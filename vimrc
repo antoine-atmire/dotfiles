@@ -139,8 +139,6 @@ vnoremap <leader>px !xmllint --format -<CR>
 nmap <leader>pq 0f&r<leader>pq
 " toggle relativenumber
 nnoremap <leader>n :set relativenumber!<cr>
-" replace current word and go to the next occurrence (n. combo)
-nnoremap c* *Ncgn
 " ctags command
 nnoremap <leader>ct :!ctags -R<space>
 " list of buffers, ready to choose one by number
@@ -151,6 +149,13 @@ nnoremap <leader><tab> :buffer #<cr>
 nnoremap <leader>} }/\n\n\n/1<cr>
 " go to the previous double empty lines
 nnoremap <leader>{ {?\n\n\n?1<cr>
+
+" http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
+" replace current word and go to the next occurrence (n. combo)
+nnoremap c* *Ncgn
+" same as above for visual selections
+let g:mc = "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>"
+vnoremap <expr> c* g:mc . "``cgn"
 
 " Keep selection after indent/unindent
 vnoremap < <gv
