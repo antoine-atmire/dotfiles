@@ -31,6 +31,10 @@ function glomd () {
   local urlPre=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')"/commit/"
   git log --format=format:"- [%s]($urlPre%H)" $@
 }
+function ggrb() { 
+    git fetch origin 
+    git rebase origin/$(git_current_branch)
+}
 
 alias git-branch-ordered="git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname) %(committerdate) %(authorname)' | sed 's/refs\/heads\///g' | head -n"
 alias gpad='echo "➜ git checkout atmire-DEV" && git checkout atmire-DEV && echo "➜ git fetch" && git fetch && echo "➜ git pull" && git pull && echo "➜ git merge --no-edit -" && git merge --no-edit - && echo "➜ git push origin atmire-DEV" && git push origin atmire-DEV && echo "➜ git checkout - " &&git checkout -'
