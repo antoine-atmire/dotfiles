@@ -36,11 +36,16 @@ function ggrb() {
     git rebase origin/$(git_current_branch)
 }
 function ggrbm {
+    if [ -z $1 ] ; then
+        local branch="master"
+    else
+        local branch=$1
+    fi
     git fetch origin
-    git checkout master
+    git checkout $branch
     ggrb
     git checkout -
-    git rebase master
+    git rebase $branch
 }
 
 alias git-branch-ordered="git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname) %(committerdate) %(authorname)' | sed 's/refs\/heads\///g' | head -n"
