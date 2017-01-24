@@ -144,7 +144,7 @@ nnoremap <leader>ct :!ctags -R<space>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:buffer<space>
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
-nnoremap <leader><tab> :buffer #<cr>
+" nnoremap <leader><tab> :buffer #<cr>
 " go to the next double empty lines
 nnoremap <leader>} }/\n\n\n/1<cr>
 " go to the previous double empty lines
@@ -218,7 +218,7 @@ nnoremap <leader>lf :lfirst<cr>
 let g:completor_auto_trigger = 0
 
 " ale plugin
-let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 0
 let g:ale_sign_error = '→'
 
 " integrate tsuquyomi with syntastic
