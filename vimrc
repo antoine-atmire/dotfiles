@@ -93,6 +93,10 @@ nnoremap <up> :<up>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
+vnoremap <up> :<up>
+vnoremap <down> <nop>
+vnoremap <left> <nop>
+vnoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
@@ -113,6 +117,7 @@ nnoremap <leader>et :tabe ~/.tmux.conf<cr>
 nnoremap <leader>ez :tabe ~/.zshrc<cr>
 nnoremap <leader>em :tabe ~/.m2/settings.xml<cr>
 nnoremap <leader>ee :e<cr>
+nnoremap <leader>el :tabe ../local-settings.xml<cr>
 " help in a tab
 nnoremap <leader>h :tab help<space>
 " grep word under cursor
