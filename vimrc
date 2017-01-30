@@ -179,7 +179,7 @@ inoremap <c-j> <Down>
 inoremap <c-k> <Up>
 " xml tags (taken from ragtag)
 inoremap <c-x>t <esc>ciW<lt><c-r>"></<C-R>"><Esc>F<i
-inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-<i
+inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-i
 " close brackets and place cursor inside
 inoremap (c ()<esc>i
 inoremap [c []<esc>i
