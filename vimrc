@@ -145,7 +145,8 @@ nmap <leader>pq 0f&r<leader>pq
 " toggle relativenumber
 nnoremap <leader>n :set relativenumber!<cr>
 " ctags command
-nnoremap <leader>ct :!ctags -R<space>
+" nnoremap <leader>ct :!ctags -R<space>
+nnoremap <leader>ct :AsyncRun ctags -R<space>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:buffer<space>
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
@@ -168,8 +169,14 @@ vnoremap > >gv
 " search for selected text
 vnoremap / y/<c-r>"
 
+" insert mode mappings
+" check what NOT to remap:
+" https://www.reddit.com/r/vim/comments/4w0lib/do_you_use_insert_mode_keybindings/
+"
 " use jk as escape in insert mode, to actually type jk: type j<c-v>k
 inoremap jk <esc><bs>l
+" when you're on ^ and don't want want to go up a line
+inoremap jj <esc>
 " ZZZ in insert mode will also save and quit
 " just so you don't have to correct yourself when accidentally typing ZZ in
 " insert mode
@@ -180,10 +187,14 @@ inoremap <c-k> <Up>
 " xml tags (taken from ragtag)
 inoremap <c-x>t <esc>ciW<lt><c-r>"></<C-R>"><Esc>F<i
 inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-i
+" wrap the last word in spaces so the xml-tag mapping can work on it
+inoremap <c-f> <esc>vbc <c-r>" <left>
+" go to last xml attribute location
+inoremap <c-l>a <esc>?><cr>i
 " close brackets and place cursor inside
-inoremap (c ()<esc>i
-inoremap [c []<esc>i
-inoremap {c {}<esc>i
+" inoremap (c ()<esc>i
+" inoremap [c []<esc>i
+" inoremap {c {}<esc>i
 
 " operator pending mode mappping
 " works with y, d, c, =, ... not v (just make another mapping for that one)
@@ -220,11 +231,13 @@ nnoremap <leader>lf :lfirst<cr>
 
 
 "completor plugin
-let g:completor_auto_trigger = 0
+" let g:completor_auto_trigger = 0
+let g:completor_min_chars = 5
 
 " ale plugin
 let g:ale_sign_column_always = 0
 let g:ale_sign_error = '→'
+let g:ale_set_loclist = 1
 
 " integrate tsuquyomi with syntastic
 let g:tsuquyomi_disable_quickfix = 1

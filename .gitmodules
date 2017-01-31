@@ -77,3 +77,6 @@
 [submodule "zsh/plugins/zsh-autosuggestions"]
 	path = zsh/plugins/zsh-autosuggestions
 	url = git://github.com/zsh-users/zsh-autosuggestions
+[submodule "vim/bundle/asyncrun"]
+	path = vim/bundle/asyncrun
+	url = https://github.com/skywind3000/asyncrun.vim.git
