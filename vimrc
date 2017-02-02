@@ -163,11 +163,15 @@ nnoremap c* *Ncgn
 let g:mc = "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>"
 vnoremap <expr> c* g:mc . "``cgn"
 
+" for commits on w2p-12345_xxx branches
+nnoremap <leader>cw :r !git branch<cr><c-v>gg:v:*:d<cr>2xf_C:<space>
+
 " Keep selection after indent/unindent
 vnoremap < <gv
 vnoremap > >gv
 " search for selected text
 vnoremap / y/<c-r>"
+
 
 " insert mode mappings
 " check what NOT to remap:
@@ -195,6 +199,7 @@ inoremap <c-l>a <esc>?><cr>i
 " inoremap (c ()<esc>i
 " inoremap [c []<esc>i
 " inoremap {c {}<esc>i
+
 
 " operator pending mode mappping
 " works with y, d, c, =, ... not v (just make another mapping for that one)
