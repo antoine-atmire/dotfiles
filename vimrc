@@ -1,5 +1,4 @@
-noremap é @
-"let mapleader = ","
+noremap é @ "let mapleader = ","
 let mapleader = " "
 
 if has("unix")
@@ -233,6 +232,15 @@ nnoremap <leader>zq :u1<bar>u
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>lf :lfirst<cr>
+
+" quickfix mappings
+nnoremap <leader>co :copen<cr>
+nnoremap <leader>cc :cclose<cr>
+
+
+
+" command abbreviations
+cnoremap ~~ /tmp/
 
 
 "completor plugin
