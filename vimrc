@@ -285,13 +285,20 @@ let s:menus.dotfiles = {
             \ }
 let s:menus.dotfiles.file_candidates = [
             \ ['vimrc', '~/.vimrc'],
-            \ ['vimrc - project', '.vimrc'],
             \ ['tmux.conf', '~/.tmux.conf'],
             \ ['zshrc', '~/.zshrc'],
             \ ['profile', '~/.profile'],
             \ ['m2/settings.xml', '~/.m2/settings.xml'], 
             \ ['snippets', '~/.vim/UltiSnips/']
             \ ]
+let s:menus.project = {
+            \ 'description': 'Edit your dotfiles'
+            \ }
+let s:menus.project.file_candidates = [
+            \ ['vimrc - project', '.vimrc'],
+            \ ['.git/info/exclude', '.git/info/exclude'],
+            \ ]
+
 
 call denite#custom#var('menu', 'menus', s:menus)
 
