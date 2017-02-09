@@ -245,7 +245,7 @@ cnoremap ~~ /tmp/
 
 "completor plugin
 " let g:completor_auto_trigger = 0
-let g:completor_min_chars = 5
+let g:completor_min_chars = 4
 
 " ale plugin
 let g:ale_sign_column_always = 0

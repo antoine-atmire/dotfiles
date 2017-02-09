@@ -134,3 +134,7 @@ snippet -> "subcase" b
 ${1:value} ->
 	${2:code}
 endsnippet
+
+snippet imp3 "import x as x exposing (x)" b
+import ${2:package}.${1:x} as $1 exposing ($1)
+endsnippet
