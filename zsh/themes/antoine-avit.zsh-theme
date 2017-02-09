@@ -134,7 +134,7 @@ function git_prompt_info() {
 }
 
 function gnews {
-    gitnews="$(git status --porcelain | cut -c1-2 | sort | uniq | xargs)";
+    gitnews="$(git status --porcelain | cut -c1-2 | sort | uniq -c | sed 's/ //g' | xargs)";
     echo "$gitnews";
 }
 
