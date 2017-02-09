@@ -285,11 +285,12 @@ let s:menus.dotfiles = {
             \ }
 let s:menus.dotfiles.file_candidates = [
             \ ['vimrc', '~/.vimrc'],
+            \ ['vimrc - project', '.vimrc'],
             \ ['tmux.conf', '~/.tmux.conf'],
             \ ['zshrc', '~/.zshrc'],
             \ ['profile', '~/.profile'],
             \ ['m2/settings.xml', '~/.m2/settings.xml'], 
-            \ ['snippets', '~/.vim/UltiSnips']
+            \ ['snippets', '~/.vim/UltiSnips/']
             \ ]
 
 call denite#custom#var('menu', 'menus', s:menus)

@@ -7,7 +7,7 @@ dswhich() {
 }
 
 PROMPT='
-$(_user_host)$( _current_dir ) $(git_prompt_info) $(_ruby_version) $(dswhich)
+$(_user_host)$( _current_dir ) $(git_prompt_info) $(gnews) $(_ruby_version) $(dswhich)
 %{$fg[$CARETCOLOR]%}>>%{$resetcolor%} '
 
 PROMPT2='%{$fg[$CARETCOLOR]%}<<%{$reset_color%} '
@@ -131,6 +131,11 @@ function git_prompt_info() {
 
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
   fi
+}
+
+function gnews {
+    gitnews="$(git status --porcelain | cut -c1-2 | sort | uniq | xargs)";
+    echo "$gitnews";
 }
 
 if [[ $USER == "root" ]]; then
