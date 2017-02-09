@@ -252,8 +252,12 @@ let g:ale_sign_column_always = 0
 let g:ale_sign_error = '→'
 let g:ale_set_loclist = 1
 
-" integrate tsuquyomi with syntastic
-let g:tsuquyomi_disable_quickfix = 1
+" tsuquyomi 
+let g:tsuquyomi_disable_default_mappings=1
+autocmd FileType typescript nnoremap <c-t> :TsuquyomiGoBack<cr>
+autocmd FileType typescript nnoremap <c-]> :TsuquyomiDefinition<cr>
+
+
 
 " vim-js-pretty-template
 autocmd FileType javascript JsPreTmpl html
