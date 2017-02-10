@@ -294,11 +294,13 @@ let s:menus.dotfiles.file_candidates = [
             \ ['snippets', '~/.vim/UltiSnips/']
             \ ]
 let s:menus.project = {
-            \ 'description': 'Edit your dotfiles'
+            \ 'description': 'Edit your project dotfiles'
             \ }
 let s:menus.project.file_candidates = [
             \ ['vimrc - project', '.vimrc'],
             \ ['.git/info/exclude', '.git/info/exclude'],
+            \ ['local-settings.cfg', '../local-settings.cfg'],
+            \ ['local.properties', 'local.properties'],
             \ ]
 
 
