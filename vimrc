@@ -120,7 +120,7 @@ nnoremap <leader>el :tabe ../local-settings.xml<cr>
 " help in a tab
 nnoremap <leader>h :tab help<space>
 " grep word under cursor
-nnoremap <leader>g :grep <c-r><c-w><cr>
+nnoremap <leader>g :lgrep <c-r><c-w><cr>
 " \r - reload .vimrc
 nnoremap <leader>r :source $MYVIMRC<cr>
 " \q - @
@@ -250,12 +250,14 @@ let g:completor_min_chars = 4
 " ale plugin
 let g:ale_sign_column_always = 0
 let g:ale_sign_error = '→'
-let g:ale_set_loclist = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 
 " tsuquyomi 
 let g:tsuquyomi_disable_default_mappings=1
-autocmd FileType typescript nnoremap <c-t> :TsuquyomiGoBack<cr>
-autocmd FileType typescript nnoremap <c-]> :TsuquyomiDefinition<cr>
+autocmd FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
+autocmd FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
+autocmd FileType typescript nnoremap <buffer> <leader>6 :TsuquyomiReferences<cr>
 
 
 
