@@ -165,6 +165,11 @@ vnoremap <expr> c* g:mc . "``cgn"
 " for commits on w2p-12345_xxx branches
 nnoremap <leader>cw :r !git branch<cr><c-v>gg:v:*:d<cr>2xf_C:<space>
 
+" my own "unimpaired" mappings
+nnoremap [o9 :set scrolloff=999<cr>
+nnoremap ]o9 :set scrolloff=1<cr>
+" I'd make a co9 to toggle, but I don't know how
+
 " Keep selection after indent/unindent
 vnoremap < <gv
 vnoremap > >gv
@@ -177,16 +182,15 @@ vnoremap / y/<c-r>"
 " https://www.reddit.com/r/vim/comments/4w0lib/do_you_use_insert_mode_keybindings/
 "
 " use jk as escape in insert mode, to actually type jk: type j<c-v>k
-inoremap jk <esc><bs>l
+" removed because the autocomplete interferres too often
+" inoremap jk <esc><bs>l
 " when you're on ^ and don't want want to go up a line
-inoremap jj <esc>
+" inoremap jj <esc>
+inoremap <c-j> <esc>
 " ZZZ in insert mode will also save and quit
 " just so you don't have to correct yourself when accidentally typing ZZ in
 " insert mode
 inoremap ZZZ <esc>ZZ
-" up and down can be useful, left and right is best avoided in insert mode
-inoremap <c-j> <Down>
-inoremap <c-k> <Up>
 " xml tags (taken from ragtag)
 inoremap <c-x>t <esc>ciW<lt><c-r>"></<C-R>"><Esc>F<i
 inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-i
@@ -231,12 +235,10 @@ nnoremap <leader>zq :u1<bar>u
 " location list mappings
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :lopen<cr>
-nnoremap <leader>lf :lfirst<cr>
 
 " quickfix mappings
 nnoremap <leader>co :copen<cr>
 nnoremap <leader>cc :cclose<cr>
-
 
 
 " command abbreviations
@@ -370,6 +372,11 @@ endif
 hi! link elmType GruvBoxYellow
 hi! link elmTypedef GruvBoxRed
 hi! link elmImport GruvBoxRed
+
+" keymappings primarly for elm
+" pretty cases
+nmap <leader>pc ^dt,Op==<<A ->wx<leader>pc
+
 
 " ideas
 
