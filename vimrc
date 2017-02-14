@@ -84,8 +84,7 @@ set background=dark
 
 " colorscheme molokai
 colorscheme gruvbox
-" colorscheme base16-default-dark
-" colorscheme flattened_dark
+" colorscheme Apprentice
 
 
 nnoremap <up> :<up>
@@ -163,7 +162,7 @@ let g:mc = "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>"
 vnoremap <expr> c* g:mc . "``cgn"
 
 " for commits on w2p-12345_xxx branches
-nnoremap <leader>cw :r !git branch<cr><c-v>gg:v:*:d<cr>2xf_C:<space>
+nnoremap <leader>cw :r !git branch<cr><c-v>gg:v:*:d<cr>gg2xf_C:<space>
 
 " my own "unimpaired" mappings
 nnoremap [o9 :set scrolloff=999<cr>
