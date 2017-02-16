@@ -79,6 +79,10 @@ set statusline+=\ %L\ lines "total lines
 set statusline+=\ %l:%v " current line:column
 set statusline+=\ %{ALEGetStatusLine()}
 
+au InsertEnter * hi StatusLine ctermbg=0 ctermfg=3
+au InsertLeave * hi StatusLine ctermbg=235 ctermfg=243
+hi StatusLine ctermbg=235 ctermfg=243
+
 set background=dark
 " set background=light
 
