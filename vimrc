@@ -26,10 +26,8 @@ set showcmd
 set number
 set relativenumber
 set ruler
-"set scrolloff=10
 set scrolloff=999
 set scrolljump=-30
-"set cursorline
 set completeopt=longest,menuone
 set tabstop=4
 set shiftwidth=4
@@ -39,9 +37,8 @@ set colorcolumn=80
 set ignorecase
 set smartcase
 set incsearch
-"set paste
 " wait a little longer when leader is pressed
-set timeoutlen=3000
+set timeoutlen=2000
 set confirm "confirmation dialog when closing a file with changes
 set backspace=indent,eol,start
 set breakindent
@@ -51,6 +48,9 @@ set shortmess+=A "no swapfile warning
 set shiftround  " When at 3 spaces, and I hit > ... go to 4, not 5
 set hidden
 set lazyredraw
+set scroll=15 "number of lines to scroll for c-u and c-d
+set cursorline
+set cursorcolumn
 
 " use project specific .vimrc
 set exrc
