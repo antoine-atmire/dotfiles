@@ -317,6 +317,7 @@ set rtp+=~/.fzf
 
 nnoremap <leader>ff :call fzf#run({'source':"sed '/^\\!/d;s/\t.*//' ".join(tagfiles()),'sink':'tag', 'right':'50%'})<cr>
 nnoremap <leader>fc :call fzf#run({'source': map(split(globpath(&rtp, 'colors/*.vim')), 'fnamemodify(v:val, ":t:r")'), 'sink': 'colo', 'left': '35%'})<cr>
+nnoremap <leader>frr :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'norm o'})<cr>
 
 "if executable('rg')
 "nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/rg --files --hidden .', 'sink':'e'})<cr>
