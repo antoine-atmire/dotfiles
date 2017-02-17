@@ -34,7 +34,7 @@ function gmff () {
 function gcocff () {
     # git checkout commit
     local commits commit
-    commits=$(git log --pretty=oneline --abbrev-commit) 
+    commits=$(git log --all --pretty=oneline --abbrev-commit) 
     commit=$(echo "$commits" | fzf-tmux --tac +s +m -e) 
     git checkout $(echo "$commit" | sed "s/ .*//")
 }
