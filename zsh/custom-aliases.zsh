@@ -26,7 +26,7 @@ function gcoff () {
 
 function gmff () { 
     # git merge 
-    local TOCHECKOUT=$(git branch -a | fzf)
+    local TOCHECKOUT=$(git branch -a | fzf-tmux)
     TOCHECKOUT=${TOCHECKOUT// /}
     git merge $TOCHECKOUT
 }
@@ -35,14 +35,21 @@ function gcocff () {
     # git checkout commit
     local commits commit
     commits=$(git log --pretty=oneline --abbrev-commit) 
-    commit=$(echo "$commits" | fzf --tac +s +m -e) 
+    commit=$(echo "$commits" | fzf-tmux --tac +s +m -e) 
     git checkout $(echo "$commit" | sed "s/ .*//")
+}
+
+function gcpff () {
+    local commits commit
+    commits=$(git log --all --pretty=oneline --abbrev-commit) 
+    commit=$(echo "$commits" | fzf-tmux --tac +s +m -e) 
+    git cherry-pick -x $(echo "$commit" | sed "s/ .*//")
 }
 
 function gvff () {
     # git view commit in vim 
     local REVISION=$(git log --pretty=oneline --abbrev-commit |
-    fzf | cut -d ' ' -f 1)
+    fzf-tmux | cut -d ' ' -f 1)
     echo $REVISION
     git show $REVISION | vim -
 }
