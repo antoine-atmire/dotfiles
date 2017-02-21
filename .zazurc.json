@@ -1,0 +1,35 @@
+{
+    "hotkey": "control+space",
+    "theme": "tinytacoteam/zazu-light-theme",
+    "displayOn": "detect",
+    "disableAnalytics": "false",
+    "plugins": [
+        "tinytacoteam/zazu-calculator",
+        "tinytacoteam/zazu-file-finder",
+        "tinytacoteam/zazu-template",
+        "tinytacoteam/zazu-system",
+        "tinytacoteam/zazu-package-manager",
+        "tinytacoteam/zazu-ascii-search",
+        "danielbayerlein/zazu-devdocs",
+        "avaly/zazu-timezone",
+        "twang2218/zazu-tldr",
+        "sagold/zazu-dict",
+        {
+            "name": "tinytacoteam/zazu-fallback",
+            "variables": {
+                "rootSearches": [
+                    "duck"
+                    , "stack"
+                    , "youtube"
+                    , "images"
+                ]
+            }
+        },
+        {
+            "name": "tinytacoteam/zazu-clipboard",
+            "variables": {
+                "ClipboardKey": "cmd+shift+v"
+            }
+        }
+    ]
+}
