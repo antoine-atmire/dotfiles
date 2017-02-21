@@ -259,6 +259,7 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
 " tsuquyomi 
+let g:tsuquyomi_disable_quickfix=1
 let g:tsuquyomi_disable_default_mappings=1
 autocmd FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
 autocmd FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
