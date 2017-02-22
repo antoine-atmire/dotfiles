@@ -353,7 +353,7 @@ if has("conceal")
     " set conceallevel otherwise it doesn't do anything
     setlocal conceallevel=2
     " specify modes in which to use the conceal feature: cnvi
-    setlocal concealcursor=cnv
+    setlocal concealcursor=c
 
     nnoremap <leader>c0 :setlocal conceallevel=0<cr>
     nnoremap <leader>c1 :setlocal conceallevel=1<cr>
