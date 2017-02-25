@@ -5,7 +5,6 @@
     "disableAnalytics": "false",
     "plugins": [
         "tinytacoteam/zazu-calculator",
-        "tinytacoteam/zazu-file-finder",
         "tinytacoteam/zazu-template",
         "tinytacoteam/zazu-system",
         "tinytacoteam/zazu-package-manager",
@@ -13,7 +12,6 @@
         "danielbayerlein/zazu-devdocs",
         "avaly/zazu-timezone",
         "twang2218/zazu-tldr",
-        "sagold/zazu-dict",
         {
             "name": "tinytacoteam/zazu-fallback",
             "variables": {
@@ -30,6 +28,7 @@
             "variables": {
                 "ClipboardKey": "cmd+shift+v"
             }
-        }
+        },
+        "antoine-atmire/zazu-bangs"
     ]
 }
