@@ -79,9 +79,12 @@ set statusline+=\ %L\ lines "total lines
 set statusline+=\ %l:%v " current line:column
 set statusline+=\ %{ALEGetStatusLine()}
 
-au InsertEnter * hi StatusLine ctermbg=0 ctermfg=3
-au InsertLeave * hi StatusLine ctermbg=235 ctermfg=243
-hi StatusLine ctermbg=235 ctermfg=243
+au InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
+au InsertLeave * highlight StatusLine ctermbg=235 ctermfg=243
+highlight StatusLine ctermbg=235 ctermfg=243
+
+" use background from terminal, not from colorscheme
+highlight Normal ctermbg=None
 
 set background=dark
 " set background=light
@@ -89,6 +92,9 @@ set background=dark
 " colorscheme molokai
 colorscheme gruvbox
 " colorscheme Apprentice
+
+let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_invert_selection = 0
 
 
 nnoremap <up> :<up>
@@ -375,9 +381,9 @@ if has("conceal")
 endif
 
 " gruvbox tuning for elm
-hi! link elmType GruvBoxYellow
-hi! link elmTypedef GruvBoxRed
-hi! link elmImport GruvBoxRed
+highlight! link elmType GruvBoxYellow
+highlight! link elmTypedef GruvBoxRed
+highlight! link elmImport GruvBoxRed
 
 " keymappings primarly for elm
 " pretty cases
