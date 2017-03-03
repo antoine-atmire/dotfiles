@@ -79,9 +79,13 @@ set statusline+=\ %L\ lines "total lines
 set statusline+=\ %l:%v " current line:column
 set statusline+=\ %{ALEGetStatusLine()}
 
+" Custom StatusLine colors
 autocmd InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
-autocmd InsertLeave * highlight StatusLine ctermbg=235 ctermfg=243
-highlight StatusLine ctermbg=235 ctermfg=243
+autocmd InsertLeave * highlight StatusLine ctermbg=8 ctermfg=0
+autocmd ColorScheme * highlight StatusLine ctermbg=8 ctermfg=0
+
+" use background from terminal, not from colorscheme
+autocmd ColorScheme * highlight Normal ctermbg=None
 
 
 set background=dark
@@ -91,18 +95,14 @@ set background=dark
 colorscheme gruvbox
 " colorscheme Apprentice
 
-let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_invert_selection = 0
 
-" use background from terminal, not from colorscheme
-highlight Normal ctermbg=None
 
-
-nnoremap <up> :<up>
+nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-vnoremap <up> :<up>
+vnoremap <up> <nop>
 vnoremap <down> <nop>
 vnoremap <left> <nop>
 vnoremap <right> <nop>
