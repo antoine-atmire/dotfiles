@@ -79,12 +79,10 @@ set statusline+=\ %L\ lines "total lines
 set statusline+=\ %l:%v " current line:column
 set statusline+=\ %{ALEGetStatusLine()}
 
-au InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
-au InsertLeave * highlight StatusLine ctermbg=235 ctermfg=243
+autocmd InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
+autocmd InsertLeave * highlight StatusLine ctermbg=235 ctermfg=243
 highlight StatusLine ctermbg=235 ctermfg=243
 
-" use background from terminal, not from colorscheme
-highlight Normal ctermbg=None
 
 set background=dark
 " set background=light
@@ -95,6 +93,9 @@ colorscheme gruvbox
 
 let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_invert_selection = 0
+
+" use background from terminal, not from colorscheme
+highlight Normal ctermbg=None
 
 
 nnoremap <up> :<up>
