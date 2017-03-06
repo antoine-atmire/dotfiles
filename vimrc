@@ -91,6 +91,13 @@ autocmd ColorScheme * highlight ColorColumn ctermbg=7 ctermfg=0
 " use background from terminal, not from colorscheme
 autocmd ColorScheme * highlight Normal ctermbg=None
 
+autocmd ColorScheme * highlight CursorColumn ctermbg=235
+autocmd ColorScheme * highlight CursorLine ctermbg=235
+autocmd ColorScheme * highlight CursorLineNr ctermbg=235
+
+" useful mapping when trying out commands
+nnoremap <leader>:: Y:@"<cr>
+
 
 set background=dark
 " set background=light
