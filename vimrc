@@ -33,7 +33,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set modelines=0
-set colorcolumn=80
 set ignorecase
 set smartcase
 set incsearch
@@ -82,7 +81,12 @@ set statusline+=\ %{ALEGetStatusLine()}
 " Custom StatusLine colors
 autocmd InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
 autocmd InsertLeave * highlight StatusLine ctermbg=8 ctermfg=0
-autocmd ColorScheme * highlight StatusLine ctermbg=8 ctermfg=0
+autocmd ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
+
+" only show colorcolumns for lines that are longer
+call matchadd('ColorColumn', '\%81v', 100)
+" iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+autocmd ColorScheme * highlight ColorColumn ctermbg=7 ctermfg=0
 
 " use background from terminal, not from colorscheme
 autocmd ColorScheme * highlight Normal ctermbg=None
