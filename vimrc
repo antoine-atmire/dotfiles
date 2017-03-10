@@ -462,17 +462,9 @@ vnoremap <silent> <leader>gd :<c-u>call OpFuncDuplicate(visualmode(), 1)<cr>
 
 
 
+
 " ideas
 
 " gundo.vim plugin
 " (not convinced yet, but I guess I need to try before making up my mind)
 " noremap <leader>u :GundoToggle<CR>
-"
-" https://github.com/skywind3000/asyncrun.vim
-" (I'm thinking <leader>! :AsyncRun )
-"
-" highlight the indent line
-" https://github.com/Yggdroot/indentLine
-" example options: http://www.lucianofiandesio.com/vim-configuration-for-happy-java-coding
-"
-" https://github.com/kana/vim-textobj-user
