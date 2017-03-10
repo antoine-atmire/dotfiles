@@ -23,8 +23,8 @@ set encoding=utf-8
 set nocompatible
 set laststatus=2
 set showcmd
-set number
-set relativenumber
+" set number
+" set relativenumber
 set ruler
 set scrolloff=999
 set scrolljump=-30
@@ -102,11 +102,11 @@ nnoremap <leader>:: Y:@"<cr>
 set background=dark
 " set background=light
 
+let g:gruvbox_invert_selection = 0
+
 " colorscheme molokai
 colorscheme gruvbox
 " colorscheme Apprentice
-
-let g:gruvbox_invert_selection = 0
 
 
 nnoremap <up> <nop>
@@ -121,12 +121,6 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 
 " save all buffers
 nnoremap <leader>w :wa<cr>
@@ -154,7 +148,7 @@ nnoremap <leader>cx gg"+yG
 noremap <F5> <Esc>:syntax sync fromstart<cr>
 inoremap <F5> <C-o>:syntax sync fromstart<cr>
 " let's not stumble into ex mode
-nnoremap Q @q
+nnoremap Q @@
 nnoremap <leader>= mMgg=G`M
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -162,8 +156,6 @@ nnoremap gV `[v`]
 vnoremap <leader>px !xmllint --format -<CR>
 " split on &, not 'nore' because this is recursive, pq 'pretty query'
 nmap <leader>pq 0f&r<leader>pq
-" toggle relativenumber
-nnoremap <leader>n :set relativenumber!<cr>
 " ctags command
 " nnoremap <leader>ct :!ctags -R<space>
 nnoremap <leader>ct :AsyncRun ctags -R<space>
@@ -200,6 +192,7 @@ vnoremap > >gv
 " search for selected text
 vnoremap / y/<c-r>"
 vnoremap <leader>y "+y
+vnoremap <c-j> <esc>
 
 
 " insert mode mappings
@@ -230,24 +223,20 @@ inoremap <c-l>a <esc>?><cr>i
 
 
 " operator pending mode mappping
-" works with y, d, c, =, ... not v (just make another mapping for that one)
+" works with y, d, c, =, ... not v (use <leader>v as defined further below)
 " :help omap-info
 
 " custom-line
-nnoremap vcl ^v$h
-onoremap <silent> cl :<c-u>normal ^v$h<cr>
+onoremap <silent> cl :<c-u>normal! ^v$h<cr>
 
 " All file
-nnoremap vA ggvG$
-onoremap <silent> A :<c-u>normal ggvG$<cr>
+onoremap <silent> A :<c-u>normal! ggvG$<cr>
 
 " java inner method
-nnoremap vim <bs>]Mv[m
-onoremap <silent> im :<c-u>normal <bs>]Mv[m<cr>
+onoremap <silent> im :<c-u>normal! <bs>]Mv[m<cr>
 
 " java outer method
-nnoremap vam <bs>]Mv[m{
-onoremap <silent> am :<c-u>normal <bs>]Mv[m{<cr>
+onoremap <silent> am :<c-u>normal! <bs>]Mv[m{<cr>
 
 
 " auto save on FocusLost
@@ -404,6 +393,60 @@ highlight! link elmImport GruvBoxRed
 " keymappings primarly for elm
 " pretty cases
 nmap <leader>pc ^dt,Op==<<A ->wx<leader>pc
+
+
+" https://www.reddit.com/r/vim/comments/5yhlpc/had_an_idea/
+function! GoToEndOfTextObject(...)
+    normal! `]
+endfunction
+nnoremap <silent> ]a :set operatorfunc=GoToEndOfTextObject<cr>g@a
+nnoremap <silent> ]i :set operatorfunc=GoToEndOfTextObject<cr>g@i
+
+function! GoToStartOfTextObject(...)
+    normal! `[
+endfunction
+nnoremap <silent> [a :set operatorfunc=GoToStartOfTextObject<cr>g@a
+nnoremap <silent> [i :set operatorfunc=GoToStartOfTextObject<cr>g@i
+
+nnoremap <silent> [m :set operatorfunc=GoToStartOfTextObject<cr>g@
+nnoremap <silent> ]m :set operatorfunc=GoToEndOfTextObject<cr>g@
+
+function! OpFuncVisualSelection(type, aCommand)
+	  let sel_save = &selection
+	  let &selection = "inclusive"
+	  let reg_save = @@
+
+      let l:command = "normal! "
+	  if a:0  " Invoked from Visual mode, use gv command.
+          let l:command.="gv"
+      elseif a:type == 'V' || a:type == "\<c-v>"
+          let l:command.="gv"
+	  elseif a:type == 'line'
+          let l:command.="`[V`]"
+	  else
+          let l:command.="`[v`]"
+	  endif
+
+      let l:command.=a:aCommand
+
+      " echom a:type . " " . l:command
+      silent exe l:command
+
+	  let &selection = sel_save
+	  let @@ = reg_save
+endfunction
+
+function! SelectMotion(type, ...)
+    call OpFuncVisualSelection(a:type, "")
+endfunction
+nnoremap <silent> <leader>v :set operatorfunc=SelectMotion<cr>g@
+vnoremap <silent> <leader>v :<c-u>call SelectMotion(visualmode(), 1)<cr>
+
+function! ReplaceByDashes(type, ...)
+    call OpFuncVisualSelection(a:type, "r-")
+endfunction
+nnoremap <silent> <leader>gt :set operatorfunc=ReplaceByDashes<cr>g@
+vnoremap <silent> <leader>gt :<c-u>call ReplaceByDashes(visualmode(), 1)<cr>
 
 
 " ideas
