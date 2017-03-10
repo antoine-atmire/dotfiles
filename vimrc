@@ -448,6 +448,12 @@ endfunction
 nnoremap <silent> <leader>gt :set operatorfunc=ReplaceByDashes<cr>g@
 vnoremap <silent> <leader>gt :<c-u>call ReplaceByDashes(visualmode(), 1)<cr>
 
+function! ExtractVariable(type, ...)
+    call OpFuncVisualSelection(a:type, "sceestar\<esc>O ceestar = \<esc>p^")
+endfunction
+nnoremap <silent> <leader>ge :set operatorfunc=ExtractVariable<cr>g@
+vnoremap <silent> <leader>ge :<c-u>call ExtractVariable(visualmode(), 1)<cr>
+
 
 " ideas
 
