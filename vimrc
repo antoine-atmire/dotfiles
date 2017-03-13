@@ -460,6 +460,11 @@ endfunction
 nnoremap <silent> <leader>gd :set operatorfunc=OpFuncDuplicate<cr>g@
 vnoremap <silent> <leader>gd :<c-u>call OpFuncDuplicate(visualmode(), 1)<cr>
 
+function! OpFuncDuplicateOnNewLine(type, ...)
+    call OpFuncVisualSelection(a:type, "y`]a\<cr>\<cr>\<esc>kp")
+endfunction
+nnoremap <silent> <leader>gD :set operatorfunc=OpFuncDuplicateOnNewLine<cr>g@
+vnoremap <silent> <leader>gD :<c-u>call OpFuncDuplicateOnNewLine(visualmode(), 1)<cr>
 
 
 
