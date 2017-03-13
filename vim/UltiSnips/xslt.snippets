@@ -45,3 +45,11 @@ endsnippet
 snippet val "xsl:value-of" b
 <xsl:value-of select="${1}" />
 endsnippet
+
+snippet tme "copy everything" b
+<xsl:template match="@* | node()">
+<xsl:copy>
+<xsl:apply-templates select="@* | node()"/>
+</xsl:copy>
+</xsl:template>
+endsnippet
