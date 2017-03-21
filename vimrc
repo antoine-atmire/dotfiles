@@ -80,7 +80,7 @@ set statusline+=\ %{ALEGetStatusLine()}
 
 " Custom StatusLine colors
 autocmd InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
-autocmd InsertLeave * highlight StatusLine ctermbg=8 ctermfg=0
+autocmd InsertLeave * highlight StatusLine ctermbg=None ctermfg=0
 autocmd ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
 
 " only show colorcolumns for lines that are longer
@@ -97,6 +97,7 @@ autocmd ColorScheme * highlight CursorLineNr ctermbg=235
 
 " useful mapping when trying out commands
 nnoremap <leader>:: Y:@"<cr>
+nnoremap <leader>:; dd:@"<cr>
 
 
 set background=dark
@@ -449,7 +450,7 @@ nnoremap <silent> <leader>gt :set operatorfunc=ReplaceByDashes<cr>g@
 vnoremap <silent> <leader>gt :<c-u>call ReplaceByDashes(visualmode(), 1)<cr>
 
 function! ExtractVariable(type, ...)
-    call OpFuncVisualSelection(a:type, "sceestar\<esc>O ceestar = \<esc>p^")
+    call OpFuncVisualSelection(a:type, "sceestar\<esc>Oceestar = \<esc>p^")
 endfunction
 nnoremap <silent> <leader>ge :set operatorfunc=ExtractVariable<cr>g@
 vnoremap <silent> <leader>ge :<c-u>call ExtractVariable(visualmode(), 1)<cr>
