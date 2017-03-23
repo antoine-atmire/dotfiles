@@ -443,6 +443,12 @@ endfunction
 nnoremap <silent> <leader>v :set operatorfunc=SelectMotion<cr>g@
 vnoremap <silent> <leader>v :<c-u>call SelectMotion(visualmode(), 1)<cr>
 
+function! SelectMotionLineWise(type, ...)
+    call OpFuncVisualSelection("line", "")
+endfunction
+nnoremap <silent> <leader>V :set operatorfunc=SelectMotion<cr>g@
+vnoremap <silent> <leader>V :<c-u>call SelectMotion(visualmode(), 1)<cr>
+
 function! ReplaceByDashes(type, ...)
     call OpFuncVisualSelection(a:type, "r-")
 endfunction
