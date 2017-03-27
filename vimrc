@@ -480,3 +480,5 @@ vnoremap <silent> <leader>gD :<c-u>call OpFuncDuplicateOnNewLine(visualmode(), 1
 " gundo.vim plugin
 " (not convinced yet, but I guess I need to try before making up my mind)
 " noremap <leader>u :GundoToggle<CR>
+"
+" https://github.com/t9md/vim-quickhl
