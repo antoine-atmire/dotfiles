@@ -482,3 +482,4 @@ vnoremap <silent> <leader>gD :<c-u>call OpFuncDuplicateOnNewLine(visualmode(), 1
 " noremap <leader>u :GundoToggle<CR>
 "
 " https://github.com/t9md/vim-quickhl
+" https://github.com/benizi/vim-automkdir
