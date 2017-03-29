@@ -483,3 +483,4 @@ vnoremap <silent> <leader>gD :<c-u>call OpFuncDuplicateOnNewLine(visualmode(), 1
 "
 " https://github.com/t9md/vim-quickhl
 " https://github.com/benizi/vim-automkdir
+" https://github.com/google/vim-searchindex
