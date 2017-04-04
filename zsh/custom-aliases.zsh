@@ -60,12 +60,25 @@ function gitlab () {
     echo $GITLAB_URL | pbcopy
 }
 
+function glomd1 () {
+    # git log to markdown
+    local urlPre=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')"/commit/"
+    local repo=$(echo $urlPre | rev | cut -d'/' -f 2,3 | rev)
+    echo "$repo -> $(git_current_branch)"
+    git log --reverse --format=format:"- [%s]($urlPre%H)" -1
+}
+
 function glomd () {
     # git log to markdown
-    echo "**$(git_current_branch)**"
-    local urlPre=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')"/commit/"
-    git log --reverse --format=format:"- [%s]($urlPre%H)" $@
+    local urlPre=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')"/compare"
+    local repo=$(echo $urlPre | rev | cut -d'/' -f 2,3 | rev)
+    local latest=$(git log -1 --format=format:"%H" | head -n 1)
+    local earliest=$(git log --format=format:"%H" --reverse $@ | head -n 1)
+    local url="$urlPre/$earliest...$latest"
+    echo "$repo -> [$(git_current_branch)]($url)"
+    git log --reverse --format=format:"- %s" $@
 }
+
 
 function ggrb() { 
     # git rebase same branch from origin
