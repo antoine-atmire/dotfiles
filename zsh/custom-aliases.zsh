@@ -63,7 +63,7 @@ function gitlab () {
 function glomd1 () {
     # git log to markdown
     local urlPre=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')"/commit/"
-    local repo=$(echo $urlPre | rev | cut -d'/' -f 2,3 | rev)
+    local repo=$(echo $urlPre | rev | cut -d'/' -f 3,4 | rev)
     echo "$repo -> $(git_current_branch)"
     git log --reverse --format=format:"- [%s]($urlPre%H)" -1
 }
@@ -76,7 +76,7 @@ function glomd () {
     local earliest=$(git log --format=format:"%H" --reverse $@ | head -n 1)
     local url="$urlPre/$earliest...$latest"
     echo "$repo -> [$(git_current_branch)]($url)"
-    git log --reverse --format=format:"- %s" $@
+    git log --reverse --format=format:"- %s" $@ | tail -n +1
 }
 
 
