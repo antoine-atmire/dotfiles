@@ -1,3 +1,4 @@
+export FZF_TMUX=1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # lastpass cli integration
