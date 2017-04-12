@@ -5,7 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="antoine-avit"
+# ZSH_THEME="antoine-avit"
+ ZSH_THEME="antoine-minimal"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -46,6 +47,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 ZSH_CUSTOM=$HOME/dotfiles/zsh
 
 ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOSTART=false
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
