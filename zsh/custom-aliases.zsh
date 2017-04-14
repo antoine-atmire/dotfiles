@@ -70,10 +70,12 @@ function glomd1 () {
 
 function glomd () {
     # git log to markdown
+    local nCommits=$((0-1+$1))
+    echo $nCommits
     local urlPre=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')"/compare"
     local repo=$(echo $urlPre | rev | cut -d'/' -f 2,3 | rev)
     local latest=$(git log -1 --format=format:"%H" | head -n 1)
-    local earliest=$(git log --format=format:"%H" --reverse $@ | head -n 1)
+    local earliest=$(git log --format=format:"%H" --reverse $nCommits | head -n 1)
     local url="$urlPre/$earliest...$latest"
     echo "$repo -> [$(git_current_branch)]($url)"
     git log --reverse --format=format:"- %s" $@ | tail -n +1
@@ -125,6 +127,8 @@ alias -g M="| most"
 alias -g N="> /dev/null 2> /dev/null"
 alias -g F="| fzf"
 alias -g J="| jq '.'"
+alias -g X="| tidy -xml -q -i"
+
 
 # docker build -t vim-antoine .
 #alias v='docker run -ti --rm -v $(pwd):/home/developer/workspace vim-antoine'
