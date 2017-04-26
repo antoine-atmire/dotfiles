@@ -169,7 +169,7 @@ nnoremap <leader>} }/\n\n\n/1<cr>
 " go to the previous double empty lines
 nnoremap <leader>{ {?\n\n\n?1<cr>
 " let's automatically go into vim-mode command line
-nnoremap : :<c-f>i
+" nnoremap : :<c-f>i
 nnoremap <leader>pp "+p
 
 " http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
