@@ -239,6 +239,9 @@ onoremap <silent> im :<c-u>normal! <bs>]Mv[m<cr>
 " java outer method
 onoremap <silent> am :<c-u>normal! <bs>]Mv[m{<cr>
 
+" 1 line context
+onoremap <silent> C :<c-u>normal! k0v2j$<cr>
+
 
 " auto save on FocusLost
 " autocmd CursorHold,CursorHoldI,BufLeave ?* silent update

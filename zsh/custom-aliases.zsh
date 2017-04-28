@@ -71,13 +71,14 @@ function glomd1 () {
 function glomd () {
     # git log to markdown
     local nCommits=$((0-1+$1))
-    echo $nCommits
-    local urlPre=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')"/compare"
-    local repo=$(echo $urlPre | rev | cut -d'/' -f 2,3 | rev)
+    # echo $nCommits
+    local repoUrl=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')
+    local repo=$(echo $repoUrl | rev | cut -d'/' -f 2,3 | rev)
     local latest=$(git log -1 --format=format:"%H" | head -n 1)
     local earliest=$(git log --format=format:"%H" --reverse $nCommits | head -n 1)
-    local url="$urlPre/$earliest...$latest"
-    echo "$repo -> [$(git_current_branch)]($url)"
+    local urlCompare="$repoUrl/compare/$earliest...$latest"
+    local urlBranch="$repoUrl/commits/$(git_current_branch)"
+    echo "$repo -> [$(git_current_branch)]($urlBranch) [(compare changes)]($urlCompare)"
     git log --reverse --format=format:"- %s" $@ | tail -n +1
 }
 
@@ -101,6 +102,17 @@ function ggrbm {
     ggrb
     git checkout -
     git rebase $branch
+}
+
+function g.() {
+    ref=""
+    if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
+        ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+        ref=$(command git name-rev --name-only --no-undefined --always HEAD 2> /dev/null) || \
+        ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+        ref="$(command echo ${ref#refs/heads/})"
+    fi
+    echo "$ref"
 }
 
 function viman () {
