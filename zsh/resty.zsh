@@ -84,14 +84,30 @@ function resty() {
       [ "$method" = "HEAD" ] && opt="-I" && raw="yes"
 
       [ -f "$confdir/$domain" ] && eval "args2=( $(cat "$confdir/$domain" 2>/dev/null |sed 's/^ *//' |grep "^$method" |cut -b $((${#method}+2))-) )"
-      [ "$dry" = "yes" ] && echo "curl -sLv $opt \"$dat\" -X $method -b "$cookies/$domain" -c "$cookies/$domain" \"${args2[@]}\" \"${curlopt2[@]}\" \"${curlopt[@]}\" \"$_path$query\"" && return 0
+      # local flags;
+      # flags=()
+      # flags+=(-sLv)
+      # flags+=($opt)
+      # flags+=($dat)
+      # flags+=("-X $method")
+      # flags+=("-b $cookies/$domain")
+      # flags+=("-c $cookies/$domain")
+      # flags+=(${args2[@]})
+      # flags+=(${curlopt2[@]})
+      # flags+=(${curlopt[@]})
+      # flags+=($_path$query)
+      # [ "$dry" = "yes" ] && echo -n "curl " && echo "${flags[@]}" && return 0
+      [ "$dry" = "yes" ] && echo "curl -sLv $opt \"$dat\" -X $method -b $cookies/$domain -c $cookies/$domain ${args2[@]} ${curlopt2[@]} ${curlopt[@]} \"$_path$query\"" && return 0
       # TODO: refactor function
+      # res=$( ( ( (curl "${flags[@]}" \
       res=$( ( ( (curl -sLv $opt "$dat" -X $method \
               -b "$cookies/$domain" -c "$cookies/$domain" \
               "${args2[@]}" "${curlopt2[@]}" "${curlopt[@]}" "$_path$query" \
         |sed 's/^/OUT /' && echo) 3>&2 2>&1 1>&3) \
         |sed 's/^/ERR /' && echo) 2>&1)
-      out=$(echo "$res" |sed '/^OUT /s/^....//p; d')
+      # out=$(echo "$res" |sed '/^OUT /s/^....//p; d')
+      # fixes issues with multiline responses
+      out=$(echo "$res" |sed '/^OUT /s/^....//; /^ERR/d')
       err=$(echo "$res" |sed '/^ERR /s/^....//p; d')
       ret=$(echo "$err" |sed \
         '/^.*HTTP\/1\.[01] [0-9][0-9][0-9]/s/.*\([0-9]\)[0-9][0-9].*/\1/p; d' \
