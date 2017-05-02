@@ -477,6 +477,10 @@ nnoremap <silent> <leader>gD :set operatorfunc=OpFuncDuplicateOnNewLine<cr>g@
 vnoremap <silent> <leader>gD :<c-u>call OpFuncDuplicateOnNewLine(visualmode(), 1)<cr>
 
 
+" atomist-rugs
+autocmd BufNewFile,BufRead *.rug setlocal ft=typescript
+autocmd BufNewFile,BufRead *.rt setlocal ft=typescript
+
 
 " ideas
 
