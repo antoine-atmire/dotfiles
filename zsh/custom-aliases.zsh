@@ -73,13 +73,26 @@ function glomd () {
     local nCommits=$((0-1+$1))
     # echo $nCommits
     local repoUrl=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')
-    local repo=$(echo $repoUrl | rev | cut -d'/' -f 2,3 | rev)
+    local repo=$(echo $repoUrl | rev | cut -d'/' -f 1,2 | rev)
     local latest=$(git log -1 --format=format:"%H" | head -n 1)
     local earliest=$(git log --format=format:"%H" --reverse $nCommits | head -n 1)
     local urlCompare="$repoUrl/compare/$earliest...$latest"
     local urlBranch="$repoUrl/commits/$(git_current_branch)"
     echo "$repo -> [$(git_current_branch)]($urlBranch) [(compare changes)]($urlCompare)"
     git log --reverse --format=format:"- %s" $@ | tail -n +1
+}
+
+function gloc () {
+    local originalBranch=$(git_current_branch)
+    local nCommits=$1
+    shift
+    for branch in $@
+    do
+        echo $branch
+        git checkout -q $branch
+        git log --oneline $nCommits
+    done
+    git checkout -q $originalBranch
 }
 
 

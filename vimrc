@@ -171,6 +171,7 @@ nnoremap <leader>{ {?\n\n\n?1<cr>
 " let's automatically go into vim-mode command line
 " nnoremap : :<c-f>i
 nnoremap <leader>pp "+p
+vnoremap <leader>pp "+p
 
 " http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
 " replace current word and go to the next occurrence (n. combo)
