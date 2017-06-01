@@ -83,6 +83,8 @@ function glomd () {
 }
 
 function gloc () {
+    # git log compare 
+    # gloc -5 branch1 branch2 branch3...
     local originalBranch=$(git_current_branch)
     local nCommits=$1
     shift
@@ -90,7 +92,8 @@ function gloc () {
     do
         echo $branch
         git checkout -q $branch
-        git log --oneline $nCommits
+        git log --format=format:"%Cblue%ar%Creset %s" $nCommits
+        echo ""
     done
     git checkout -q $originalBranch
 }
@@ -126,6 +129,10 @@ function g.() {
         ref="$(command echo ${ref#refs/heads/})"
     fi
     echo "$ref"
+}
+
+function glogcp () {
+     git log --format=format:"%H" --reverse $@ | xargs
 }
 
 function viman () {

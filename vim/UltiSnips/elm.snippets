@@ -1,13 +1,11 @@
 snippet starterBeginnerProgram "elm starter template" b
-import Html exposing (Html, h1, button, div, text)
-import Html.App as App
+import Html as H exposing (Html, h1, button, div, text)
 import Html.Events exposing (onClick)
 
 
-
-main : Program Never
+main : Program Never Model Msg
 main =
-  App.beginnerProgram
+  H.beginnerProgram
     { model = model
     , view = view
     , update = update
@@ -53,81 +51,6 @@ view model =
     , div [] [ text (toString model) ]
     , button [ onClick Increment ] [ text "+" ]
     ]
-endsnippet
-
-snippet starterProgram "elm starter template" b
-module Main exposing (..)
-
-import Html exposing (Html, h1, button, div, text)
-import Html.App as App
-import Html.Events exposing (onClick)
-
-
-main : Program Never
-main =
-    App.program
-        { init = init initialModel
-        , view = view
-        , update = update
-        , subscriptions = subscriptions
-        }
-
-
-
--- MODEL
-
-
-type alias Model =
-    { field : Int }
-
-
-
--- INIT
-
-
-init : Model -> ( Model, Cmd Msg )
-init initialModel =
-    ( initialModel, Cmd.none )
-
-
-initialModel : Model
-initialModel =
-    Model 0
-
-
-
--- UPDATE
-
-
-type Msg
-    = NoOp
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        NoOp ->
-            ( model, Cmd.none )
-
-
-
--- SUBSCRIPTIONS
-
-
-subscriptions : Model -> Sub Msg
-subscriptions =
-    \m -> Sub.none
-
-
-
--- VIEW
-
-
-view : Model -> Html Msg
-view model =
-    div []
-        [ h1 [] [ text "heading 1" ]
-        ]
 endsnippet
 
 snippet -> "subcase" b

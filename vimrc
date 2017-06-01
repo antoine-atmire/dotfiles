@@ -194,7 +194,6 @@ vnoremap > >gv
 " search for selected text
 vnoremap / y/<c-r>"
 vnoremap <leader>y "+y
-vnoremap <c-j> <esc>
 
 
 " insert mode mappings
@@ -206,7 +205,7 @@ vnoremap <c-j> <esc>
 " inoremap jk <esc><bs>l
 " when you're on ^ and don't want want to go up a line
 " inoremap jj <esc>
-inoremap <c-j> <esc>
+inoremap <c-j> <C-o>:echo "use control ["
 " ZZZ in insert mode will also save and quit
 " just so you don't have to correct yourself when accidentally typing ZZ in
 " insert mode
@@ -215,7 +214,7 @@ inoremap ZZZ <esc>ZZ
 inoremap <c-x>t <esc>ciW<lt><c-r>"></<C-R>"><Esc>F<i
 inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-i
 " wrap the last word in spaces so the xml-tag mapping can work on it
-inoremap <c-f> <esc>vbc <c-r>" <left>
+inoremap <c-x><space> <esc>vbc <c-r>" <left>
 " go to last xml attribute location
 inoremap <c-l>a <esc>?><cr>i
 " close brackets and place cursor inside
