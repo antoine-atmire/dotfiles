@@ -37,7 +37,7 @@ set ignorecase
 set smartcase
 set incsearch
 " wait a little longer when leader is pressed
-set timeoutlen=2000
+" set timeoutlen=2000
 set confirm "confirmation dialog when closing a file with changes
 set backspace=indent,eol,start
 set breakindent
@@ -84,7 +84,7 @@ autocmd InsertLeave * highlight StatusLine ctermbg=None ctermfg=0
 autocmd ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
 
 " only show colorcolumns for lines that are longer
-call matchadd('ColorColumn', '\%81v', 100)
+" call matchadd('ColorColumn', '\%81v', 100)
 " iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 autocmd ColorScheme * highlight ColorColumn ctermbg=7 ctermfg=0
 

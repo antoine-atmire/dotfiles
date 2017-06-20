@@ -92,7 +92,7 @@ function gloc () {
     do
         echo $branch
         git checkout -q $branch
-        git log --format=format:"%Cblue%ar%Creset %s" $nCommits
+        git log --format=format:"%Cblue%ar%Creset %s" $nCommits | cat -n
         echo ""
     done
     git checkout -q $originalBranch
