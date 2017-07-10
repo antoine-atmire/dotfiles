@@ -13,3 +13,5 @@ function fg-bg() {
 }
 zle -N fg-bg
 bindkey '^z' fg-bg
+
+bindkey -s ± "~"

@@ -68,6 +68,7 @@ else
     " set noundofile
     set undofile
     set undodir=$HOME/.vim/.undo
+    call system('mkdir $HOME/.vim/.undo')
     set undolevels=1000
     set undoreload=10000
 endif
@@ -312,7 +313,7 @@ let s:menus.dotfiles.file_candidates = [
             \ ['zshrc', '~/.zshrc'],
             \ ['profile', '~/.profile'],
             \ ['m2/settings.xml', '~/.m2/settings.xml'], 
-            \ ['snippets', '~/.vim/UltiSnips/'],
+            \ ['snippets', '~/.vim/UltiSnips'],
             \ ['zazurc', '~/.zazurc.json']
             \ ]
 let s:menus.project = {
