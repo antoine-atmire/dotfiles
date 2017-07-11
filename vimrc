@@ -288,7 +288,7 @@ autocmd FileType javascript JsPreTmpl html
 autocmd FileType typescript JsPreTmpl html
 autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vim users only.
 
-let g:UltiSnipsExpandTrigger = '<C-y>'
+let g:UltiSnipsExpandTrigger = '<C-j>'
 
 
 " Denite (replaces Unite)
