@@ -79,10 +79,11 @@ set statusline+=\ %L\ lines "total lines
 set statusline+=\ %l:%v " current line:column
 set statusline+=\ %{ALEGetStatusLine()}
 
-" Custom StatusLine colors
-autocmd InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
-autocmd InsertLeave * highlight StatusLine ctermbg=None ctermfg=0
-autocmd ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
+" " Custom StatusLine colors
+" autocmd InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
+" autocmd InsertLeave * highlight StatusLine ctermbg=None ctermfg=0
+" autocmd ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
+
 
 " only show colorcolumns for lines that are longer
 " call matchadd('ColorColumn', '\%81v', 100)
@@ -92,9 +93,10 @@ autocmd ColorScheme * highlight ColorColumn ctermbg=7 ctermfg=0
 " use background from terminal, not from colorscheme
 autocmd ColorScheme * highlight Normal ctermbg=None
 
-autocmd ColorScheme * highlight CursorColumn ctermbg=235
-autocmd ColorScheme * highlight CursorLine ctermbg=235
-autocmd ColorScheme * highlight CursorLineNr ctermbg=235
+autocmd ColorScheme * highlight CursorColumn ctermbg=237
+autocmd ColorScheme * highlight CursorLine ctermbg=237
+autocmd ColorScheme * highlight CursorLineNr ctermbg=236
+
 
 " useful mapping when trying out commands
 nnoremap <leader>:: Y:@"<cr>
@@ -106,9 +108,10 @@ set background=dark
 
 let g:gruvbox_invert_selection = 0
 
+source ~/.vimrc_background
 " colorscheme molokai
 colorscheme gruvbox
-" colorscheme Apprentice
+" colorscheme apprentice
 
 
 nnoremap <up> <nop>
@@ -167,8 +170,10 @@ nnoremap <leader>m :buffers<cr>:buffer<space>
 " nnoremap <leader><tab> :buffer #<cr>
 " go to the next double empty lines
 nnoremap <leader>} }/\n\n\n/1<cr>
+vnoremap <leader>} }/\n\n\n/1<cr>
 " go to the previous double empty lines
 nnoremap <leader>{ {?\n\n\n?1<cr>
+vnoremap <leader>{ {?\n\n\n?1<cr>
 " let's automatically go into vim-mode command line
 " nnoremap : :<c-f>i
 nnoremap <leader>pp "+p

@@ -16,6 +16,6 @@ function git_prompt_info_minimal() {
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}✗%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔%{$reset_color%} "
 
-PROMPT_INDICATOR="%{$fg[magenta]%}$%{$reset_color%}"
+PROMPT_INDICATOR="%{$fg[yellow]%}$%{$reset_color%}"
 
 PROMPT='$(dswhich)$(git_prompt_info_minimal)$PROMPT_INDICATOR '
