@@ -1,4 +1,4 @@
-# General configuration
+
 
 # Shell colors
 BASE16_SHELL=$HOME/dotfiles/base16-shell/

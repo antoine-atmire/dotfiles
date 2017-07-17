@@ -229,7 +229,7 @@ inoremap <c-l>a <esc>?><cr>i
 " inoremap {c {}<esc>i
 
 
-" operator pending mode mappping
+" operator pending mode mapping
 " works with y, d, c, =, ... not v (use <leader>v as defined further below)
 " :help omap-info
 
@@ -401,7 +401,7 @@ highlight! link elmTypedef GruvBoxRed
 highlight! link elmImport GruvBoxRed
 
 " keymappings primarly for elm
-" pretty cases
+" pretty cases -> turns your comma separated list in case statements
 nmap <leader>pc ^dt,Op==<<A ->wx<leader>pc
 
 
