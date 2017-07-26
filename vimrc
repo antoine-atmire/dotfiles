@@ -82,7 +82,7 @@ set statusline+=\ %{ALEGetStatusLine()}
 " " Custom StatusLine colors
 " autocmd InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
 " autocmd InsertLeave * highlight StatusLine ctermbg=None ctermfg=0
-" autocmd ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
+autocmd ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
 
 
 " only show colorcolumns for lines that are longer
@@ -93,9 +93,9 @@ autocmd ColorScheme * highlight ColorColumn ctermbg=7 ctermfg=0
 " use background from terminal, not from colorscheme
 autocmd ColorScheme * highlight Normal ctermbg=None
 
-autocmd ColorScheme * highlight CursorColumn ctermbg=237
-autocmd ColorScheme * highlight CursorLine ctermbg=237
-autocmd ColorScheme * highlight CursorLineNr ctermbg=236
+autocmd ColorScheme * highlight CursorColumn ctermbg=235
+autocmd ColorScheme * highlight CursorLine ctermbg=235
+autocmd ColorScheme * highlight CursorLineNr ctermbg=235
 
 
 " useful mapping when trying out commands

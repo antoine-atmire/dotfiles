@@ -8,7 +8,8 @@ function base16_herbstluft() {
         return 2>/dev/null || exit 0
     fi
 
-    color00="29/2a/44" # Black
+    color00="00/00/00" # Black
+    # color00="29/2a/44" # Black
     color01="ed/00/00" # Magenta
     color02="e8/8e/2c" # Green
     color03="ae/81/ff" # Yellow
