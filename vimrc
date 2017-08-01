@@ -279,6 +279,11 @@ let g:ale_sign_error = '→'
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
+let g:ale_fixers = {}
+let g:ale_fixers['typescript'] = ['prettier']
+let g:ale_javascript_prettier_options = '--single-quote'
+autocmd FileType typescript nnoremap <leader>pe :ALEFix
+
 " tsuquyomi 
 let g:tsuquyomi_disable_quickfix=1
 let g:tsuquyomi_disable_default_mappings=1
@@ -368,7 +373,7 @@ endif
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 0
 " elm keybindings
-nnoremap <leader>pe :ElmFormat<cr>
+autocmd FileType elm nnoremap <leader>pe :ElmFormat<cr>
 " autocmd FileType elm nnoremap <leader>pe <Plug>(elm-make)
 
 if has("conceal")
