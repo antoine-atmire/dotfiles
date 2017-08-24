@@ -131,12 +131,11 @@ inoremap <right> <nop>
 nnoremap <leader>w :wa<cr>
 " \ev - edit .vimrc
 "nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-nnoremap <leader>ev :tabe $MYVIMRC<cr>
-nnoremap <leader>et :tabe ~/.tmux.conf<cr>
-nnoremap <leader>ez :tabe ~/.zshrc<cr>
-nnoremap <leader>em :tabe ~/.m2/settings.xml<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <leader>et :e ~/.tmux.conf<cr>
+nnoremap <leader>ez :e ~/.zshrc<cr>
+nnoremap <leader>em :e ~/.m2/settings.xml<cr>
 nnoremap <leader>ee :e<cr>
-nnoremap <leader>el :tabe ../local-settings.xml<cr>
 " help in a tab
 nnoremap <leader>h :tab help<space>
 " grep word under cursor
@@ -164,6 +163,7 @@ nmap <leader>pq 0f&r<leader>pq
 " ctags command
 " nnoremap <leader>ct :!ctags -R<space>
 nnoremap <leader>ct :AsyncRun ctags -R<space>
+nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol %:p" Enter<cr>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:buffer<space>
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
@@ -211,7 +211,7 @@ vnoremap <leader>y "+y
 " inoremap jk <esc><bs>l
 " when you're on ^ and don't want want to go up a line
 " inoremap jj <esc>
-inoremap <c-j> <C-o>:echo "use control ["
+" inoremap <c-j> <C-o>:echo "use control ["
 " ZZZ in insert mode will also save and quit
 " just so you don't have to correct yourself when accidentally typing ZZ in
 " insert mode
@@ -281,8 +281,10 @@ let g:ale_set_quickfix = 1
 
 let g:ale_fixers = {}
 let g:ale_fixers['typescript'] = ['prettier']
-let g:ale_javascript_prettier_options = '--single-quote'
-autocmd FileType typescript nnoremap <leader>pe :ALEFix
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_javascript_prettier_options = '--single-quote --tab-width=4'
+autocmd FileType typescript nnoremap <leader>pe :ALEFix<cr>
+autocmd FileType javascript nnoremap <leader>pe :ALEFix<cr>
 
 " tsuquyomi 
 let g:tsuquyomi_disable_quickfix=1

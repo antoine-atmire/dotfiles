@@ -55,6 +55,13 @@ ZSH_TMUX_AUTOSTART=false
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(docker git colored-man-pages tmux zsh-autosuggestions zsh-syntax-highlighting)
 
+# zsh-users/zsh-syntax-highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+ZSH_HIGHLIGHT_PATTERNS+=('dsrun' 'fg=white,bold')
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=black,bg=white'
+
 # User configuration
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
