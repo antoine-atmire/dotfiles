@@ -62,6 +62,9 @@ ZSH_HIGHLIGHT_PATTERNS+=('dsrun' 'fg=white,bold')
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=black,bg=white'
 
+# Report CPU usage for commands running longer than 10 seconds
+REPORTTIME=10
+
 # User configuration
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
