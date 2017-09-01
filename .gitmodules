@@ -91,3 +91,6 @@
 [submodule "vim/bundle/vim-man"]
 	path = vim/bundle/vim-man
 	url = https://github.com/vim-utils/vim-man.git
+[submodule "vim/bundle/roamer.vim"]
+	path = vim/bundle/roamer.vim
+	url = https://github.com/abaldwin88/roamer.vim
