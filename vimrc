@@ -13,6 +13,8 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+packadd! matchit
+
 " move vertically visually and not line-wise (for wrapped lines)
 nnoremap j gj
 nnoremap k gk
@@ -50,6 +52,7 @@ set lazyredraw
 set scroll=15 "number of lines to scroll for c-u and c-d
 set cursorline
 set cursorcolumn
+set autoread
 
 " use project specific .vimrc
 set exrc
@@ -274,7 +277,7 @@ let g:completor_min_chars = 4
 
 " ale plugin
 let g:ale_sign_column_always = 0
-let g:ale_sign_error = '→'
+let g:ale_sign_error = '>>'
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
