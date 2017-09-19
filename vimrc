@@ -138,10 +138,14 @@ nnoremap <leader>et :e ~/.tmux.conf<cr>
 nnoremap <leader>ez :e ~/.zshrc<cr>
 nnoremap <leader>em :e ~/.m2/settings.xml<cr>
 nnoremap <leader>ee :e<cr>
+" from https://github.com/mhinz/vim-galore#quickly-edit-your-macros
+" Use it like this <leader>eq or "q<leader>eq 
+nnoremap <leader>eq  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+nmap <leader>en "/<leader>eq
 " help in a tab
 nnoremap <leader>h :tab help<space>
 " grep word under cursor
-nnoremap <leader>g :lgrep <c-r><c-w><cr>
+nnoremap <leader>g :silent lgrep <c-r><c-w><cr>
 " \r - reload .vimrc
 nnoremap <leader>r :source $MYVIMRC<cr>
 " \q - @
