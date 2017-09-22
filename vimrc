@@ -376,6 +376,8 @@ elseif executable('ack')
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
+" undotree plugin
+nnoremap <leader>u :UndotreeToggle<cr>
 
 " elm setup
 let g:elm_setup_keybindings = 0
@@ -431,8 +433,8 @@ endfunction
 nnoremap <silent> [a :set operatorfunc=GoToStartOfTextObject<cr>g@a
 nnoremap <silent> [i :set operatorfunc=GoToStartOfTextObject<cr>g@i
 
-nnoremap <silent> [m :set operatorfunc=GoToStartOfTextObject<cr>g@
-nnoremap <silent> ]m :set operatorfunc=GoToEndOfTextObject<cr>g@
+" nnoremap <silent> [m :set operatorfunc=GoToStartOfTextObject<cr>g@
+" nnoremap <silent> ]m :set operatorfunc=GoToEndOfTextObject<cr>g@
 
 function! OpFuncVisualSelection(type, aCommand)
 	  let sel_save = &selection
@@ -502,11 +504,6 @@ autocmd BufNewFile,BufRead *.rt setlocal ft=typescript
 
 
 " ideas
-
-" gundo.vim plugin
-" (not convinced yet, but I guess I need to try before making up my mind)
-" noremap <leader>u :GundoToggle<CR>
-"
 " https://github.com/t9md/vim-quickhl
 " https://github.com/benizi/vim-automkdir
 " https://github.com/google/vim-searchindex

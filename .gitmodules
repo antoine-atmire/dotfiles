@@ -94,3 +94,6 @@
 [submodule "vim/bundle/roamer.vim"]
 	path = vim/bundle/roamer.vim
 	url = https://github.com/abaldwin88/roamer.vim
+[submodule "vim/bundle/undotree"]
+	path = vim/bundle/undotree
+	url = https://github.com/mbbill/undotree
