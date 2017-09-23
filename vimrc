@@ -28,6 +28,8 @@ nnoremap <leader>m :buffers<cr>:buffer<space>
 nnoremap <leader>e* :e **/*
 nnoremap <leader>cd :cd %:p:h
 nnoremap <leader>g :silent lgrep <c-r><c-w><cr>
+nnoremap <leader>pp "+p
+vnoremap <leader>pp "+p
 
 " move vertically visually and not line-wise (for wrapped lines)
 nnoremap j gj
@@ -92,3 +94,18 @@ let g:tsuquyomi_disable_default_mappings=1
 autocmd FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
 autocmd FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
 autocmd FileType typescript nnoremap <buffer> <leader>6 :TsuquyomiReferences<cr>
+set scrolloff=999
+
+" create non existing parent directories on save
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
