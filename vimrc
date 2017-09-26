@@ -81,23 +81,28 @@ set statusline+=\ %L\ lines "total lines
 set statusline+=\ %l:%v " current line:column
 set statusline+=\ %{ALEGetStatusLine()}
 
+" define a group `vimrc` and initialize.
+augroup vimrc
+  autocmd!
+augroup END
+
 " " Custom StatusLine colors
-" autocmd InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
-" autocmd InsertLeave * highlight StatusLine ctermbg=None ctermfg=0
-autocmd ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
+" autocmd vimrc InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
+" autocmd vimrc InsertLeave * highlight StatusLine ctermbg=None ctermfg=0
+autocmd vimrc ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
 
 
 " only show colorcolumns for lines that are longer
 " call matchadd('ColorColumn', '\%81v', 100)
 " iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-autocmd ColorScheme * highlight ColorColumn ctermbg=7 ctermfg=0
+autocmd vimrc ColorScheme * highlight ColorColumn ctermbg=7 ctermfg=0
 
 " use background from terminal, not from colorscheme
-autocmd ColorScheme * highlight Normal ctermbg=None
+autocmd vimrc ColorScheme * highlight Normal ctermbg=None
 
-autocmd ColorScheme * highlight CursorColumn ctermbg=235
-autocmd ColorScheme * highlight CursorLine ctermbg=235
-autocmd ColorScheme * highlight CursorLineNr ctermbg=235
+autocmd vimrc ColorScheme * highlight CursorColumn ctermbg=235
+autocmd vimrc ColorScheme * highlight CursorLine ctermbg=235
+autocmd vimrc ColorScheme * highlight CursorLineNr ctermbg=235
 
 
 " useful mapping when trying out commands
@@ -256,7 +261,7 @@ onoremap <silent> C :<c-u>normal! k0v2j$<cr>
 
 
 " auto save on FocusLost
-" autocmd CursorHold,CursorHoldI,BufLeave ?* silent update
+" autocmd vimrc CursorHold,CursorHoldI,BufLeave ?* silent update
 "if you remove this one day, you may consider set hidden
 " Undo all changes since opening buffer in vim
 nnoremap <leader>zq :u1<bar>u
@@ -289,22 +294,22 @@ let g:ale_fixers = {}
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_javascript_prettier_options = '--single-quote --tab-width=4'
-autocmd FileType typescript nnoremap <leader>pe :ALEFix<cr>
-autocmd FileType javascript nnoremap <leader>pe :ALEFix<cr>
+autocmd vimrc FileType typescript nnoremap <leader>pe :ALEFix<cr>
+autocmd vimrc FileType javascript nnoremap <leader>pe :ALEFix<cr>
 
 " tsuquyomi 
 let g:tsuquyomi_disable_quickfix=1
 let g:tsuquyomi_disable_default_mappings=1
-autocmd FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
-autocmd FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
-autocmd FileType typescript nnoremap <buffer> <leader>6 :TsuquyomiReferences<cr>
+autocmd vimrc FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
+autocmd vimrc FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
+autocmd vimrc FileType typescript nnoremap <buffer> <leader>6 :TsuquyomiReferences<cr>
 
 
 
 " vim-js-pretty-template
-autocmd FileType javascript JsPreTmpl html
-autocmd FileType typescript JsPreTmpl html
-autocmd FileType typescript syn clear foldBraces " For leafgarland/typescript-vim users only.
+autocmd vimrc FileType javascript JsPreTmpl html
+autocmd vimrc FileType typescript JsPreTmpl html
+autocmd vimrc FileType typescript syn clear foldBraces " For leafgarland/typescript-vim users only.
 
 let g:UltiSnipsExpandTrigger = '<C-j>'
 
@@ -383,8 +388,8 @@ nnoremap <leader>u :UndotreeToggle<cr>
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 0
 " elm keybindings
-autocmd FileType elm nnoremap <leader>pe :ElmFormat<cr>
-" autocmd FileType elm nnoremap <leader>pe <Plug>(elm-make)
+autocmd vimrc FileType elm nnoremap <leader>pe :ElmFormat<cr>
+" autocmd vimrc FileType elm nnoremap <leader>pe <Plug>(elm-make)
 
 if has("conceal")
     " set conceallevel otherwise it doesn't do anything
@@ -397,17 +402,17 @@ if has("conceal")
     nnoremap <leader>c2 :setlocal conceallevel=2<cr>
     nnoremap <leader>c3 :setlocal conceallevel=3<cr>
 
-    autocmd FileType elm syntax match arrowRight /->/ conceal cchar=➛
-    autocmd FileType elm syntax match greaterThan />=/ conceal cchar=≧
-    autocmd FileType elm syntax match lessThan /<=/ conceal cchar=≦
-    autocmd FileType elm syntax match elmLambda /\\/ conceal cchar=λ
-    autocmd FileType elm syntax match elmPipeRight /|>/ conceal cchar=▶
-    autocmd FileType elm syntax match elmPipeLeft /<|/ conceal cchar=◀
+    autocmd vimrc FileType elm syntax match arrowRight /->/ conceal cchar=➛
+    autocmd vimrc FileType elm syntax match greaterThan />=/ conceal cchar=≧
+    autocmd vimrc FileType elm syntax match lessThan /<=/ conceal cchar=≦
+    autocmd vimrc FileType elm syntax match elmLambda /\\/ conceal cchar=λ
+    autocmd vimrc FileType elm syntax match elmPipeRight /|>/ conceal cchar=▶
+    autocmd vimrc FileType elm syntax match elmPipeLeft /<|/ conceal cchar=◀
 
-    "autocmd BufnewFile,BufRead,BufWrite *  syntax match arrowLeft /<!-/ conceal cchar=← "this breaks xml comment highlighting
-    "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /==/ conceal cchar==
-    "autocmd BufnewFile,BufRead,BufWrite * syntax match lessThan /===/ conceal cchar=≡
-    "autocmd BufnewFile,BufRead,BufWrite * syntax match doubleDash /--/ conceal cchar=−
+    "autocmd vimrc BufnewFile,BufRead,BufWrite *  syntax match arrowLeft /<!-/ conceal cchar=← "this breaks xml comment highlighting
+    "autocmd vimrc BufnewFile,BufRead,BufWrite * syntax match lessThan /==/ conceal cchar==
+    "autocmd vimrc BufnewFile,BufRead,BufWrite * syntax match lessThan /===/ conceal cchar=≡
+    "autocmd vimrc BufnewFile,BufRead,BufWrite * syntax match doubleDash /--/ conceal cchar=−
 endif
 
 " gruvbox tuning for elm
@@ -499,8 +504,8 @@ vnoremap <silent> <leader>gD :<c-u>call OpFuncDuplicateOnNewLine(visualmode(), 1
 
 
 " atomist-rugs
-autocmd BufNewFile,BufRead *.rug setlocal ft=typescript
-autocmd BufNewFile,BufRead *.rt setlocal ft=typescript
+autocmd vimrc BufNewFile,BufRead *.rug setlocal ft=typescript
+autocmd vimrc BufNewFile,BufRead *.rt setlocal ft=typescript
 
 " create non existing parent directories on save
 function s:MkNonExDir(file, buf)
