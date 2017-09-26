@@ -384,6 +384,10 @@ endif
 " undotree plugin
 nnoremap <leader>u :UndotreeToggle<cr>
 
+" easymotion
+let g:EasyMotion_do_mapping=0
+noremap <c-f> <Plug>(easymotion-s)
+
 " elm setup
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 0
