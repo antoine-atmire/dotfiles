@@ -502,8 +502,19 @@ vnoremap <silent> <leader>gD :<c-u>call OpFuncDuplicateOnNewLine(visualmode(), 1
 autocmd BufNewFile,BufRead *.rug setlocal ft=typescript
 autocmd BufNewFile,BufRead *.rt setlocal ft=typescript
 
+" create non existing parent directories on save
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 
 " ideas
 " https://github.com/t9md/vim-quickhl
-" https://github.com/benizi/vim-automkdir
-" https://github.com/google/vim-searchindex
