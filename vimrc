@@ -10,7 +10,7 @@ if has("unix")
 endif
 execute pathogen#infect()
 " silent! execute pathogen#helptags()
-syntax on
+syntax enable
 filetype plugin indent on
 
 packadd! matchit
@@ -21,8 +21,9 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+vnoremap <bs> h
+
 set encoding=utf-8
-set nocompatible
 set laststatus=2
 set showcmd
 " set number
