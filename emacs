@@ -2,6 +2,8 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
+(menu-bar-mode -1)
+
 (evil-mode 1)
 (evil-commentary-mode)
 (evilem-default-keybindings "SPC")
