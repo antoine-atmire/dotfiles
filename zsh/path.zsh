@@ -12,6 +12,7 @@ dirs_to_include=(
 "$HOME/.rvm/bin"
 "$HOME/.rvm/sbin"
 "$HOME/.yarn/bin"
+"$HOME/.cabal/bin"
 "$HOME/dotfiles/bin"
 )
 
