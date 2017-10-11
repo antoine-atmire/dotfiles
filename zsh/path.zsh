@@ -8,6 +8,7 @@ dirs_to_include=(
 "/usr/local/sbin"
 "$HOME/bin"
 "$HOME/sbin"
+"$HOME/.local/bin"
 "$HOME/.rvm/bin"
 "$HOME/.rvm/sbin"
 "$HOME/.yarn/bin"

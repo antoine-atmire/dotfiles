@@ -212,6 +212,7 @@ vnoremap > >gv
 " search for selected text
 vnoremap / y/<c-r>"
 vnoremap <leader>y "+y
+nnoremap <leader>y "+y
 
 
 " insert mode mappings
@@ -386,8 +387,9 @@ endif
 nnoremap <leader>u :UndotreeToggle<cr>
 
 " easymotion
-let g:EasyMotion_do_mapping=0
-noremap <c-f> <Plug>(easymotion-s)
+" let g:EasyMotion_do_mapping=0
+" noremap <c-f> <Plug>(easymotion-s)
+nmap <c-f> <leader><leader>s
 
 " elm setup
 let g:elm_setup_keybindings = 0
