@@ -368,7 +368,7 @@ nnoremap <leader>frr :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignor
 "nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/rg --files --hidden .', 'sink':'e'})<cr>
 "elseif executable('ag')
 if executable('ag')
-    nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'e'})<cr>
+    nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'e','options':'--preview "cat {}" --preview-window="up"'})<cr>
 else
     nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"', 'sink':'e'})<cr>
 endif
