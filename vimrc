@@ -1,4 +1,4 @@
-noremap é @ "let mapleader = ","
+noremap é @
 let mapleader = " "
 
 if has("unix")
@@ -8,6 +8,7 @@ if has("unix")
         "let g:pathogen_disabled = ['YouCompleteMe']
     endif
 endif
+
 execute pathogen#infect()
 " silent! execute pathogen#helptags()
 syntax enable
@@ -151,13 +152,11 @@ nmap <leader>en "/<leader>eq
 " help in a tab
 nnoremap <leader>h :tab help<space>
 " grep word under cursor
-nnoremap <leader>g :silent lgrep <c-r><c-w><cr>
-" \r - reload .vimrc
+nnoremap <leader>gg :silent lgrep <c-r><c-w><cr>
 nnoremap <leader>r :source $MYVIMRC<cr>
-" \q - @
 nnoremap <leader>q @
 " new line with spaces until the cursor
-nnoremap <leader>o y0opVr $
+nnoremap <leader>o y0opVr $a<bs>
 " copy all lines to clipboard
 nnoremap <leader>cx gg"+yG
 " resync syntax highlighting
@@ -175,7 +174,7 @@ nmap <leader>pq 0f&r<leader>pq
 " ctags command
 " nnoremap <leader>ct :!ctags -R<space>
 nnoremap <leader>ct :AsyncRun ctags -R<space>
-nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol %:p" Enter<cr>
+nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol -12 %:p" Enter<cr>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:buffer<space>
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
@@ -360,8 +359,11 @@ call denite#custom#var('menu', 'menus', s:menus)
 
 set rtp+=~/.fzf
 
+" fuzzy tags
 nnoremap <leader>ff :call fzf#run({'source':"sed '/^\\!/d;s/\t.*//' ".join(tagfiles()),'sink':'tag', 'right':'50%'})<cr>
+" fuzzy colorschemes
 nnoremap <leader>fc :call fzf#run({'source': map(split(globpath(&rtp, 'colors/*.vim')), 'fnamemodify(v:val, ":t:r")'), 'sink': 'colo', 'left': '35%'})<cr>
+" insert path on new line
 nnoremap <leader>frr :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'norm o'})<cr>
 
 "if executable('rg')
@@ -517,7 +519,7 @@ autocmd vimrc BufNewFile,BufRead *.rug setlocal ft=typescript
 autocmd vimrc BufNewFile,BufRead *.rt setlocal ft=typescript
 
 " create non existing parent directories on save
-function s:MkNonExDir(file, buf)
+function! s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
         if !isdirectory(dir)
