@@ -106,6 +106,14 @@ autocmd vimrc ColorScheme * highlight CursorColumn ctermbg=235
 autocmd vimrc ColorScheme * highlight CursorLine ctermbg=235
 autocmd vimrc ColorScheme * highlight CursorLineNr ctermbg=235
 
+" Change Color when entering Insert Mode
+autocmd vimrc InsertEnter * highlight CursorLine ctermbg=None
+autocmd vimrc InsertEnter * highlight CursorColumn ctermbg=None
+
+" Revert Color to default when leaving Insert Mode
+autocmd vimrc InsertLeave * highlight CursorLine ctermbg=235
+autocmd vimrc InsertLeave * highlight CursorColumn ctermbg=235
+
 
 " useful mapping when trying out commands
 nnoremap <leader>:: Y:@"<cr>
@@ -273,6 +281,7 @@ nnoremap <leader>zq :u1<bar>u
 " location list mappings
 nnoremap <leader>lc :lclose<cr>
 nnoremap <leader>lo :lopen<cr>
+nnoremap <leader>lg :silent lgrep<space>
 
 " quickfix mappings
 nnoremap <leader>co :copen<cr>
