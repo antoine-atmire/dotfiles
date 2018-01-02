@@ -68,11 +68,12 @@ if exists('$SUDO_USER')
 else
     set nobackup
     " set backupcopy=yes "maybe add a set backupdir ?
+    call system('mkdir $HOME/.vim/.swapfiles')
     set swapfile
     set directory=$HOME/.vim/.swapfiles
+    call system('mkdir $HOME/.vim/.undo')
     set undofile
     set undodir=$HOME/.vim/.undo
-    call system('mkdir $HOME/.vim/.undo')
     set undolevels=1000
     set undoreload=10000
 endif
