@@ -327,46 +327,6 @@ autocmd vimrc FileType typescript syn clear foldBraces " For leafgarland/typescr
 let g:UltiSnipsExpandTrigger = '<C-j>'
 
 
-" Denite (replaces Unite)
-nnoremap <leader>db :Denite buffer<cr>
-nnoremap <leader>dm :Denite file_mru<cr>
-nnoremap <leader>dl :Denite line<cr>
-nnoremap <leader>dc :Denite colorscheme<cr>
-nnoremap <leader>dq :Denite command<cr>
-nnoremap <leader>dg :Denite grep<cr>
-" nnoremap <leader>dh :Denite help<cr> "I would use <leader>h<cr><leader>ff anyway
-nnoremap <leader>dd :Denite menu<cr>
-nnoremap <leader>dt :Denite filetype<cr>
-
-let s:menus = {}
-
-let s:menus.dotfiles = {
-            \ 'description': 'Edit your dotfiles'
-            \ }
-let s:menus.dotfiles.file_candidates = [
-            \ ['vimrc', '~/.vimrc'],
-            \ ['tmux.conf', '~/.tmux.conf'],
-            \ ['zshrc', '~/.zshrc'],
-            \ ['profile', '~/.profile'],
-            \ ['m2/settings.xml', '~/.m2/settings.xml'], 
-            \ ['snippets', '~/.vim/UltiSnips'],
-            \ ['zazurc', '~/.zazurc.json']
-            \ ]
-let s:menus.project = {
-            \ 'description': 'Edit your project dotfiles'
-            \ }
-let s:menus.project.file_candidates = [
-            \ ['vimrc - project', '.vimrc'],
-            \ ['.git/info/exclude', '.git/info/exclude'],
-            \ ['local-settings.cfg', '../local-settings.cfg'],
-            \ ['local.properties', 'local.properties'],
-            \ ]
-
-
-call denite#custom#var('menu', 'menus', s:menus)
-
-
-
 set rtp+=~/.fzf
 
 " fuzzy tags
@@ -514,14 +474,14 @@ vnoremap <silent> <leader>ge :<c-u>call ExtractVariable(visualmode(), 1)<cr>
 function! OpFuncDuplicate(type, ...)
     call OpFuncVisualSelection(a:type, "y`]p")
 endfunction
-nnoremap <silent> <leader>gd :set operatorfunc=OpFuncDuplicate<cr>g@
-vnoremap <silent> <leader>gd :<c-u>call OpFuncDuplicate(visualmode(), 1)<cr>
+nnoremap <silent> <leader>d :set operatorfunc=OpFuncDuplicate<cr>g@
+vnoremap <silent> <leader>d :<c-u>call OpFuncDuplicate(visualmode(), 1)<cr>
 
 function! OpFuncDuplicateOnNewLine(type, ...)
     call OpFuncVisualSelection(a:type, "y`]a\<cr>\<cr>\<esc>kp")
 endfunction
-nnoremap <silent> <leader>gD :set operatorfunc=OpFuncDuplicateOnNewLine<cr>g@
-vnoremap <silent> <leader>gD :<c-u>call OpFuncDuplicateOnNewLine(visualmode(), 1)<cr>
+nnoremap <silent> <leader>D :set operatorfunc=OpFuncDuplicateOnNewLine<cr>g@
+vnoremap <silent> <leader>D :<c-u>call OpFuncDuplicateOnNewLine(visualmode(), 1)<cr>
 
 
 " atomist-rugs
