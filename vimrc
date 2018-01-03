@@ -36,7 +36,7 @@ set completeopt=longest,menuone
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set modelines=0
+" set modelines=0
 set ignorecase
 set smartcase
 set incsearch
