@@ -22,9 +22,6 @@
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
-[submodule "vim/bundle/neomru.vim"]
-	path = vim/bundle/neomru.vim
-	url = https://github.com/Shougo/neomru.vim.git
 [submodule "fzf"]
 	path = fzf
 	url = https://github.com/junegunn/fzf.git
@@ -94,9 +91,6 @@
 [submodule "vim/bundle/vim-exchange"]
 	path = vim/bundle/vim-exchange
 	url = https://github.com/tommcdo/vim-exchange
-[submodule "vim/bundle/vim-easymotion"]
-	path = vim/bundle/vim-easymotion
-	url = https://github.com/easymotion/vim-easymotion.git
 [submodule "vim/bundle/vim-elixir"]
 	path = vim/bundle/vim-elixir
 	url = https://github.com/elixir-editors/vim-elixir.git
