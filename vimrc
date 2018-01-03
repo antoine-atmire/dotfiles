@@ -368,43 +368,21 @@ nmap <c-f> <leader><leader>s
 " elm setup
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 0
+
 " elm keybindings
 autocmd vimrc FileType elm nnoremap <leader>pe :ElmFormat<cr>
-" autocmd vimrc FileType elm nnoremap <leader>pe <Plug>(elm-make)
 
-if has("conceal")
-    " set conceallevel otherwise it doesn't do anything
-    setlocal conceallevel=2
-    " specify modes in which to use the conceal feature: cnvi
-    setlocal concealcursor=c
+" keymappings primarly for elm
+" pretty cases -> turns your comma separated list in case statements
+autocmd vimrc FileType elm nmap <leader>pc ^dt,Op==<<A ->wx<leader>pc
 
-    nnoremap <leader>c0 :setlocal conceallevel=0<cr>
-    nnoremap <leader>c1 :setlocal conceallevel=1<cr>
-    nnoremap <leader>c2 :setlocal conceallevel=2<cr>
-    nnoremap <leader>c3 :setlocal conceallevel=3<cr>
-
-    autocmd vimrc FileType elm syntax match arrowRight /->/ conceal cchar=➛
-    autocmd vimrc FileType elm syntax match greaterThan />=/ conceal cchar=≧
-    autocmd vimrc FileType elm syntax match lessThan /<=/ conceal cchar=≦
-    autocmd vimrc FileType elm syntax match elmLambda /\\/ conceal cchar=λ
-    autocmd vimrc FileType elm syntax match elmPipeRight /|>/ conceal cchar=▶
-    autocmd vimrc FileType elm syntax match elmPipeLeft /<|/ conceal cchar=◀
-
-    "autocmd vimrc BufnewFile,BufRead,BufWrite *  syntax match arrowLeft /<!-/ conceal cchar=← "this breaks xml comment highlighting
-    "autocmd vimrc BufnewFile,BufRead,BufWrite * syntax match lessThan /==/ conceal cchar==
-    "autocmd vimrc BufnewFile,BufRead,BufWrite * syntax match lessThan /===/ conceal cchar=≡
-    "autocmd vimrc BufnewFile,BufRead,BufWrite * syntax match doubleDash /--/ conceal cchar=−
-endif
+" ;case adds -> auto-indents and goes to the next line
+autocmd vimrc FileType elm inoremap ;case<space> -><esc>==A<cr>
 
 " gruvbox tuning for elm
 highlight! link elmType GruvBoxYellow
 highlight! link elmTypedef GruvBoxRed
 highlight! link elmImport GruvBoxRed
-
-" keymappings primarly for elm
-" pretty cases -> turns your comma separated list in case statements
-nmap <leader>pc ^dt,Op==<<A ->wx<leader>pc
-
 
 " https://www.reddit.com/r/vim/comments/5yhlpc/had_an_idea/
 function! GoToEndOfTextObject(...)
