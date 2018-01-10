@@ -377,7 +377,8 @@ autocmd vimrc FileType elm nnoremap <leader>pe :ElmFormat<cr>
 autocmd vimrc FileType elm nmap <leader>pc ^dt,Op==<<A ->wx<leader>pc
 
 " ;case adds -> auto-indents and goes to the next line
-autocmd vimrc FileType elm inoremap ;case<space> -><esc>==A<cr>
+autocmd vimrc FileType elm inoremap ; -><space>
+autocmd vimrc FileType elm inoremap $ <bar>><space>
 
 " gruvbox tuning for elm
 highlight! link elmType GruvBoxYellow
