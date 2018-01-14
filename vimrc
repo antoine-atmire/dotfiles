@@ -327,23 +327,72 @@ autocmd vimrc FileType typescript syn clear foldBraces " For leafgarland/typescr
 let g:UltiSnipsExpandTrigger = '<C-j>'
 
 
+" fzf config
 set rtp+=~/.fzf
 
-" fuzzy tags
-nnoremap <leader>ff :call fzf#run({'source':"sed '/^\\!/d;s/\t.*//' ".join(tagfiles()),'sink':'tag', 'right':'50%'})<cr>
-" fuzzy colorschemes
-nnoremap <leader>fc :call fzf#run({'source': map(split(globpath(&rtp, 'colors/*.vim')), 'fnamemodify(v:val, ":t:r")'), 'sink': 'colo', 'left': '35%'})<cr>
-" insert path on new line
-nnoremap <leader>frr :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'norm o'})<cr>
-
-"if executable('rg')
-"nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/rg --files --hidden .', 'sink':'e'})<cr>
-"elseif executable('ag')
+" Open (non-ignored) file in directory
 if executable('ag')
-    nnoremap <leader>t :call fzf#run({'source':'/usr/local/bin/ag --hidden --ignore .git -g ""', 'sink':'e','options':'--preview "cat {}" --preview-window="up"'})<cr>
+    command! FuzzyFile call fzf#run({
+                \ 'source':'/usr/local/bin/ag --hidden --ignore .git -g ""',
+                \ 'sink':'e',
+                \ 'options':'--preview "cat {}" --preview-window="up"'
+                \ })
 else
-    nnoremap <leader>t :call fzf#run({'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"', 'sink':'e'})<cr>
+    command! FuzzyFile call fzf#run({
+                \ 'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"',
+                \  'sink':'e'
+                \ })<cr>
 endif
+nnoremap ff :FuzzyFile<cr>
+
+" Go to tag
+command! FuzzyTags call fzf#run({
+            \ 'source':"sed '/^\\!/d;s/\t.*//' ".join(tagfiles()),
+            \ 'sink':'tag',
+            \ 'right':'50%'
+            \ })
+nnoremap <leader>ft :FuzzyTags<cr>
+
+" Search lines in all open vim buffers
+function! s:line_handler(l)
+    let keys = split(a:l, ':\t')
+    exec 'buf' keys[0]
+    exec keys[1]
+    normal! ^zz
+endfunction
+function! s:buffer_lines()
+    let res = []
+    for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+        call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+    endfor
+    return res
+endfunction
+command! FuzzyLines call fzf#run({
+            \   'source':  <sid>buffer_lines(),
+            \   'sink':    function('<sid>line_handler'),
+            \   'options': '--extended --nth=3..',
+            \   'down':    '60%'
+            \})
+nnoremap <leader>fl :FuzzyLines<cr>
+
+"Open buffer by name
+function! s:buflist()
+    redir => ls
+    silent ls
+    redir END
+    return split(ls, '\n')
+endfunction
+function! s:bufopen(e)
+    execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+command! FuzzyBuffer call fzf#run({
+            \   'source':  reverse(<sid>buflist()),
+            \   'sink':    function('<sid>bufopen'),
+            \   'options': '+m',
+            \   'down':    len(<sid>buflist()) + 2
+            \ })
+nnoremap <leader>fb :FuzzyBuffer<cr>
+
 
 if executable('rg')
     set grepprg=rg\ --vimgrep
@@ -370,33 +419,36 @@ let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 0
 
 " elm keybindings
-autocmd vimrc FileType elm nnoremap <leader>pe :ElmFormat<cr>
+autocmd vimrc FileType elm nnoremap <buffer> <leader>pe :ElmFormat<cr>
 
 " keymappings primarly for elm
 " pretty cases -> turns your comma separated list in case statements
-autocmd vimrc FileType elm nmap <leader>pc ^dt,Op==<<A ->wx<leader>pc
+autocmd vimrc FileType elm nmap <buffer> <leader>pc ^dt,Op==<<A ->wx<leader>pc
 
-" ;case adds -> auto-indents and goes to the next line
-autocmd vimrc FileType elm inoremap ; -><space>
-autocmd vimrc FileType elm inoremap $ <bar>><space>
+" experimental insert mode mappings
+autocmd vimrc FileType elm inoremap <buffer> ; -><space>
+autocmd vimrc FileType elm inoremap <buffer> $ <bar>><space>
+
+" go to the definition of the function under the cursoer
+" Ilist is the ilist variant from romainl/vim-qlist
+autocmd vimrc FileType elm nnoremap <buffer> <leader>] yiw:Ilist ^\s*<c-r>"\s.*=$<cr>
 
 " gruvbox tuning for elm
 highlight! link elmType GruvBoxYellow
 highlight! link elmTypedef GruvBoxRed
 highlight! link elmImport GruvBoxRed
 
-" https://www.reddit.com/r/vim/comments/5yhlpc/had_an_idea/
-function! GoToEndOfTextObject(...)
-    normal! `]
-endfunction
-nnoremap <silent> ]a :set operatorfunc=GoToEndOfTextObject<cr>g@a
-nnoremap <silent> ]i :set operatorfunc=GoToEndOfTextObject<cr>g@i
-
-function! GoToStartOfTextObject(...)
-    normal! `[
-endfunction
-nnoremap <silent> [a :set operatorfunc=GoToStartOfTextObject<cr>g@a
-nnoremap <silent> [i :set operatorfunc=GoToStartOfTextObject<cr>g@i
+" " https://www.reddit.com/r/vim/comments/5yhlpc/had_an_idea/
+" function! GoToEndOfTextObject(...)
+"     normal! `]
+" endfunction
+" nnoremap <silent> ]a :set operatorfunc=GoToEndOfTextObject<cr>g@a
+" nnoremap <silent> ]i :set operatorfunc=GoToEndOfTextObject<cr>g@i
+" function! GoToStartOfTextObject(...)
+"     normal! `[
+" endfunction
+" nnoremap <silent> [a :set operatorfunc=GoToStartOfTextObject<cr>g@a
+" nnoremap <silent> [i :set operatorfunc=GoToStartOfTextObject<cr>g@i
 
 " nnoremap <silent> [m :set operatorfunc=GoToStartOfTextObject<cr>g@
 " nnoremap <silent> ]m :set operatorfunc=GoToEndOfTextObject<cr>g@

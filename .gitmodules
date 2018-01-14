@@ -94,3 +94,6 @@
 [submodule "vim/bundle/vim-elixir"]
 	path = vim/bundle/vim-elixir
 	url = https://github.com/elixir-editors/vim-elixir.git
+[submodule "vim/bundle/vim-qlist"]
+	path = vim/bundle/vim-qlist
+	url = https://github.com/romainl/vim-qlist
