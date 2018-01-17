@@ -443,10 +443,14 @@ autocmd vimrc FileType elm nnoremap <buffer> <leader>] yiw:Ilist ^\s*<c-r>"\s.*=
 " I add .elm at the end so Html.elm is not skipped when the directory Html/
 " exists in the same directory...
 function! GetElmFilenameFix(word)
-  let l:word = a:word
-  " replace module dots with slash
-  let l:word = substitute(l:word,'\.','/','g') .'.elm'
-  return l:word
+    let l:word = a:word
+    if match(l:word, "VirtualDom") >= 0
+        let l:word = ""
+    else
+        " replace module dots with slash
+        let l:word = substitute(l:word,'\.','/','g') .'.elm'
+    endif
+    return l:word
 endfunction
 autocmd vimrc FileType elm setlocal includeexpr=GetElmFilenameFix(v:fname)
 
