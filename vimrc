@@ -1,4 +1,4 @@
-noremap é @
+nnoremap é @
 let mapleader = " "
 
 if has("unix")
@@ -341,9 +341,15 @@ else
     command! FuzzyFile call fzf#run({
                 \ 'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"',
                 \  'sink':'e'
-                \ })<cr>
+                \ })
 endif
-nnoremap ff :FuzzyFile<cr>
+nnoremap <leader>ff :FuzzyFile<cr>
+" the more idiomatic way which works without external tools:
+" usage: <leader>t part-of-file-name <c-d><tab><c-n><c-n>...
+nnoremap <leader>t :e **/*
+" keep build artifacts out of the completion 
+" (the files we don't ever want to load in vim)
+set wildignore+=**/target/**
 
 " Go to tag
 command! FuzzyTags call fzf#run({
