@@ -183,7 +183,8 @@ nmap <leader>pq 0f&r<leader>pq
 " ctags command
 " nnoremap <leader>ct :!ctags -R<space>
 nnoremap <leader>ct :AsyncRun ctags -R<space>
-nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol -12 %:p" Enter<cr>
+" nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol -12 %:p" Enter<cr>
+nnoremap <leader>ag :!git log --abbrev-commit --pretty='\%Cred\%h\%Creset -\%C(yellow)\%d\%Creset \%s \%Cgreen(\%cr) \%C(bold blue)<\%an>\%Creset' -12 %:p<cr>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:buffer<space>
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
@@ -349,7 +350,7 @@ nnoremap <leader>ff :FuzzyFile<cr>
 nnoremap <leader>t :e **/*
 " keep build artifacts out of the completion 
 " (the files we don't ever want to load in vim)
-set wildignore+=**/target/**
+set wildignore+=**/target/**,**/overlays/**
 
 " Go to tag
 command! FuzzyTags call fzf#run({

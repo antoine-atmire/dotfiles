@@ -5,6 +5,8 @@ alias gsur='git submodule update --remote --merge'
 alias gpo='git push origin'
 alias gpom='git push origin master'
 alias grso="git remote show origin | grep Fetch | awk '{print \$3}'"
+alias gg="git branch | tr -d \* | sed '/->/d' | xargs git grep --line-number"
+alias gga="git branch -a | tr -d \* | sed '/->/d' | xargs git grep --line-number"
 
 function gbC () {echo $(git_current_branch) | pbcopy}
 
