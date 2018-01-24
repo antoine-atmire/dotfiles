@@ -157,7 +157,7 @@ alias gpm='echo "➜ git checkout master" && git checkout master && echo "➜ gi
 
 alias echopath="echo $PATH | tr -s ':' '\n'"
 alias grep="grep --color=auto"
-alias remote_debug_java_opts_on='export JAVA_OPTS="-Dfile.encoding=UTF-8 -Xmx512m -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5004"'
+alias remote_debug_java_opts_on='export JAVA_OPTS="-Dfile.encoding=UTF-8 -Xmx512m -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5010"'
 alias remote_debug_java_opts_off='export JAVA_OPTS="-Dfile.encoding=UTF-8 -Xmx512m"'
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias tmux="TERM=screen-256color-bce tmux"
