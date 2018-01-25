@@ -1,5 +1,5 @@
 # esc-e to <c-x><c-e>
-bindkey "^[e" edit-command-line
+# bindkey "^[e" edit-command-line
 # bindkey "^[r" does not work but the line below does exactly that...
 bindkey -s "\er" "source ~/.zshrc^J"
 
