@@ -346,12 +346,19 @@ else
                 \ })
 endif
 nnoremap <leader>ff :FuzzyFile<cr>
+
 " the more idiomatic way which works without external tools:
 " usage: <leader>t part-of-file-name <c-d><tab><c-n><c-n>...
 nnoremap <leader>t :e **/*
+
 " keep build artifacts out of the completion 
 " (the files we don't ever want to load in vim)
 set wildignore+=**/target/**,**/overlays/**
+
+" wildmenu enables an interactive completion menu for <tab> when there are
+" multiple matches. So <c-d> can be skipped and we don't have to wait for the
+" completion twice.
+set wildmenu
 
 " Go to tag
 command! FuzzyTags call fzf#run({
