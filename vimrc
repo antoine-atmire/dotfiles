@@ -187,7 +187,7 @@ nnoremap <leader>ct :AsyncRun ctags -R<space>
 " nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol -12 %:p" Enter<cr>
 nnoremap <leader>ag :!git log --abbrev-commit --pretty='\%Cred\%h\%Creset -\%C(yellow)\%d\%Creset \%s \%Cgreen(\%cr) \%C(bold blue)<\%an>\%Creset' -12 %:p<cr>
 " list of buffers, ready to choose one by number
-nnoremap <leader>m :buffers<cr>:buffer<space>
+nnoremap <leader>m :buffers<cr>:b
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
 " nnoremap <leader><tab> :buffer #<cr>
 " go to the next double empty lines
@@ -368,27 +368,28 @@ command! FuzzyTags call fzf#run({
             \ })
 nnoremap <leader>ft :FuzzyTags<cr>
 
-" Search lines in all open vim buffers
-function! s:line_handler(l)
-    let keys = split(a:l, ':\t')
-    exec 'buf' keys[0]
-    exec keys[1]
-    normal! ^zz
-endfunction
-function! s:buffer_lines()
-    let res = []
-    for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
-        call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
-    endfor
-    return res
-endfunction
-command! FuzzyLines call fzf#run({
-            \   'source':  <sid>buffer_lines(),
-            \   'sink':    function('<sid>line_handler'),
-            \   'options': '--extended --nth=3..',
-            \   'down':    '60%'
-            \})
-nnoremap <leader>fl :FuzzyLines<cr>
+" " Search lines in all open vim buffers
+" function! s:line_handler(l)
+"     let keys = split(a:l, ':\t')
+"     exec 'buf' keys[0]
+"     exec keys[1]
+"     normal! ^zz
+" endfunction
+" function! s:buffer_lines()
+"     let res = []
+"     for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+"         call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+"     endfor
+"     return res
+" endfunction
+" command! FuzzyLines call fzf#run({
+"             \   'source':  <sid>buffer_lines(),
+"             \   'sink':    function('<sid>line_handler'),
+"             \   'options': '--extended --nth=3..',
+"             \   'down':    '60%'
+"             \})
+" nnoremap <leader>fl :FuzzyLines<cr>
+nnoremap <leader>gl :g//#<Left><Left>
 
 "Open buffer by name
 function! s:buflist()
@@ -565,5 +566,45 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
+
+" https://gist.github.com/romainl/047aca21e338df7ccf771f96858edb86
+" make list-like commands more intuitive
+function! CCR()
+    let l:cmdline = getcmdline()
+    if l:cmdline =~# '\v\C^(ls|files|buffers)'
+        " like :ls but prompts for a buffer command
+        return "\<CR>:b"
+    elseif l:cmdline =~# '\v\C/(#|nu|num|numb|numbe|number)$'
+        " like :g//# but prompts for a command
+        return "\<CR>:"
+    elseif l:cmdline =~# '\v\C^(dli|il)'
+        " like :dlist or :ilist but prompts for a count for :djump or :ijump
+        return "\<CR>:" . l:cmdline[0] . 'j  ' . split(l:cmdline, ' ')[1] . "\<S-Left>\<Left>"
+    elseif l:cmdline =~# '\v\C^(cli|lli)'
+        " like :clist or :llist but prompts for an error/location number
+        return "\<CR>:sil " . repeat(l:cmdline[0], 2) . "\<Space>"
+    elseif l:cmdline =~# '\C^old'
+        " like :oldfiles but prompts for an old file to edit
+        set nomore
+        return "\<CR>:sil se more|e #<"
+    elseif l:cmdline =~# '\C^changes'
+        " like :changes but prompts for a change to jump to
+        set nomore
+        return "\<CR>:sil se more|norm! g;\<S-Left>"
+    elseif l:cmdline =~# '\C^ju'
+        " like :jumps but prompts for a position to jump to
+        set nomore
+        return "\<CR>:sil se more|norm! \<C-o>\<S-Left>"
+    elseif l:cmdline =~# '\C^marks'
+        " like :marks but prompts for a mark to jump to
+        return "\<CR>:norm! `"
+    elseif l:cmdline =~# '\C^undol'
+        " like :undolist but prompts for a change to undo
+        return "\<CR>:u "
+    else
+        return "\<CR>"
+    endif
+endfunction
+cnoremap <expr> <CR> CCR()
 " ideas
 " https://github.com/t9md/vim-quickhl
