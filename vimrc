@@ -617,5 +617,51 @@ cnoremap <expr> <CR> CCR()
 nnoremap ` :marks<cr>:norm! `
 nnoremap <leader><c-o> :set nomore<cr>:jumps<cr>:set more<bar>norm! <S-left>
 
+
+" from: http://vim.wikia.com/wiki/Indent_text_object
+" Changes to allow blank lines in blocks, and
+" Top level blocks (zero indent) separated by two or more blank lines.
+" Usage: source <thisfile> 
+" Press: vai, vii to select outer/inner blocks by indetation.
+" Press: vii, yii, dii, cii to select/yank/delete/change an indented block.
+onoremap <silent>ai :<C-u>call IndTxtObj(0)<CR>
+onoremap <silent>ii :<C-u>call IndTxtObj(1)<CR>
+vnoremap <silent>ai <Esc>:call IndTxtObj(0)<CR><Esc>gv
+vnoremap <silent>ii <Esc>:call IndTxtObj(1)<CR><Esc>gv
+
+function! IndTxtObj(inner)
+    let l:curcol = col('.')
+    let l:curline = line('.')
+    let l:lastline = line('$')
+    let l:i = indent(line('.'))
+    if getline('.') !~# '^\\s*$'
+        let l:p = line('.') - 1
+        let l:pp = line('.') - 2
+        let l:nextblank = getline(l:p) =~# '^\\s*$'
+        let l:nextnextblank = getline(l:pp) =~# '^\\s*$'
+        while l:p > 0 && ((l:i == 0 && (!l:nextblank || (l:pp > 0 && !l:nextnextblank))) || (l:i > 0 && ((indent(l:p) >= l:i && !(l:nextblank && a:inner)) || (l:nextblank && !a:inner))))
+            -
+            let l:p = line('.') - 1
+            let l:pp = line('.') - 2
+            let l:nextblank = getline(l:p) =~# '^\\s*$'
+            let l:nextnextblank = getline(l:pp) =~# '^\\s*$'
+        endwhile
+        normal! 0V
+        call cursor(l:curline, l:curcol)
+        let l:p = line('.') + 1
+        let l:pp = line('.') + 2
+        let l:nextblank = getline(l:p) =~# '^\\s*$'
+        let l:nextnextblank = getline(l:pp) =~# '^\\s*$'
+        while l:p <= l:lastline && ((l:i == 0 && (!l:nextblank || l:pp < l:lastline && !l:nextnextblank)) || (l:i > 0 && ((indent(l:p) >= l:i && !(l:nextblank && a:inner)) || (l:nextblank && !a:inner))))
+            +
+            let l:p = line('.') + 1
+            let l:pp = line('.') + 2
+            let l:nextblank = getline(l:p) =~# '^\\s*$'
+            let l:nextnextblank = getline(l:pp) =~# '^\\s*$'
+        endwhile
+        normal! $
+    endif
+endfunction
+
 " ideas
 " https://github.com/t9md/vim-quickhl
