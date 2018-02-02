@@ -570,43 +570,52 @@ augroup END
 
 " https://gist.github.com/romainl/047aca21e338df7ccf771f96858edb86
 " make list-like commands more intuitive
-" function! CCR()
-"     let l:cmdline = getcmdline()
-"     if l:cmdline =~# '\v\C^(ls|files|buffers)'
-"         " like :ls but prompts for a buffer command
-"         return "\<CR>:b"
-"     elseif l:cmdline =~# '\v\C/(#|nu|num|numb|numbe|number)$'
-"         " like :g//# but prompts for a command
-"         return "\<CR>:"
-"     elseif l:cmdline =~# '\v\C^(dli|il)'
-"         " like :dlist or :ilist but prompts for a count for :djump or :ijump
-"         return "\<CR>:" . l:cmdline[0] . 'j  ' . split(l:cmdline, ' ')[1] . "\<S-Left>\<Left>"
-"     elseif l:cmdline =~# '\v\C^(cli|lli)'
-"         " like :clist or :llist but prompts for an error/location number
-"         return "\<CR>:sil " . repeat(l:cmdline[0], 2) . "\<Space>"
-"     elseif l:cmdline =~# '\C^old'
-"         " like :oldfiles but prompts for an old file to edit
-"         set nomore
-"         return "\<CR>:sil se more|e #<"
-"     elseif l:cmdline =~# '\C^changes'
-"         " like :changes but prompts for a change to jump to
-"         set nomore
-"         return "\<CR>:sil se more|norm! g;\<S-Left>"
-"     elseif l:cmdline =~# '\C^ju'
-"         " like :jumps but prompts for a position to jump to
-"         set nomore
-"         return "\<CR>:sil se more|norm! \<C-o>\<S-Left>"
-"     elseif l:cmdline =~# '\C^marks'
-"         " like :marks but prompts for a mark to jump to
-"         return "\<CR>:norm! `"
-"     elseif l:cmdline =~# '\C^undol'
-"         " like :undolist but prompts for a change to undo
-"         return "\<CR>:u "
-"     else
-"         return "\<CR>"
-"     endif
-" endfunction
-" cnoremap <expr> <CR> CCR()
+function! CCR()
+    let l:cmdtype = getcmdtype()
+    if l:cmdtype ==# ':'
+        let l:cmdline = getcmdline()
+        if l:cmdline =~# '\v\C^(ls|files|buffers)'
+            " like :ls but prompts for a buffer command
+            return "\<CR>:b"
+        elseif l:cmdline =~# '\v\C/(#|nu|num|numb|numbe|number)$'
+            " like :g//# but prompts for a command
+            return "\<CR>:"
+        elseif l:cmdline =~# '\v\C^(dli|il)'
+            " like :dlist or :ilist but prompts for a count for :djump or :ijump
+            return "\<CR>:" . l:cmdline[0] . 'j  ' . split(l:cmdline, ' ')[1] . "\<S-Left>\<Left>"
+        elseif l:cmdline =~# '\v\C^(cli|lli)'
+            " like :clist or :llist but prompts for an error/location number
+            return "\<CR>:sil " . repeat(l:cmdline[0], 2) . "\<Space>"
+        " why not use :bro old (browse oldfiles)
+        " elseif l:cmdline =~# '\C^old'
+            " like :oldfiles but prompts for an old file to edit
+            " set nomore
+            " return "\<CR>:sil se more|e #<"
+        elseif l:cmdline =~# '\C^changes'
+            " like :changes but prompts for a change to jump to
+            set nomore
+            return "\<CR>:sil se more|norm! g;\<S-Left>"
+        elseif l:cmdline =~# '\C^ju'
+            " like :jumps but prompts for a position to jump to
+            set nomore
+            return "\<CR>:sil se more|norm! \<C-o>\<S-Left>"
+        elseif l:cmdline =~# '\C^marks'
+            " like :marks but prompts for a mark to jump to
+            return "\<CR>:norm! `"
+        elseif l:cmdline =~# '\C^undol'
+            " like :undolist but prompts for a change to undo
+            return "\<CR>:u "
+        else
+            return "\<CR>"
+        endif
+    else
+        return "\<CR>"
+    endif
+endfunction
+cnoremap <expr> <CR> CCR()
+
+nnoremap ` :marks<cr>:norm! `
+nnoremap <leader><c-o> :set nomore<cr>:jumps<cr>:set more<bar>norm! <S-left>
 
 " ideas
 " https://github.com/t9md/vim-quickhl
