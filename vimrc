@@ -92,7 +92,7 @@ augroup END
 " " Custom StatusLine colors
 " autocmd vimrc InsertEnter * highlight StatusLine ctermbg=0 ctermfg=3
 " autocmd vimrc InsertLeave * highlight StatusLine ctermbg=None ctermfg=0
-autocmd vimrc ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
+" autocmd vimrc ColorScheme * highlight StatusLine ctermbg=None ctermfg=0
 
 
 " only show colorcolumns for lines that are longer
