@@ -359,6 +359,7 @@ set wildignore+=**/target/**,**/overlays/**
 " multiple matches. So <c-d> can be skipped and we don't have to wait for the
 " completion twice.
 set wildmenu
+set wildmode=list:full
 
 " Go to tag
 command! FuzzyTags call fzf#run({
