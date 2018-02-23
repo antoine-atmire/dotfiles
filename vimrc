@@ -33,7 +33,7 @@ set ruler
 set scrolloff=999
 set scrolljump=-30
 set completeopt=longest,menuone
-set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 " set modelines=0
@@ -87,6 +87,7 @@ set statusline+=\ %{ALEGetStatusLine()}
 " define a group `vimrc` and initialize.
 augroup vimrc
   autocmd!
+  "clears all events so they don't happen twice when reloading vimrc
 augroup END
 
 " " Custom StatusLine colors
@@ -202,6 +203,9 @@ nnoremap <leader>pp "+p
 vnoremap <leader>pp "+p
 " set current working directory to the parent of the current buffer
 nnoremap <leader>cd :cd %:p:h
+" swap ; and :
+nnoremap ; :
+nnoremap : ;
 
 " http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
 " replace current word and go to the next occurrence (n. combo)
@@ -353,7 +357,9 @@ nnoremap <leader>t :e **/*
 
 " keep build artifacts out of the completion 
 " (the files we don't ever want to load in vim)
-set wildignore+=**/target/**,**/overlays/**
+set wildignore+=**/target/**
+set wildignore+=**/overlays/**
+set wildignore+=**/node_modules/**
 
 " wildmenu enables an interactive completion menu for <tab> when there are
 " multiple matches. So <c-d> can be skipped and we don't have to wait for the
@@ -447,9 +453,9 @@ autocmd vimrc FileType elm inoremap <buffer> ; -><space>
 autocmd vimrc FileType elm inoremap <buffer> $ <bar>><space>
 
 " gruvbox tuning for elm
-highlight! link elmType GruvBoxYellow
-highlight! link elmTypedef GruvBoxRed
-highlight! link elmImport GruvBoxRed
+autocmd vimrc FileType elm highlight! link elmType GruvBoxYellow
+autocmd vimrc FileType elm highlight! link elmTypedef GruvBoxRed
+autocmd vimrc FileType elm highlight! link elmImport GruvBoxRed
 
 
 " go to the definition of the function under the cursoer
