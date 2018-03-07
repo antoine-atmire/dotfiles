@@ -372,6 +372,7 @@ command! FuzzyTags call fzf#run({
             \ 'right':'50%'
             \ })
 nnoremap <leader>ft :FuzzyTags<cr>
+nnoremap <leader>gt :tag<space>
 
 " " Search lines in all open vim buffers
 " function! s:line_handler(l)
@@ -529,11 +530,11 @@ endfunction
 nnoremap <silent> <leader>V :set operatorfunc=SelectMotion<cr>g@
 vnoremap <silent> <leader>V :<c-u>call SelectMotion(visualmode(), 1)<cr>
 
-function! ReplaceByDashes(type, ...)
-    call OpFuncVisualSelection(a:type, "r-")
-endfunction
-nnoremap <silent> <leader>gt :set operatorfunc=ReplaceByDashes<cr>g@
-vnoremap <silent> <leader>gt :<c-u>call ReplaceByDashes(visualmode(), 1)<cr>
+" function! ReplaceByDashes(type, ...)
+"     call OpFuncVisualSelection(a:type, "r-")
+" endfunction
+" nnoremap <silent> <leader>gt :set operatorfunc=ReplaceByDashes<cr>g@
+" vnoremap <silent> <leader>gt :<c-u>call ReplaceByDashes(visualmode(), 1)<cr>
 
 function! ExtractVariable(type, ...)
     call OpFuncVisualSelection(a:type, "sceestar\<esc>Oceestar = \<esc>p^")
