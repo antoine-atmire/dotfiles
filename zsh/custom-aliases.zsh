@@ -173,6 +173,8 @@ alias -g F="| fzf"
 alias -g J="| jq '.'"
 alias -g X="| tidy -xml -q -i"
 
+# ag "pattern" avim 
+alias -g avim="--vimgrep > /tmp/q && vim -q /tmp/q"
 
 # docker build -t vim-antoine .
 #alias v='docker run -ti --rm -v $(pwd):/home/developer/workspace vim-antoine'

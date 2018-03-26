@@ -163,7 +163,7 @@ nmap <leader>en "/<leader>eq
 " help in a tab
 nnoremap <leader>h :tab help<space>
 " grep word under cursor
-nnoremap <leader>gg :silent lgrep <c-r><c-w><cr>
+nnoremap <leader>gg :silent grep <c-r><c-w><cr>
 nnoremap <leader>r :source $MYVIMRC<cr>
 nnoremap <leader>q @
 " new line with spaces until the cursor
@@ -291,6 +291,7 @@ nnoremap <leader>lg :silent lgrep<space>
 " quickfix mappings
 nnoremap <leader>co :copen<cr>
 nnoremap <leader>cc :cclose<cr>
+nnoremap <leader>cg :silent grep<space>
 
 
 " command abbreviations
@@ -304,8 +305,8 @@ let g:completor_min_chars = 4
 " ale plugin
 let g:ale_sign_column_always = 0
 let g:ale_sign_error = '>>'
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
 
 let g:ale_fixers = {}
 let g:ale_fixers['typescript'] = ['prettier']
