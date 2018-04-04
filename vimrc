@@ -30,7 +30,7 @@ set showcmd
 " set number
 " set relativenumber
 set ruler
-set scrolloff=999
+set scrolloff=0
 set scrolljump=-30
 set completeopt=longest,menuone
 set softtabstop=4
@@ -243,6 +243,7 @@ nnoremap <leader>y "+y
 " just so you don't have to correct yourself when accidentally typing ZZ in
 " insert mode
 inoremap ZZZ <esc>ZZ
+
 " xml tags (taken from ragtag)
 inoremap <c-x>t <esc>ciW<lt><c-r>"></<C-R>"><Esc>F<i
 inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-i
@@ -250,6 +251,9 @@ inoremap <c-x><cr> <esc>ciW<lt><c-r>"><cr><cr></<C-R>"><Esc>-i
 inoremap <c-x><space> <esc>vbc <c-r>" <left>
 " go to last xml attribute location
 inoremap <c-l>a <esc>?><cr>i
+
+inoremap <c-x>" <esc>ciW"<c-r>""
+
 " close brackets and place cursor inside
 " inoremap (c ()<esc>i
 " inoremap [c []<esc>i
@@ -364,7 +368,7 @@ set wildignore+=**/node_modules/**
 " multiple matches. So <c-d> can be skipped and we don't have to wait for the
 " completion twice.
 set wildmenu
-set wildmode=list:full
+set wildmode=list:longest,list:full
 
 " Go to tag
 command! FuzzyTags call fzf#run({
