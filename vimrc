@@ -25,7 +25,7 @@ vnoremap k gk
 vnoremap <bs> h
 
 set encoding=utf-8
-set laststatus=2
+set laststatus=0 "2 is always
 set showcmd
 " set number
 " set relativenumber
