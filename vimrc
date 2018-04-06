@@ -377,7 +377,8 @@ set wildmode=list:longest,list:full
 command! FuzzyTags call fzf#run({
             \ 'source':"sed '/^\\!/d;s/\t.*//' ".join(tagfiles()),
             \ 'sink':'tag',
-            \ 'right':'50%'
+            \ 'right':'50%',
+            \ 'options':'-i'
             \ })
 nnoremap <leader>ft :FuzzyTags<cr>
 nnoremap <leader>gt :tag<space>
