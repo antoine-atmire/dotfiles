@@ -309,7 +309,7 @@ cnoremap ~~ /tmp/
 let g:completor_min_chars = 4
 
 " ale plugin
-let g:ale_set_signs = 0
+set signcolumn=no
 let g:ale_sign_column_always = 0
 let g:ale_sign_error = '>>'
 let g:ale_set_loclist = 1
