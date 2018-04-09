@@ -129,7 +129,7 @@ set background=dark
 
 let g:gruvbox_invert_selection = 0
 
-source ~/.vimrc_background
+" source ~/.vimrc_background
 " colorscheme molokai
 colorscheme gruvbox
 " colorscheme apprentice
