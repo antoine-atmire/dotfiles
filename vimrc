@@ -116,8 +116,8 @@ autocmd vimrc InsertEnter * highlight CursorColumn ctermbg=None
 autocmd vimrc InsertLeave * highlight CursorLine ctermbg=235
 autocmd vimrc InsertLeave * highlight CursorColumn ctermbg=235
 
-autocmd vimrc ColorScheme * highlight ALEErrorLine ctermbg=238
-autocmd vimrc ColorScheme * highlight ALEWarningLine ctermbg=236
+autocmd vimrc ColorScheme * highlight ALEErrorLine ctermbg=None ctermfg=1
+autocmd vimrc ColorScheme * highlight ALEWarningLine ctermbg=None ctermfg=2
 
 " useful mapping when trying out commands
 nnoremap <leader>:: Y:@"<cr>
