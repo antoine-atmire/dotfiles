@@ -32,7 +32,7 @@ set showcmd
 set ruler
 set scrolloff=0
 set scrolljump=-30
-set completeopt=longest,menuone
+set completeopt=noinsert,noselect,menuone
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -303,10 +303,6 @@ nnoremap <leader>cg :silent grep<space>
 " command abbreviations
 cnoremap ~~ /tmp/
 
-
-"completor plugin
-" let g:completor_auto_trigger = 0
-let g:completor_min_chars = 4
 
 " ale plugin
 set signcolumn=no
