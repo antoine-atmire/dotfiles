@@ -33,6 +33,7 @@ set ruler
 set scrolloff=0
 set scrolljump=-30
 set completeopt=noinsert,noselect,menuone
+set complete-=i
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -376,8 +377,8 @@ command! FuzzyTags call fzf#run({
             \ 'right':'50%',
             \ 'options':'-i'
             \ })
-nnoremap <leader>ft :FuzzyTags<cr>
-nnoremap <leader>gt :tag<space>
+" nnoremap <leader>ft :FuzzyTags<cr>
+nnoremap <leader>ft :tjump<space>
 
 " " Search lines in all open vim buffers
 " function! s:line_handler(l)
