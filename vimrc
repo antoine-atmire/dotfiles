@@ -378,7 +378,7 @@ command! FuzzyTags call fzf#run({
             \ 'options':'-i'
             \ })
 " nnoremap <leader>ft :FuzzyTags<cr>
-nnoremap <leader>ft :tjump<space>
+nnoremap <leader>ft :tjump<space>/*<left>
 
 " " Search lines in all open vim buffers
 " function! s:line_handler(l)
