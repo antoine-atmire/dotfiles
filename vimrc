@@ -29,7 +29,7 @@ set laststatus=0 "2 is always
 set showcmd
 " set number
 " set relativenumber
-set ruler
+" set ruler
 set scrolloff=0
 set scrolljump=-30
 set completeopt=noinsert,noselect,menuone
