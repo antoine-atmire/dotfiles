@@ -187,7 +187,7 @@ vnoremap <leader>px !xmllint --format -<CR>
 nmap <leader>pq 0f&r<leader>pq
 " ctags command
 " nnoremap <leader>ct :!ctags -R<space>
-nnoremap <leader>ct :AsyncRun ctags -R<space>
+" nnoremap <leader>ct :AsyncRun ctags -R<space>
 " nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol -12 %:p" Enter<cr>
 nnoremap <leader>ag :!git log --abbrev-commit --pretty='\%Cred\%h\%Creset -\%C(yellow)\%d\%Creset \%s \%Cgreen(\%cr) \%C(bold blue)<\%an>\%Creset' -12 %:p<cr>
 " list of buffers, ready to choose one by number
@@ -456,6 +456,7 @@ autocmd vimrc FileType elm nmap <buffer> <leader>pc ^dt,Op==<<A ->wx<leader>pc
 " experimental insert mode mappings
 autocmd vimrc FileType elm inoremap <buffer> ; -><space>
 autocmd vimrc FileType elm inoremap <buffer> $ <bar>><space>
+autocmd vimrc FileType elm inoremap <buffer> # <<bar><space>
 
 " gruvbox tuning for elm
 autocmd vimrc FileType elm highlight! link elmType GruvBoxYellow
