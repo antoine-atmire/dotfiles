@@ -53,8 +53,8 @@ set shiftround  " When at 3 spaces, and I hit > ... go to 4, not 5
 set hidden
 set lazyredraw
 set scroll=15 "number of lines to scroll for c-u and c-d
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 set autoread
 
 " use project specific .vimrc
@@ -304,6 +304,9 @@ nnoremap <leader>cg :silent grep<space>
 " command abbreviations
 cnoremap ~~ /tmp/
 
+let g:indentLine_char = '│'
+let g:indentLine_color_term = 235
+                
 
 " ale plugin
 set signcolumn=no
