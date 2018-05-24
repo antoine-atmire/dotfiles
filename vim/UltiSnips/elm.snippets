@@ -58,6 +58,10 @@ ${1:value} ->
 	${2:code}
 endsnippet
 
-snippet imp3 "import x as x exposing (x)" b
-import ${2:package}.${1:x} as $1 exposing ($1)
+snippet impex "import x as x exposing (x)" b
+import ${1:package} exposing ($2)
+endsnippet
+
+snippet impax "import x as x exposing (x)" b
+import ${1:package} as $2 exposing ($3)
 endsnippet
