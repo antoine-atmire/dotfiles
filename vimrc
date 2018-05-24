@@ -191,6 +191,10 @@ nmap <leader>pq 0f&r<leader>pq
 " nnoremap <leader>ct :AsyncRun ctags -R<space>
 " nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol -12 %:p" Enter<cr>
 nnoremap <leader>ag :!git log --abbrev-commit --pretty='\%Cred\%h\%Creset -\%C(yellow)\%d\%Creset \%s \%Cgreen(\%cr) \%C(bold blue)<\%an>\%Creset' -12 %:p<cr>
+" copy yanked text to tmux pane
+nnoremap <leader>ay :silent ! tmux send-keys -t 0 "<c-r>"" Enter<cr><c-l>
+" delete current line and send it to tmux pane
+nnoremap <leader>ad dd:silent ! tmux send-keys -t 0 "<c-r>"" Enter<cr><c-l>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:b
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
