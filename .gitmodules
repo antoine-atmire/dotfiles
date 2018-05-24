@@ -97,9 +97,6 @@
 [submodule "vim/bundle/vim-qlist"]
 	path = vim/bundle/vim-qlist
 	url = https://github.com/romainl/vim-qlist
-[submodule "vim/bundle/vim-vertical-move"]
-	path = vim/bundle/vim-vertical-move
-	url = https://github.com/vim-utils/vim-vertical-move.git
 [submodule "vim/bundle/indentLine"]
 	path = vim/bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
