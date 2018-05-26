@@ -162,6 +162,7 @@ nnoremap <leader>ew :e /tmp/w2p<cr>
 " from https://github.com/mhinz/vim-galore#quickly-edit-your-macros
 " Use it like this <leader>eq or "q<leader>eq 
 nnoremap <leader>eq  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+" fix a miss typed search with the above trick
 nmap <leader>en "/<leader>eq
 " help in a tab
 nnoremap <leader>h :tab help<space>
@@ -170,7 +171,7 @@ nnoremap <leader>gg :silent grep <c-r><c-w><cr>
 nnoremap <leader>r :source $MYVIMRC<cr>
 nnoremap <leader>q @
 " new line with spaces until the cursor
-nnoremap <leader>o y0opVr $a<bs>
+nnoremap <leader>o y0opVr $a
 " copy all lines to clipboard
 nnoremap <leader>cx gg"+yG
 " resync syntax highlighting
@@ -190,6 +191,10 @@ nmap <leader>pq 0f&r<leader>pq
 " nnoremap <leader>ct :AsyncRun ctags -R<space>
 " nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol -12 %:p" Enter<cr>
 nnoremap <leader>ag :!git log --abbrev-commit --pretty='\%Cred\%h\%Creset -\%C(yellow)\%d\%Creset \%s \%Cgreen(\%cr) \%C(bold blue)<\%an>\%Creset' -12 %:p<cr>
+" copy yanked text to tmux pane
+nnoremap <leader>ay :silent ! tmux send-keys -t 0 "<c-r>"" Enter<cr><c-l>
+" delete current line and send it to tmux pane
+nnoremap <leader>ad dd:silent ! tmux send-keys -t 0 "<c-r>"" Enter<cr><c-l>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:b
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
@@ -200,12 +205,14 @@ vnoremap <leader>} }/\n\n\n/1<cr>
 " go to the previous double empty lines
 nnoremap <leader>{ {?\n\n\n?1<cr>
 vnoremap <leader>{ {?\n\n\n?1<cr>
-" let's automatically go into vim-mode command line
-" nnoremap : :<c-f>i
 nnoremap <leader>pp "+p
 vnoremap <leader>pp "+p
 " set current working directory to the parent of the current buffer
 nnoremap <leader>cd :cd %:p:h
+" wrap curent line in ()
+nnoremap (( mMI(<esc>A)<esc>`M
+" wrap the rest of the line in ()
+nnoremap )) mMi(<esc>A)<esc>`M
 
 
 " http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/

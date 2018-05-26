@@ -44,5 +44,6 @@ zle -N run-help-list-snippets
 bindkey '^j' snippet-expand
 
 # set up some default snippets
-snippet-add date      '$(date +"%Y-%m-%d")'
+snippet-add date       '$(date +"%Y-%m-%d")'
 snippet-add dslog      '$DSDEVBASE/$DSNAME/dspace/log/dspace.log.$(date +"%Y-%m-%d")'
+snippet-add D          '2> /dev/null | docker exec -i $DSNAME psql -v ON_ERROR_STOP=1 -U dspace dspace6'

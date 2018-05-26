@@ -58,9 +58,6 @@
 [submodule "vim/bundle/vim-commentary"]
 	path = vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule "vim/bundle/vim-eunuch"]
-	path = vim/bundle/vim-eunuch
-	url = https://github.com/tpope/vim-eunuch.git
 [submodule "zsh/plugins/zsh-autosuggestions"]
 	path = zsh/plugins/zsh-autosuggestions
 	url = git://github.com/zsh-users/zsh-autosuggestions
@@ -97,9 +94,6 @@
 [submodule "vim/bundle/vim-qlist"]
 	path = vim/bundle/vim-qlist
 	url = https://github.com/romainl/vim-qlist
-[submodule "vim/bundle/vim-vertical-move"]
-	path = vim/bundle/vim-vertical-move
-	url = https://github.com/vim-utils/vim-vertical-move.git
 [submodule "vim/bundle/indentLine"]
 	path = vim/bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
