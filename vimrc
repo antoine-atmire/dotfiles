@@ -315,12 +315,18 @@ let g:ale_sign_error = '>>'
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 
+let g:ale_linters = {}
 let g:ale_fixers = {}
+
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_javascript_prettier_options = '--single-quote --tab-width=4'
 autocmd vimrc FileType typescript nnoremap <leader>pe :ALEFix<cr>
 autocmd vimrc FileType javascript nnoremap <leader>pe :ALEFix<cr>
+
+let g:ale_linters['haskell'] = ['hlint', 'hdevtools', 'hfmt']
+
+let g:ale_fixers['haskell'] = ['hfmt']
 
 " tsuquyomi 
 let g:tsuquyomi_disable_quickfix=1
@@ -630,7 +636,7 @@ function! CCR()
 endfunction
 cnoremap <expr> <CR> CCR()
 
-nnoremap ` :marks<cr>:norm! `
+nnoremap <leader>` :marks<cr>:norm! `
 nnoremap <leader><c-o> :set nomore<cr>:jumps<cr>:set more<bar>norm! <S-left>
 
 
