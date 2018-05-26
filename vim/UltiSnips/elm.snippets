@@ -1,42 +1,66 @@
-snippet starterBeginnerProgram "elm starter template" b
-import Html as H exposing (Html, h1, button, div, text)
+snippet start "elm starter template" b
+module Main exposing (..)
+
+import Html exposing (Html, button, div, h1, text)
 import Html.Events exposing (onClick)
 
 
 main : Program Never Model Msg
 main =
-  H.beginnerProgram
-    { model = model
-    , view = view
-    , update = update
-    }
+    Html.program
+        { init = initialModel |> thatsIt
+        , view = view
+        , update = update
+        , subscriptions = subscriptions
+        }
+
+
+thatsIt : a -> ( a, Cmd b )
+thatsIt model =
+    ( model, Cmd.none )
 
 
 
 -- MODEL
 
 
-type alias Model = Int
+type alias Model =
+    Int
 
-model : Model
-model =
-  0
+
+initialModel : Model
+initialModel =
+    0
 
 
 
 -- UPDATE
 
 
-type Msg = Increment | Decrement
+type Msg
+    = Increment
+    | Decrement
 
-update : Msg -> Model -> Model
-update msg model =
-  case msg of
-    Increment ->
-      model + 1
 
-    Decrement ->
-      model - 1
+update : Msg -> Model -> ( Model, Cmd Msg )
+update message model =
+    case message of
+        Increment ->
+            (model + 1)
+                |> thatsIt
+
+        Decrement ->
+            (model - 1)
+                |> thatsIt
+
+
+
+-- SUBSCRIPTIONS
+
+
+subscriptions : a -> Sub Msg
+subscriptions model =
+    Sub.none
 
 
 
@@ -45,12 +69,12 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-  div []
-    [ h1 [] [ text "heading 1" ]
-    , button [ onClick Decrement ] [ text "-" ]
-    , div [] [ text (toString model) ]
-    , button [ onClick Increment ] [ text "+" ]
-    ]
+    div []
+        [ h1 [] [ text "heading 1" ]
+        , button [ onClick Decrement ] [ text "-" ]
+        , div [] [ text (toString model) ]
+        , button [ onClick Increment ] [ text "+" ]
+        ]
 endsnippet
 
 snippet -> "subcase" b
