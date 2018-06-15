@@ -573,7 +573,7 @@ nnoremap <silent> <leader>ge :set operatorfunc=ExtractVariable<cr>g@
 vnoremap <silent> <leader>ge :<c-u>call ExtractVariable(visualmode(), 1)<cr>
 
 function! OpFuncDuplicate(type, ...)
-    call OpFuncVisualSelection(a:type, "y`]p")
+    call OpFuncVisualSelection(a:type, 'y`]p')
 endfunction
 nnoremap <silent> <leader>d :set operatorfunc=OpFuncDuplicate<cr>g@
 vnoremap <silent> <leader>d :<c-u>call OpFuncDuplicate(visualmode(), 1)<cr>
