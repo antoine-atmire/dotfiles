@@ -57,6 +57,9 @@ set scroll=15 "number of lines to scroll for c-u and c-d
 " set cursorcolumn
 set autoread
 
+set mouse=n
+set mouse+=v
+
 " use project specific .vimrc
 set exrc
 " must be used when using exrc
