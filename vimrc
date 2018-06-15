@@ -1,9 +1,11 @@
+set encoding=utf-8
+scriptencoding utf-8
 nnoremap é @
-let mapleader = " "
+let g:mapleader = ' '
 
-if has("unix")
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
+if has('unix')
+    let s:uname = system('uname')
+    if s:uname ==? 'Darwin\n'
         " Do Mac stuff here
         "let g:pathogen_disabled = ['YouCompleteMe']
     endif
@@ -24,7 +26,6 @@ vnoremap k gk
 
 vnoremap <bs> h
 
-set encoding=utf-8
 set laststatus=0 "2 is always
 set showcmd
 " set number
@@ -41,6 +42,7 @@ set expandtab
 set ignorecase
 set smartcase
 set incsearch
+set hlsearch
 " wait a little longer when leader is pressed
 " set timeoutlen=2000
 set confirm "confirmation dialog when closing a file with changes
@@ -216,6 +218,8 @@ nnoremap <leader>cd :cd %:p:h
 nnoremap (( mMI(<esc>A)<esc>`M
 " wrap the rest of the line in ()
 nnoremap )) mMi(<esc>A)<esc>`M
+" to clear the hlsearch
+nnoremap <leader>/ :let @/=''<cr>
 
 
 " http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
@@ -356,7 +360,7 @@ let g:UltiSnipsExpandTrigger = '<C-j>'
 
 
 " fzf config
-set rtp+=~/.fzf
+set runtimepath+=~/.fzf
 
 " Open (non-ignored) file in directory
 if executable('ag')
@@ -424,10 +428,10 @@ nnoremap <leader>gl :g//#<Left><Left>
 
 "Open buffer by name
 function! s:buflist()
-    redir => ls
+    redir => l:ls
     silent ls
     redir END
-    return split(ls, '\n')
+    return split(l:ls, '\n')
 endfunction
 function! s:bufopen(e)
     execute 'buffer' matchstr(a:e, '^[ 0-9]*')
@@ -520,44 +524,44 @@ autocmd vimrc FileType elm setlocal includeexpr=GetElmFilenameFix(v:fname)
 " nnoremap <silent> ]m :set operatorfunc=GoToEndOfTextObject<cr>g@
 
 function! OpFuncVisualSelection(type, aCommand)
-	  let sel_save = &selection
-	  let &selection = "inclusive"
-	  let reg_save = @@
+    let l:sel_save = &selection
+    let &selection = 'inclusive'
+    let l:reg_save = @@
 
-      let l:command = "normal! "
-	  if a:0  " Invoked from Visual mode, use gv command.
-          let l:command.="gv"
-      elseif a:type == 'V' || a:type == "\<c-v>"
-          let l:command.="gv"
-	  elseif a:type == 'line'
-          let l:command.="`[V`]"
-	  else
-          let l:command.="`[v`]"
-	  endif
+    let l:command = 'normal! '
+    if a:0  " Invoked from Visual mode, use gv command.
+        let l:command.='gv'
+    elseif a:type ==# 'V' || a:type ==? '\<c-v>'
+        let l:command.='gv'
+    elseif a:type ==? 'line'
+        let l:command.='`[V`]'
+    else
+        let l:command.='`[v`]'
+    endif
 
-      let l:command.=a:aCommand
+    let l:command.=a:aCommand
 
-      " echom a:type . " " . l:command
-      silent exe l:command
+    " echom a:type . " " . l:command
+    silent exe l:command
 
-	  let &selection = sel_save
-	  let @@ = reg_save
+    let &selection = l:sel_save
+    let @@ = l:reg_save
 endfunction
 
 function! SelectMotion(type, ...)
-    call OpFuncVisualSelection(a:type, "")
+    call OpFuncVisualSelection(a:type, '')
 endfunction
 nnoremap <silent> <leader>v :set operatorfunc=SelectMotion<cr>g@
 vnoremap <silent> <leader>v :<c-u>call SelectMotion(visualmode(), 1)<cr>
 
 function! SelectMotionLineWise(type, ...)
-    call OpFuncVisualSelection("line", "")
+    call OpFuncVisualSelection('line', '')
 endfunction
 nnoremap <silent> <leader>V :set operatorfunc=SelectMotion<cr>g@
 vnoremap <silent> <leader>V :<c-u>call SelectMotion(visualmode(), 1)<cr>
 
 " function! ReplaceByDashes(type, ...)
-"     call OpFuncVisualSelection(a:type, "r-")
+"     call OpFuncVisualSelection(a:type, 'r-')
 " endfunction
 " nnoremap <silent> <leader>gt :set operatorfunc=ReplaceByDashes<cr>g@
 " vnoremap <silent> <leader>gt :<c-u>call ReplaceByDashes(visualmode(), 1)<cr>
@@ -588,9 +592,9 @@ autocmd vimrc BufNewFile,BufRead *.rt setlocal ft=typescript
 " create non existing parent directories on save
 function! s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
+        let l:dir=fnamemodify(a:file, ':h')
+        if !isdirectory(l:dir)
+            call mkdir(l:dir, 'p')
         endif
     endif
 endfunction
