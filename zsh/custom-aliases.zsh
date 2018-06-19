@@ -162,15 +162,16 @@ alias remote_debug_java_opts_off='export JAVA_OPTS="-Dfile.encoding=UTF-8 -Xmx51
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias tmux="TERM=screen-256color-bce tmux"
 
-alias -g C='| pbcopy'
-alias -g H='| head -n'
-alias -g T='| tail -n'
-alias -g G='| grep'
+alias -g C="| pbcopy"
+alias -g D="| tr -d '\n'"
+alias -g F="| fzf"
+alias -g G="| grep"
+alias -g H="| head -n"
+alias -g J="| jq '.'"
 alias -g L="| less"
 alias -g M="| most"
 alias -g N="> /dev/null 2> /dev/null"
-alias -g F="| fzf"
-alias -g J="| jq '.'"
+alias -g T="| tail -n"
 alias -g X="| tidy -xml -q -i"
 
 # ag "pattern" avim 
