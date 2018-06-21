@@ -18,3 +18,13 @@ ${1}(${2}) {
 	${3}
 }
 endsnippet
+
+snippet confman "get dspace configuration property"
+ConfigurationManager.get$1Property("$2","$3",$4);
+endsnippet
+
+snippet inb "if not blank"
+if (StringUtils.isNotBlank($1)) {
+    $2
+}
+endsnippet
