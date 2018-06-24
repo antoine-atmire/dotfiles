@@ -220,7 +220,8 @@ nnoremap (( mMI(<esc>A)<esc>`M
 nnoremap )) mMi(<esc>A)<esc>`M
 " to clear the hlsearch
 nnoremap <leader>/ :let @/=''<cr>
-
+" wrap the line so far in ()
+nnoremap () mMI(<esc>`Mla)<esc>
 
 " http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
 " replace current word and go to the next occurrence (n. combo)
@@ -469,17 +470,9 @@ nmap <c-f> <leader><leader>s
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 0
 
-" elm keybindings
-autocmd vimrc FileType elm nnoremap <buffer> <leader>pe :ElmFormat<cr>
-
 " keymappings primarly for elm
 " pretty cases -> turns your comma separated list in case statements
 autocmd vimrc FileType elm nmap <buffer> <leader>pc ^dt,Op==<<A ->wx<leader>pc
-
-" experimental insert mode mappings
-autocmd vimrc FileType elm inoremap <buffer> ; -><space>
-autocmd vimrc FileType elm inoremap <buffer> $ <bar>><space>
-autocmd vimrc FileType elm inoremap <buffer> # <<bar><space>
 
 " gruvbox tuning for elm
 autocmd vimrc FileType elm highlight! link elmType GruvBoxYellow
@@ -506,6 +499,14 @@ function! GetElmFilenameFix(word)
     return l:word
 endfunction
 autocmd vimrc FileType elm setlocal includeexpr=GetElmFilenameFix(v:fname)
+
+
+"java setup 
+autocmd Filetype java set makeprg=make\ --silent
+set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+autocmd Filetype java nnoremap <buffer> <leader>am :w<cr>:silent make<cr><c-l>
+autocmd Filetype java nnoremap <leader>aq :w<cr>:silent ! tmux send-keys -t 0 "make --silent && make run --silent" Enter<cr><c-l>
+autocmd Filetype java nnoremap <leader>ar :silent ! tmux send-keys -t 0 "make run --silent" Enter<cr><c-l>
 
 
 " " https://www.reddit.com/r/vim/comments/5yhlpc/had_an_idea/
