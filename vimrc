@@ -333,11 +333,14 @@ let g:ale_set_quickfix = 0
 let g:ale_linters = {}
 let g:ale_fixers = {}
 
+" use prettier through ale
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['java'] = ['prettier']
 let g:ale_javascript_prettier_options = '--single-quote --tab-width=4'
 autocmd vimrc FileType typescript nnoremap <leader>pe :ALEFix<cr>
 autocmd vimrc FileType javascript nnoremap <leader>pe :ALEFix<cr>
+autocmd vimrc FileType java nnoremap <leader>pe :ALEFix<cr>
 
 let g:ale_linters['haskell'] = ['hlint', 'hdevtools', 'hfmt']
 
@@ -507,7 +510,12 @@ set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 autocmd Filetype java nnoremap <buffer> <leader>am :w<cr>:silent make<cr><c-l>
 autocmd Filetype java nnoremap <leader>aq :w<cr>:silent ! tmux send-keys -t 0 "make --silent && make run --silent" Enter<cr><c-l>
 autocmd Filetype java nnoremap <leader>ar :silent ! tmux send-keys -t 0 "make run --silent" Enter<cr><c-l>
+autocmd Filetype java nnoremap <silent> <leader>gm :set operatorfunc=ExtractJavaMethod<cr>g@
+autocmd Filetype java vnoremap <silent> <leader>gm :<c-u>call ExtractJavaMethod(visualmode(), 1)<cr>
 
+function! ExtractJavaMethod(type, ...)
+    call OpFuncVisualSelection(a:type, "sceestar\<esc>]M\<cr>o ceestar { return \<esc>pa; }\<esc>I")
+endfunction
 
 " " https://www.reddit.com/r/vim/comments/5yhlpc/had_an_idea/
 " function! GoToEndOfTextObject(...)
