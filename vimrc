@@ -709,4 +709,6 @@ function! IndTxtObj(inner)
 endfunction
 
 " ideas
-" https://github.com/t9md/vim-quickhl
+" https://github.com/t9md/vim-quickhl -> highlight word under cursor
+" https://github.com/machakann/vim-columnmove  -> vertical f/t and word motions
+" https://github.com/junegunn/gv.vim -> browse git changes for file or selection
