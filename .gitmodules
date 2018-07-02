@@ -97,3 +97,9 @@
 [submodule "vim/bundle/indentLine"]
 	path = vim/bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/bundle/gv.vim"]
+	path = vim/bundle/gv.vim
+	url = https://github.com/junegunn/gv.vim
