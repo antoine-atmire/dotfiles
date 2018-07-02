@@ -504,18 +504,6 @@ endfunction
 autocmd vimrc FileType elm setlocal includeexpr=GetElmFilenameFix(v:fname)
 
 
-"java setup 
-autocmd Filetype java set makeprg=make\ --silent
-set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
-autocmd Filetype java nnoremap <buffer> <leader>am :w<cr>:silent make<cr><c-l>
-autocmd Filetype java nnoremap <leader>aq :w<cr>:silent ! tmux send-keys -t 0 "make --silent && make run --silent" Enter<cr><c-l>
-autocmd Filetype java nnoremap <leader>ar :silent ! tmux send-keys -t 0 "make run --silent" Enter<cr><c-l>
-autocmd Filetype java nnoremap <silent> <leader>gm :set operatorfunc=ExtractJavaMethod<cr>g@
-autocmd Filetype java vnoremap <silent> <leader>gm :<c-u>call ExtractJavaMethod(visualmode(), 1)<cr>
-
-function! ExtractJavaMethod(type, ...)
-    call OpFuncVisualSelection(a:type, "sceestar\<esc>]M\<cr>o ceestar { return \<esc>pa; }\<esc>I")
-endfunction
 
 " " https://www.reddit.com/r/vim/comments/5yhlpc/had_an_idea/
 " function! GoToEndOfTextObject(...)
