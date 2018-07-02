@@ -103,3 +103,6 @@
 [submodule "vim/bundle/gv.vim"]
 	path = vim/bundle/gv.vim
 	url = https://github.com/junegunn/gv.vim
+[submodule "vim/bundle/vim-slash"]
+	path = vim/bundle/vim-slash
+	url = https://github.com/junegunn/vim-slash
