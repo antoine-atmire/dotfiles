@@ -11,12 +11,28 @@ if has('unix')
     endif
 endif
 
-execute pathogen#infect()
-" silent! execute pathogen#helptags()
 syntax enable
 filetype plugin indent on
 
 packadd! matchit
+
+packadd minpac
+call minpac#init()
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+call minpac#add('ElmCast/elm-vim')
+call minpac#add('SirVer/ultisnips')
+call minpac#add('junegunn/gv.vim')
+call minpac#add('junegunn/vim-slash')
+call minpac#add('morhetz/gruvbox')
+call minpac#add('romainl/vim-qlist')
+call minpac#add('tommcdo/vim-exchange')
+call minpac#add('tpope/vim-commentary')
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('tpope/vim-repeat')
+call minpac#add('tpope/vim-surround')
+call minpac#add('tpope/vim-unimpaired')
+call minpac#add('w0rp/ale')
 
 " move vertically visually and not line-wise (for wrapped lines)
 nnoremap j gj
@@ -362,6 +378,11 @@ autocmd vimrc FileType typescript syn clear foldBraces " For leafgarland/typescr
 
 let g:UltiSnipsExpandTrigger = '<C-j>'
 
+" vim-slash
+if has('timers')
+  " Blink 1 times with 400ms interval
+  noremap <expr> <plug>(slash-after) slash#blink(1, 400)
+endif
 
 " fzf config
 set runtimepath+=~/.fzf

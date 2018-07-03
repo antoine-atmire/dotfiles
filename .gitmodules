@@ -1,108 +1,15 @@
-[submodule "vim/bundle/vim-javascript-syntax"]
-	path = vim/bundle/vim-javascript-syntax
-	url = https://github.com/jelera/vim-javascript-syntax.git
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/typescript-vim"]
-	path = vim/bundle/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim.git
-[submodule "vim/bundle/vim-js-indent"]
-	path = vim/bundle/vim-js-indent
-	url = https://github.com/jason0x43/vim-js-indent.git
-[submodule "vim/bundle/vimproc.vim"]
-	path = vim/bundle/vimproc.vim
-	url = https://github.com/Shougo/vimproc.vim.git
-[submodule "vim/bundle/vim-js-pretty-template"]
-	path = vim/bundle/vim-js-pretty-template
-	url = https://github.com/Quramy/vim-js-pretty-template
-[submodule "vim/bundle/vim-snippets"]
-	path = vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
-[submodule "vim/bundle/ultisnips"]
-	path = vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
 [submodule "fzf"]
 	path = fzf
 	url = https://github.com/junegunn/fzf.git
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "vim/bundle/elm-vim"]
-	path = vim/bundle/elm-vim
-	url = https://github.com/ElmCast/elm-vim.git
-[submodule "vim/bundle/mustache"]
-	path = vim/bundle/mustache
-	url = git://github.com/mustache/vim-mustache-handlebars.git
-[submodule "vim/bundle/gruvbox"]
-	path = vim/bundle/gruvbox
-	url = https://github.com/antoine-atmire/gruvbox.git
-[submodule "vim/bundle/base16-vim"]
-	path = vim/bundle/base16-vim
-	url = https://github.com/chriskempson/base16-vim.git
 [submodule "base16-shell"]
 	path = base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
-[submodule "vim/bundle/vim-vinegar"]
-	path = vim/bundle/vim-vinegar
-	url = https://github.com/antoine-atmire/vim-vinegar.git
-[submodule "vim/bundle/vim-unimpaired"]
-	path = vim/bundle/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "vim/bundle/vim-repeat"]
-	path = vim/bundle/vim-repeat
-	url = https://github.com/tpope/vim-repeat.git
-[submodule "vim/bundle/ale"]
-	path = vim/bundle/ale
-	url = https://github.com/w0rp/ale.git
-[submodule "vim/bundle/vim-commentary"]
-	path = vim/bundle/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
 [submodule "zsh/plugins/zsh-autosuggestions"]
 	path = zsh/plugins/zsh-autosuggestions
 	url = git://github.com/zsh-users/zsh-autosuggestions
-[submodule "vim/bundle/asyncrun"]
-	path = vim/bundle/asyncrun
-	url = https://github.com/skywind3000/asyncrun.vim.git
-[submodule "vim/bundle/tsuquyomi"]
-	path = vim/bundle/tsuquyomi
-	url = https://github.com/Quramy/tsuquyomi.git
-[submodule "zsh/plugins/zsh-syntax-highlighting"]
-	path = zsh/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "vim/bundle/editorconfig-vim"]
-	path = vim/bundle/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim.git
-[submodule "vim/bundle/vim-abolish"]
-	path = vim/bundle/vim-abolish
-	url = https://github.com/tpope/vim-abolish.git
-[submodule "vim/bundle/vim-man"]
-	path = vim/bundle/vim-man
-	url = https://github.com/vim-utils/vim-man.git
-[submodule "vim/bundle/roamer.vim"]
-	path = vim/bundle/roamer.vim
-	url = https://github.com/abaldwin88/roamer.vim
-[submodule "vim/bundle/undotree"]
-	path = vim/bundle/undotree
-	url = https://github.com/mbbill/undotree
-[submodule "vim/bundle/vim-exchange"]
-	path = vim/bundle/vim-exchange
-	url = https://github.com/tommcdo/vim-exchange
-[submodule "vim/bundle/vim-elixir"]
-	path = vim/bundle/vim-elixir
-	url = https://github.com/elixir-editors/vim-elixir.git
-[submodule "vim/bundle/vim-qlist"]
-	path = vim/bundle/vim-qlist
-	url = https://github.com/romainl/vim-qlist
-[submodule "vim/bundle/indentLine"]
-	path = vim/bundle/indentLine
-	url = https://github.com/Yggdroot/indentLine.git
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive
-[submodule "vim/bundle/gv.vim"]
-	path = vim/bundle/gv.vim
-	url = https://github.com/junegunn/gv.vim
-[submodule "vim/bundle/vim-slash"]
-	path = vim/bundle/vim-slash
-	url = https://github.com/junegunn/vim-slash
+[submodule "vim/pack/minpac/opt/minpac"]
+	path = vim/pack/minpac/opt/minpac
+	url = https://github.com/k-takata/minpac.git
