@@ -22,8 +22,10 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 
 call minpac#add('ElmCast/elm-vim')
 call minpac#add('SirVer/ultisnips')
+call minpac#add('janko-m/vim-test')
 call minpac#add('junegunn/gv.vim')
 call minpac#add('junegunn/vim-slash')
+call minpac#add('machakann/vim-columnmove')
 call minpac#add('morhetz/gruvbox')
 call minpac#add('romainl/vim-qlist')
 call minpac#add('tommcdo/vim-exchange')
@@ -71,8 +73,8 @@ set shiftround  " When at 3 spaces, and I hit > ... go to 4, not 5
 set hidden
 set lazyredraw
 set scroll=15 "number of lines to scroll for c-u and c-d
-" set cursorline
-" set cursorcolumn
+set cursorline
+set cursorcolumn
 set autoread
 
 set mouse=n
@@ -716,8 +718,3 @@ function! IndTxtObj(inner)
         normal! $
     endif
 endfunction
-
-" ideas
-" https://github.com/t9md/vim-quickhl -> highlight word under cursor
-" https://github.com/machakann/vim-columnmove  -> vertical f/t and word motions
-" https://github.com/junegunn/gv.vim -> browse git changes for file or selection
