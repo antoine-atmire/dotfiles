@@ -22,6 +22,7 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 
 call minpac#add('ElmCast/elm-vim')
 call minpac#add('SirVer/ultisnips')
+call minpac#add('antoine-atmire/vim-elmc')
 call minpac#add('janko-m/vim-test')
 call minpac#add('junegunn/gv.vim')
 call minpac#add('junegunn/vim-slash')
