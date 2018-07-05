@@ -35,6 +35,7 @@ call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-repeat')
 call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-unimpaired')
+call minpac#add('vim-utils/vim-man')
 call minpac#add('w0rp/ale')
 
 " move vertically visually and not line-wise (for wrapped lines)
@@ -124,7 +125,7 @@ augroup END
 " only show colorcolumns for lines that are longer
 call matchadd('ColorColumn', '\%81v', 100)
 " iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-autocmd vimrc ColorScheme * highlight ColorColumn ctermbg=7 ctermfg=0
+autocmd vimrc ColorScheme * highlight ColorColumn ctermbg=237
 
 " use background from terminal, not from colorscheme
 autocmd vimrc ColorScheme * highlight Normal ctermbg=None
