@@ -108,7 +108,8 @@ set statusline=%y " file type
 set statusline+=\ %f " relative file path
 set statusline+=\ %L\ lines "total lines
 set statusline+=\ %l:%v " current line:column
-set statusline+=\ %{ALEGetStatusLine()}
+" set statusline+=\ %{ALEGetStatusLine()}
+" ALEGetStatusLine doesn't exist anymore
 
 " define a group `vimrc` and initialize.
 augroup vimrc
@@ -387,6 +388,10 @@ if has('timers')
   " Blink 1 times with 400ms interval
   noremap <expr> <plug>(slash-after) slash#blink(1, 400)
 endif
+
+
+" vim-test plugin
+let g:test#strategy = 'vimterminal'
 
 " fzf config
 set runtimepath+=~/.fzf
