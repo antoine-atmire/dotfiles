@@ -367,20 +367,6 @@ let g:ale_linters['haskell'] = ['hlint', 'hdevtools', 'hfmt']
 
 let g:ale_fixers['haskell'] = ['hfmt']
 
-" tsuquyomi 
-let g:tsuquyomi_disable_quickfix=1
-let g:tsuquyomi_disable_default_mappings=1
-autocmd vimrc FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
-autocmd vimrc FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
-autocmd vimrc FileType typescript nnoremap <buffer> <leader>6 :TsuquyomiReferences<cr>
-
-
-
-" vim-js-pretty-template
-autocmd vimrc FileType javascript JsPreTmpl html
-autocmd vimrc FileType typescript JsPreTmpl html
-autocmd vimrc FileType typescript syn clear foldBraces " For leafgarland/typescript-vim users only.
-
 let g:UltiSnipsExpandTrigger = '<C-j>'
 
 " vim-slash
