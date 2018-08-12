@@ -218,9 +218,21 @@ nmap <leader>pq 0f&r<leader>pq
 " nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol -12 %:p" Enter<cr>
 nnoremap <leader>ag :!git log --abbrev-commit --pretty='\%Cred\%h\%Creset -\%C(yellow)\%d\%Creset \%s \%Cgreen(\%cr) \%C(bold blue)<\%an>\%Creset' -12 %:p<cr>
 " copy yanked text to tmux pane
-nnoremap <leader>ay :silent ! tmux send-keys -t 0 "<c-r>"" Enter<cr><c-l>
+nnoremap <leader>ay :silent ! tmux send-keys -t 0 "<c-r>=
+            \substitute(
+            \substitute(
+            \substitute(
+            \substitute(
+            \substitute(@",'"','\\"','g')
+            \,'\n','" Enter "','g')
+            \,'!','\\!','g')
+            \,'%','\\%','g')
+            \,'#','\\#','g')
+            \<cr>" Enter<cr><c-l>
+" send current paragaph to tmux pane
+nmap <leader>aa yip<leader>ay
 " delete current line and send it to tmux pane
-nnoremap <leader>ad dd:silent ! tmux send-keys -t 0 "<c-r>"" Enter<cr><c-l>
+nmap <leader>ad dd<leader>ay
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:b
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
@@ -379,6 +391,12 @@ endif
 " vim-test plugin
 let g:test#strategy = 'vimterminal'
 
+
+xmap [v <Plug>(columnmove-b)
+xmap ]v <Plug>(columnmove-w)
+nmap [v <Plug>(columnmove-b)
+nmap ]v <Plug>(columnmove-w)
+
 " fzf config
 set runtimepath+=~/.fzf
 
@@ -501,7 +519,7 @@ autocmd vimrc FileType elm highlight! link elmImport GruvBoxRed
 
 " go to the definition of the function under the cursoer
 " Ilist is the ilist variant from romainl/vim-qlist
-autocmd vimrc FileType elm nnoremap <buffer> <leader>] yiw:Ilist ^\s*<c-r>"\s.*=$<cr>
+autocmd vimrc FileType elm nnoremap <buffer> <leader>] yiw:Ilist \s<c-r>"\s.*=$<cr>
 
 
 " I add .elm at the end so Html.elm is not skipped when the directory Html/
