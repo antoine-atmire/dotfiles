@@ -26,6 +26,7 @@ call minpac#add('antoine-atmire/vim-elmc')
 call minpac#add('janko-m/vim-test')
 call minpac#add('junegunn/gv.vim')
 call minpac#add('junegunn/vim-slash')
+call minpac#add('kien/rainbow_parentheses.vim')
 call minpac#add('machakann/vim-columnmove')
 call minpac#add('morhetz/gruvbox')
 call minpac#add('romainl/vim-qlist')
@@ -498,10 +499,10 @@ endif
 " undotree plugin
 nnoremap <leader>u :UndotreeToggle<cr>
 
-" easymotion
-" let g:EasyMotion_do_mapping=0
-" noremap <c-f> <Plug>(easymotion-s)
-nmap <c-f> <leader><leader>s
+
+" rainbow bracket plugin
+autocmd vimrc VimEnter * RainbowParenthesesToggle
+autocmd vimrc Syntax * RainbowParenthesesLoadRound
 
 " elm setup
 let g:elm_setup_keybindings = 0
