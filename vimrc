@@ -23,6 +23,7 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('ElmCast/elm-vim')
 call minpac#add('SirVer/ultisnips')
 call minpac#add('antoine-atmire/vim-elmc')
+call minpac#add('google/vim-searchindex')
 call minpac#add('janko-m/vim-test')
 call minpac#add('junegunn/gv.vim')
 call minpac#add('junegunn/vim-slash')
@@ -199,6 +200,7 @@ nmap <leader>en "/<leader>eq
 nnoremap <leader>h :tab help<space>
 " grep word under cursor
 nnoremap <leader>gg :silent grep <c-r><c-w><cr>
+nnoremap <leader>gy :silent grep <c-r>"<cr>
 nnoremap <leader>r :source $MYVIMRC<cr>
 nnoremap <leader>q @
 " new line with spaces until the cursor
@@ -383,6 +385,18 @@ autocmd vimrc FileType java nnoremap <leader>pe :ALEFix<cr>
 let g:ale_linters['haskell'] = ['hlint', 'hdevtools', 'hfmt']
 
 let g:ale_fixers['haskell'] = ['hfmt']
+
+" tsuquyomi 
+" let g:tsuquyomi_disable_quickfix=1
+" let g:tsuquyomi_disable_default_mappings=1
+" autocmd vimrc FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
+" autocmd vimrc FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
+" autocmd vimrc FileType typescript nnoremap <buffer> <leader>6 :TsuquyomiReferences<cr>
+
+" vim-js-pretty-template
+" autocmd vimrc FileType javascript JsPreTmpl html
+" autocmd vimrc FileType typescript JsPreTmpl html
+" autocmd vimrc FileType typescript syn clear foldBraces " For leafgarland/typescript-vim users only.
 
 let g:UltiSnipsExpandTrigger = '<C-j>'
 
