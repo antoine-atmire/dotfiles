@@ -520,6 +520,7 @@ nnoremap <leader>u :UndotreeToggle<cr>
 
 
 " rainbow bracket plugin
+let g:rbpt_max = 16
 autocmd vimrc VimEnter * RainbowParenthesesToggle
 autocmd vimrc Syntax * RainbowParenthesesLoadRound
 
