@@ -23,27 +23,29 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('ElmCast/elm-vim')
 call minpac#add('SirVer/ultisnips')
 call minpac#add('antoine-atmire/vim-elmc')
-call minpac#add('bhurlow/vim-parinfer')
 call minpac#add('google/vim-searchindex')
 call minpac#add('janko-m/vim-test')
 call minpac#add('junegunn/gv.vim')
 call minpac#add('junegunn/vim-slash')
-call minpac#add('kien/rainbow_parentheses.vim')
 call minpac#add('machakann/vim-columnmove')
 call minpac#add('morhetz/gruvbox')
 call minpac#add('romainl/vim-qlist')
 call minpac#add('tommcdo/vim-exchange')
-call minpac#add('tpope/vim-classpath')
 call minpac#add('tpope/vim-commentary')
-call minpac#add('tpope/vim-fireplace')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-repeat')
-call minpac#add('tpope/vim-salve')
 call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-unimpaired')
-call minpac#add('venantius/vim-cljfmt')
 call minpac#add('vim-utils/vim-man')
 call minpac#add('w0rp/ale')
+
+" clojure
+" call minpac#add('bhurlow/vim-parinfer')
+" call minpac#add('kien/rainbow_parentheses.vim')
+" call minpac#add('tpope/vim-classpath')
+" call minpac#add('tpope/vim-fireplace')
+" call minpac#add('tpope/vim-salve')
+" call minpac#add('venantius/vim-cljfmt')
 
 " move vertically visually and not line-wise (for wrapped lines)
 nnoremap j gj
@@ -520,9 +522,9 @@ nnoremap <leader>u :UndotreeToggle<cr>
 
 
 " rainbow bracket plugin
-let g:rbpt_max = 16
-autocmd vimrc VimEnter * RainbowParenthesesToggle
-autocmd vimrc Syntax * RainbowParenthesesLoadRound
+" let g:rbpt_max = 16
+" autocmd vimrc VimEnter * RainbowParenthesesToggle
+" autocmd vimrc Syntax * RainbowParenthesesLoadRound
 
 " elm setup
 let g:elm_setup_keybindings = 0
