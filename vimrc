@@ -40,7 +40,7 @@ call minpac#add('vim-utils/vim-man')
 call minpac#add('w0rp/ale')
 
 " clojure
-" call minpac#add('bhurlow/vim-parinfer')
+" call minpac#add('eraserhd/parinfer-rust')
 " call minpac#add('kien/rainbow_parentheses.vim')
 " call minpac#add('tpope/vim-classpath')
 " call minpac#add('tpope/vim-fireplace')

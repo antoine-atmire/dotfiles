@@ -1,2 +1,2 @@
 setlocal formatprg=rustfmt
-nnoremap <buffer> <leader>pe :RustFmt<cr>
+nnoremap <buffer> <leader>pe mMgggqG`M
