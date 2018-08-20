@@ -58,12 +58,15 @@ function gvff () {
     local REVISION=$(git log --pretty=oneline --abbrev-commit |
     fzf-tmux | cut -d ' ' -f 1)
     echo $REVISION
-    git show $REVISION | vim -
+    git show $REVISION
 }
 
 function gaff () {
-    # git add | fzf
     git add $(git status -s | fzf-tmux | cut -c4-)
+}
+
+function gdff () {
+    git diff $(git status -s | fzf-tmux | cut -c4-)
 }
 
 function gitlab () {
