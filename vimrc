@@ -285,7 +285,7 @@ nnoremap ]o9 :set scrolloff=1<cr>
 vnoremap < <gv
 vnoremap > >gv
 " search for selected text
-vnoremap / y/<c-r>"
+vnoremap <leader>/ y/<c-r>"
 vnoremap <leader>y "+y
 nnoremap <leader>y "+y
 
