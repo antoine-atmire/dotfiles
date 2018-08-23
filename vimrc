@@ -42,7 +42,7 @@ call minpac#add('w0rp/ale')
 " clojure
 " call minpac#add('eraserhd/parinfer-rust')
 " call minpac#add('kien/rainbow_parentheses.vim')
-" call minpac#add('tpope/vim-classpath')
+call minpac#add('tpope/vim-classpath')
 " call minpac#add('tpope/vim-fireplace')
 " call minpac#add('tpope/vim-salve')
 " call minpac#add('venantius/vim-cljfmt')

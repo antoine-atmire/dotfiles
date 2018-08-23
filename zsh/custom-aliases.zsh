@@ -61,12 +61,16 @@ function gvff () {
     git show $REVISION
 }
 
+function gsff () {
+    git status -s | fzf-tmux | cut -c4-
+}
+
 function gaff () {
-    git add $(git status -s | fzf-tmux | cut -c4-)
+    git add $(gsff)
 }
 
 function gdff () {
-    git diff $(git status -s | fzf-tmux | cut -c4-)
+    git diff $(gsff)
 }
 
 function gitlab () {
