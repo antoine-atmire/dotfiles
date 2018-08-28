@@ -25,11 +25,13 @@ call minpac#add('SirVer/ultisnips')
 call minpac#add('antoine-atmire/vim-elmc')
 call minpac#add('google/vim-searchindex')
 call minpac#add('janko-m/vim-test')
+call minpac#add('junegunn/fzf.vim')
 call minpac#add('junegunn/gv.vim')
 call minpac#add('junegunn/vim-slash')
 call minpac#add('machakann/vim-columnmove')
 call minpac#add('morhetz/gruvbox')
 call minpac#add('romainl/vim-qlist')
+call minpac#add('rust-lang/rust.vim')
 call minpac#add('tommcdo/vim-exchange')
 call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-fugitive')
@@ -454,14 +456,8 @@ set wildmenu
 set wildmode=list:longest,list:full
 
 " Go to tag
-command! FuzzyTags call fzf#run({
-            \ 'source':"sed '/^\\!/d;s/\t.*//' ".join(tagfiles()),
-            \ 'sink':'tag',
-            \ 'right':'50%',
-            \ 'options':'-i'
-            \ })
-" nnoremap <leader>ft :FuzzyTags<cr>
-nnoremap <leader>ft :tjump<space>/*<left>
+nnoremap <leader>ft :Tags<cr>
+nnoremap <leader>gt :tjump<space>/*<left>
 
 " " Search lines in all open vim buffers
 " function! s:line_handler(l)
