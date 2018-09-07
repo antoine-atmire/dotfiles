@@ -20,18 +20,14 @@ packadd minpac
 call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 
-call minpac#add('ElmCast/elm-vim')
 call minpac#add('SirVer/ultisnips')
-call minpac#add('antoine-atmire/vim-elmc')
-call minpac#add('google/vim-searchindex')
-call minpac#add('janko-m/vim-test')
+call minpac#add('editorconfig/editorconfig-vim')
 call minpac#add('junegunn/fzf.vim')
 call minpac#add('junegunn/gv.vim')
 call minpac#add('junegunn/vim-slash')
 call minpac#add('machakann/vim-columnmove')
 call minpac#add('morhetz/gruvbox')
 call minpac#add('romainl/vim-qlist')
-call minpac#add('rust-lang/rust.vim')
 call minpac#add('tommcdo/vim-exchange')
 call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-fugitive')
@@ -41,10 +37,21 @@ call minpac#add('tpope/vim-unimpaired')
 call minpac#add('vim-utils/vim-man')
 call minpac#add('w0rp/ale')
 
+" elm
+call minpac#add('ElmCast/elm-vim')
+call minpac#add('antoine-atmire/vim-elmc')
+
+" typescript
+call minpac#add('leafgarland/typescript-vim')
+call minpac#add('Quramy/tsuquyomi')
+
+" rust
+call minpac#add('rust-lang/rust.vim')
+
 " clojure
 " call minpac#add('eraserhd/parinfer-rust')
 " call minpac#add('kien/rainbow_parentheses.vim')
-call minpac#add('tpope/vim-classpath')
+" call minpac#add('tpope/vim-classpath')
 " call minpac#add('tpope/vim-fireplace')
 " call minpac#add('tpope/vim-salve')
 " call minpac#add('venantius/vim-cljfmt')
@@ -378,6 +385,8 @@ let g:ale_set_quickfix = 0
 let g:ale_linters = {}
 let g:ale_fixers = {}
 
+" let g:ale_linters_ignore = {'typescript': ['tslint']}
+
 " use prettier through ale
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['javascript'] = ['prettier']
@@ -392,11 +401,11 @@ let g:ale_linters['haskell'] = ['hlint', 'hdevtools', 'hfmt']
 let g:ale_fixers['haskell'] = ['hfmt']
 
 " tsuquyomi 
-" let g:tsuquyomi_disable_quickfix=1
-" let g:tsuquyomi_disable_default_mappings=1
-" autocmd vimrc FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
-" autocmd vimrc FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
-" autocmd vimrc FileType typescript nnoremap <buffer> <leader>6 :TsuquyomiReferences<cr>
+let g:tsuquyomi_disable_quickfix=1
+let g:tsuquyomi_disable_default_mappings=1
+autocmd vimrc FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
+autocmd vimrc FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
+autocmd vimrc FileType typescript nnoremap <buffer> <leader>6 :TsuquyomiReferences<cr>
 
 " vim-js-pretty-template
 " autocmd vimrc FileType javascript JsPreTmpl html
@@ -412,10 +421,7 @@ if has('timers')
 endif
 
 
-" vim-test plugin
-let g:test#strategy = 'vimterminal'
-
-
+" columnmove
 xmap [v <Plug>(columnmove-b)
 xmap ]v <Plug>(columnmove-w)
 nmap [v <Plug>(columnmove-b)
