@@ -43,6 +43,7 @@ call minpac#add('antoine-atmire/vim-elmc')
 
 " typescript
 call minpac#add('leafgarland/typescript-vim')
+call minpac#add('Shougo/vimproc.vim')
 call minpac#add('Quramy/tsuquyomi')
 
 " rust
@@ -96,6 +97,8 @@ set scroll=15 "number of lines to scroll for c-u and c-d
 set cursorline
 set cursorcolumn
 set autoread
+set showbreak=↪\ 
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:␣,space:␣,eol:$
 
 set mouse=n
 set mouse+=v
@@ -403,7 +406,7 @@ let g:ale_linters['haskell'] = ['hlint', 'hdevtools', 'hfmt']
 let g:ale_fixers['haskell'] = ['hfmt']
 
 " tsuquyomi 
-let g:tsuquyomi_disable_quickfix=1
+let g:tsuquyomi_disable_quickfix=0
 let g:tsuquyomi_disable_default_mappings=1
 autocmd vimrc FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
 autocmd vimrc FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
