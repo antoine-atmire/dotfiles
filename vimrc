@@ -274,6 +274,7 @@ nnoremap )) mMi(<esc>A)<esc>`M
 nnoremap <leader>/ :let @/=''<cr>
 " wrap the line so far in ()
 nnoremap () mMI(<esc>`Mla)<esc>
+nnoremap <leader>- :e %:h<cr>
 
 " http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
 " replace current word and go to the next occurrence (n. combo)
@@ -374,6 +375,7 @@ cnoremap ~~ /tmp/
 let g:indentLine_char = '│'
 let g:indentLine_color_term = 235
                 
+" plugin configuration
 
 " ale plugin
 set signcolumn=no
@@ -427,6 +429,9 @@ xmap ]v <Plug>(columnmove-w)
 nmap [v <Plug>(columnmove-b)
 nmap ]v <Plug>(columnmove-w)
 
+
+" end plugin configuration
+
 " fzf config
 set runtimepath+=~/.fzf
 
@@ -437,6 +442,10 @@ if executable('ag')
                 \ 'sink':'e',
                 \ 'options':'--preview "cat {}" --preview-window="up"'
                 \ })
+    command! FuzzyFilePrint call fzf#run({
+                \ 'source':'/usr/local/bin/ag --hidden --ignore .git -g ""',
+                \ 'sink':'norm o',
+                \ })
 else
     command! FuzzyFile call fzf#run({
                 \ 'source':'find . -not -path "*/node_modules/*" -not -path "*/.git/*"',
@@ -444,6 +453,7 @@ else
                 \ })
 endif
 nnoremap <leader>ff :FuzzyFile<cr>
+nnoremap <leader>fi :FuzzyFilePrint<cr><<o<esc>"%p-<c-v>jI'<esc><c-v>j$A'<esc>Ji,<esc>A)<esc>Iimport os.path; print os.path.relpath(<esc>V:!python<cr>:silent s:\.ts<cr>df/
 
 " the more idiomatic way which works without external tools:
 " usage: <leader>t part-of-file-name <c-d><tab><c-n><c-n>...
