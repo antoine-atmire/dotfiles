@@ -114,7 +114,8 @@ if exists('$SUDO_USER')
     set nobackup
 else
     set nobackup
-    " set backupcopy=yes "maybe add a set backupdir ?
+    set backupcopy=yes
+    set backupdir=/tmp
     call system('mkdir $HOME/.vim/.swapfiles')
     set swapfile
     set directory=$HOME/.vim/.swapfiles
