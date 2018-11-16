@@ -50,3 +50,5 @@ snippet-add 'D'         '2> /dev/null | docker exec -i $DSNAME psql -v ON_ERROR_
 snippet-add skiptests   '-Dmaven.test.skip=true'
 snippet-add tls12       '-Dhttps.protocols=TLSv1.2'
 snippet-add gtag        'git tag -a "v" -m "v"'
+snippet-add 8888        '-L 8888:localhost:8080'
+snippet-add gsff        '$(gsff)'

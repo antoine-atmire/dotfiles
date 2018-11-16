@@ -1,4 +1,4 @@
-alias ag='ag --hidden'
+alias ag='ag --hidden --ignore .git'
 
 alias gt='git tag'
 alias gsur='git submodule update --remote --merge'

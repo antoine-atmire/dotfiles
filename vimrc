@@ -385,7 +385,7 @@ let g:indentLine_color_term = 235
 set signcolumn=no
 let g:ale_sign_column_always = 0
 let g:ale_sign_error = '>>'
-let g:ale_set_loclist = 1
+let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 
 let g:ale_linters = {}
@@ -412,8 +412,6 @@ let g:tsuquyomi_disable_default_mappings=1
 autocmd vimrc FileType typescript nnoremap <buffer> <c-t> :TsuquyomiGoBack<cr>
 autocmd vimrc FileType typescript nnoremap <buffer> <c-]> :TsuquyomiDefinition<cr>
 autocmd vimrc FileType typescript nnoremap <buffer> <leader>6 :TsuquyomiReferences<cr>
-autocmd vimrc FileType typescript let g:ale_set_loclist = 0
-autocmd vimrc FileType typescript let g:ale_set_quickfix = 1
 
 " vim-js-pretty-template
 " autocmd vimrc FileType javascript JsPreTmpl html
