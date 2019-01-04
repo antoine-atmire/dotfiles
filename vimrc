@@ -240,6 +240,10 @@ nmap <leader>pq 0f&r<leader>pq
 " nnoremap <leader>ct :AsyncRun ctags -R<space>
 " nnoremap <leader>ag :w<cr>:AsyncRun tmux send-keys -t 0 C-c Enter "glol -12 %:p" Enter<cr>
 nnoremap <leader>ag :!git log --abbrev-commit --pretty='\%Cred\%h\%Creset -\%C(yellow)\%d\%Creset \%s \%Cgreen(\%cr) \%C(bold blue)<\%an>\%Creset' -12 %:p<cr>
+" send current paragaph to tmux pane
+nmap <leader>aa yip<leader>ay
+" delete current line and send it to tmux pane
+nmap <leader>ad dd<leader>ay
 " copy yanked text to tmux pane
 nnoremap <leader>ay :silent ! tmux send-keys -t 0 "<c-r>=
             \substitute(
@@ -254,10 +258,22 @@ nnoremap <leader>ay :silent ! tmux send-keys -t 0 "<c-r>=
             \,'%','\\%','g')
             \,'#','\\#','g')
             \<cr>" Enter<cr><c-l>
-" send current paragaph to tmux pane
-nmap <leader>aa yip<leader>ay
-" delete current line and send it to tmux pane
-nmap <leader>ad dd<leader>ay
+" also escape ; (for sql prompts)
+nnoremap <leader>as yip:silent ! tmux send-keys -t 0 "<c-r>=
+            \substitute(
+            \substitute(
+            \substitute(
+            \substitute(
+            \substitute(
+            \substitute(
+            \substitute(@",'"','\\"','g')
+            \,'\s\s\s*','','g')
+            \,'\n','" Enter "','g')
+            \,'!','\\!','g')
+            \,'%','\\%','g')
+            \,'#','\\#','g')
+            \,';','\\;','g')
+            \<cr>" Enter<cr><c-l>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:b
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
@@ -389,6 +405,7 @@ let g:ale_sign_column_always = 0
 let g:ale_sign_error = '>>'
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
+let g:ale_virtualtext_cursor = 1
 
 let g:ale_linters = {}
 let g:ale_fixers = {}
