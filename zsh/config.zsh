@@ -2,9 +2,9 @@ setopt correct
 setopt correct_all
 
 # Shell colors
-BASE16_SHELL=$HOME/dotfiles/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-base16_herbstluft
+# BASE16_SHELL=$HOME/dotfiles/base16-shell/
+# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# base16_herbstluft
 
 # Git config
 git config --global merge.tool diffconflicts
