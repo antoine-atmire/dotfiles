@@ -26,7 +26,6 @@ call minpac#add('junegunn/fzf.vim')
 call minpac#add('junegunn/gv.vim')
 call minpac#add('junegunn/vim-slash')
 call minpac#add('machakann/vim-columnmove')
-call minpac#add('morhetz/gruvbox')
 call minpac#add('romainl/vim-qlist')
 call minpac#add('tommcdo/vim-exchange')
 call minpac#add('tpope/vim-commentary')
@@ -56,6 +55,8 @@ call minpac#add('rust-lang/rust.vim')
 " call minpac#add('tpope/vim-fireplace')
 " call minpac#add('tpope/vim-salve')
 " call minpac#add('venantius/vim-cljfmt')
+
+" call minpac#add('morhetz/gruvbox')
 
 " move vertically visually and not line-wise (for wrapped lines)
 nnoremap j gj
@@ -180,8 +181,9 @@ let g:gruvbox_invert_selection = 0
 
 " source ~/.vimrc_background
 " colorscheme molokai
-colorscheme gruvbox
+" colorscheme gruvbox
 " colorscheme apprentice
+colorscheme fahrenheit
 
 
 nnoremap <up> <nop>
