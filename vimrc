@@ -741,19 +741,8 @@ function! CCR()
 endfunction
 cnoremap <expr> <CR> CCR()
 
-function! SESC()
-    let l:cmdtype = getcmdtype()
-    if l:cmdtype ==# '/'
-        return "\<CR>"
-    else
-        return "\<ESC>"
-    endif
-endfunction
-cnoremap <expr> <esc> SESC()
-
 nnoremap <leader>` :marks<cr>:norm! `
 nnoremap <leader><c-o> :set nomore<cr>:jumps<cr>:set more<bar>norm! <S-left>
-
 
 " from: http://vim.wikia.com/wiki/Indent_text_object
 " Changes to allow blank lines in blocks, and
