@@ -149,7 +149,7 @@ augroup END
 " only show colorcolumns for lines that are longer
 call matchadd('ColorColumn', '\%81v', 100)
 " iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-autocmd vimrc ColorScheme * highlight ColorColumn ctermbg=237
+autocmd vimrc ColorScheme * highlight ColorColumn ctermbg=237 ctermfg=2
 
 " use background from terminal, not from colorscheme
 autocmd vimrc ColorScheme * highlight Normal ctermbg=None
