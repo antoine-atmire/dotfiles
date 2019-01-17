@@ -169,6 +169,9 @@ autocmd vimrc InsertLeave * highlight CursorColumn ctermbg=235
 autocmd vimrc ColorScheme * highlight ALEErrorLine ctermbg=None ctermfg=1
 autocmd vimrc ColorScheme * highlight ALEWarningLine ctermbg=None ctermfg=2
 
+autocmd vimrc ColorScheme * highlight! link String Statement
+autocmd vimrc ColorScheme * highlight Normal ctermfg=7
+
 " useful mapping when trying out commands
 nnoremap <leader>:: Y:@"<cr>
 nnoremap <leader>:; dd:@"<cr>
@@ -572,9 +575,12 @@ let g:elm_format_autosave = 0
 autocmd vimrc FileType elm nmap <buffer> <leader>pc ^dt,Op==<<A ->wx<leader>pc
 
 " gruvbox tuning for elm
-autocmd vimrc FileType elm highlight! link elmType GruvBoxYellow
-autocmd vimrc FileType elm highlight! link elmTypedef GruvBoxRed
-autocmd vimrc FileType elm highlight! link elmImport GruvBoxRed
+" autocmd vimrc FileType elm highlight! link elmType GruvBoxYellow
+" autocmd vimrc FileType elm highlight! link elmTypedef GruvBoxRed
+" autocmd vimrc FileType elm highlight! link elmImport GruvBoxRed
+
+" fahrenheit
+autocmd vimrc FileType elm highlight! link elmType Type
 
 
 " go to the definition of the function under the cursoer
