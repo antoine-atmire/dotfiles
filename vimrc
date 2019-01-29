@@ -39,6 +39,7 @@ call minpac#add('w0rp/ale')
 " elm
 call minpac#add('ElmCast/elm-vim')
 call minpac#add('antoine-atmire/vim-elmc')
+call minpac#add('antew/vim-elm-analyse')
 
 " typescript
 call minpac#add('leafgarland/typescript-vim')
@@ -167,7 +168,7 @@ autocmd vimrc InsertLeave * highlight CursorLine ctermbg=235
 autocmd vimrc InsertLeave * highlight CursorColumn ctermbg=235
 
 autocmd vimrc ColorScheme * highlight ALEErrorLine ctermbg=None ctermfg=1
-autocmd vimrc ColorScheme * highlight ALEWarningLine ctermbg=None ctermfg=2
+autocmd vimrc ColorScheme * highlight ALEWarningLine ctermbg=None ctermfg=3
 
 autocmd vimrc ColorScheme * highlight! link String Statement
 autocmd vimrc ColorScheme * highlight Normal ctermfg=7
@@ -409,8 +410,9 @@ set signcolumn=no
 let g:ale_sign_column_always = 0
 let g:ale_sign_error = '>>'
 let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
+let g:ale_set_quickfix = 1
 let g:ale_virtualtext_cursor = 1
+let g:ale_elm_analyse_use_global = 1
 
 let g:ale_linters = {}
 let g:ale_fixers = {}
