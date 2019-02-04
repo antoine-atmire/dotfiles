@@ -17,21 +17,21 @@ dirs_to_include=(
 "$HOME/dotfiles/bin"
 )
 
-# If these directories exist and are not included yet,
-# then prepend them to existing PATH
+NEW_PATH=""
+
 for dir in ${(k)dirs_to_include[@]}
 do
-  if [ -d ${dir} ]; then
-    echo $PATH | grep -q -s ${dir}
-    if [ $? -eq 1 ] ; then
-      PATH="$PATH:${dir}"
+    if [ -d ${dir} ]; then
+        echo $NEW_PATH | grep -q -s ${dir}
+        if [ $? -eq 1 ] ; then
+            NEW_PATH="${dir}:$NEW_PATH"
+        fi
     fi
-  fi
 done
 
 unset dirs_to_prepend
 
-export PATH
+export PATH=$NEW_PATH
 
 
 # load .profile

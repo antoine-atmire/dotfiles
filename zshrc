@@ -1,5 +1,8 @@
 # zmodload zsh/zprof
 
+# echo "Path before"
+# echo $PATH | tr ':' '\n'
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -72,6 +75,7 @@ REPORTTIME=10
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+source $HOME/dotfiles/zsh/path.zsh
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -98,5 +102,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# echo ""
+# echo "Path after"
+# echo $PATH | tr ':' '\n'
 
 # zprof
