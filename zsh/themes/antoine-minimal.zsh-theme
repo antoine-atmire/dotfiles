@@ -13,10 +13,16 @@ function git_prompt_info_minimal() {
   fi
 }
 
+function node_indicator() {
+    if ! type nvm > /dev/null; then
+        echo '!'
+    fi
+}
+
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}✗%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔%{$reset_color%} "
 
 PROMPT_INDICATOR="%{$fg[yellow]%}$%{$reset_color%}"
 
-PROMPT='$(dswhich)$(git_prompt_info_minimal)$PROMPT_INDICATOR '
+PROMPT='$(dswhich)$(git_prompt_info_minimal)$(node_indicator)$PROMPT_INDICATOR '
 #RPROMPT='???'
