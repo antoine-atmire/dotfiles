@@ -27,6 +27,7 @@ call minpac#add('junegunn/gv.vim')
 call minpac#add('junegunn/vim-slash')
 call minpac#add('machakann/vim-columnmove')
 call minpac#add('romainl/vim-qlist')
+call minpac#add('shumphrey/fugitive-gitlab.vim')
 call minpac#add('tommcdo/vim-exchange')
 call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-fugitive')
@@ -35,6 +36,7 @@ call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-unimpaired')
 call minpac#add('vim-utils/vim-man')
 call minpac#add('w0rp/ale')
+call minpac#add('wellle/tmux-complete.vim')
 
 " elm
 call minpac#add('ElmCast/elm-vim')
@@ -405,12 +407,14 @@ let g:indentLine_color_term = 235
                 
 " plugin configuration
 
+let g:fugitive_gitlab_domains = ['https://git.atmire.com']
+
 " ale plugin
 set signcolumn=no
 let g:ale_sign_column_always = 0
 let g:ale_sign_error = '>>'
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
 let g:ale_virtualtext_cursor = 1
 let g:ale_elm_analyse_use_global = 1
 
@@ -546,6 +550,8 @@ command! FuzzyBuffer call fzf#run({
             \ })
 nnoremap <leader>fb :FuzzyBuffer<cr>
 
+" " FZF + UltiSnips
+nnoremap <leader>fs :Snippets<cr>
 
 if executable('rg')
     set grepprg=rg\ --vimgrep

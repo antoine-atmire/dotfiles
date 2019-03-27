@@ -1,3 +1,14 @@
 snippet tmux "tmux mapping"
 nnoremap <leader>aq :w<cr>:silent ! tmux send-keys -t 0 C-c Enter "${1}" Enter<cr><c-l>
 endsnippet
+
+snippet today "Date"
+`date +%F`
+endsnippet
+
+snippet box "Box"
+`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
+│ $1 │
+`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
+$0
+endsnippet
