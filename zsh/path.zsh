@@ -14,6 +14,7 @@ dirs_to_include=(
 "$HOME/.yarn/bin"
 "$HOME/.cabal/bin"
 "$HOME/.cargo/bin"
+"$HOME/.rbenv/shims"
 "$HOME/dotfiles/bin"
 )
 
