@@ -38,10 +38,12 @@ call minpac#add('vim-utils/vim-man')
 call minpac#add('w0rp/ale')
 call minpac#add('wellle/tmux-complete.vim')
 
+" call minpac#add('neoclide/coc.nvim')
+
 " elm
 call minpac#add('ElmCast/elm-vim')
 call minpac#add('antoine-atmire/vim-elmc')
-call minpac#add('antew/vim-elm-analyse')
+" call minpac#add('antew/vim-elm-analyse')
 
 " typescript
 call minpac#add('leafgarland/typescript-vim')
@@ -564,6 +566,21 @@ elseif executable('ack')
     set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
+
+" https://vimrcfu.com/snippet/265
+" Open the location/quickfix window automatically if there are valid entries in the list.
+augroup quickfix
+	autocmd!
+	autocmd QuickFixCmdPost cgetexpr cwindow
+	autocmd QuickFixCmdPost lgetexpr lwindow
+augroup END
+
+" Use :Grep instead of :grep! and :LGrep instead of :lgrep!.
+" :cgetexpr and :lgetexpr are much faster than :grep and :lgrep
+" and they don't mess with your terminal emulator.
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
+command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr system(&grepprg . ' ' . shellescape(<q-args>))
+
 
 " undotree plugin
 nnoremap <leader>u :UndotreeToggle<cr>
