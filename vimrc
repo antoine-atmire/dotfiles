@@ -434,8 +434,9 @@ autocmd vimrc FileType typescript nnoremap <leader>pe :ALEFix<cr>
 autocmd vimrc FileType javascript nnoremap <leader>pe :ALEFix<cr>
 autocmd vimrc FileType java nnoremap <leader>pe :ALEFix<cr>
 
-let g:ale_linters['haskell'] = ['hlint', 'hdevtools', 'hfmt']
+let g:ale_linters['java'] = []
 
+let g:ale_linters['haskell'] = ['hlint', 'hdevtools', 'hfmt']
 let g:ale_fixers['haskell'] = ['hfmt']
 
 " tsuquyomi 
