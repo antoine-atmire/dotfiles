@@ -76,7 +76,7 @@ set showcmd
 " set number
 " set relativenumber
 " set ruler
-set scrolloff=0
+set scrolloff=10
 set scrolljump=-30
 set completeopt=noinsert,noselect,menuone
 set complete-=i
@@ -153,8 +153,21 @@ augroup END
 
 " only show colorcolumns for lines that are longer
 call matchadd('ColorColumn', '\%81v', 100)
-" iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+" iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 autocmd vimrc ColorScheme * highlight ColorColumn ctermbg=237 ctermfg=2
+
+function! HighlightLines()
+    silent! call matchdelete(51)
+    if line('.') > 10
+        call matchadd('RelativeLine', '\%'.(line('.') - 10).'l\%1c', 100, 51)
+    endif
+    silent! call matchdelete(52)
+    call matchadd('RelativeLine', '\%'.(line('.') + 10).'l\%1c', 100, 52)
+endfunction
+autocmd vimrc CursorMoved * call HighlightLines()
+autocmd vimrc ColorScheme * highlight RelativeLine ctermbg=7
+nnoremap <c-p> 10k
+nnoremap <c-n> 10j
 
 " use background from terminal, not from colorscheme
 autocmd vimrc ColorScheme * highlight Normal ctermbg=None
@@ -433,6 +446,8 @@ let g:ale_javascript_prettier_options = '--single-quote --tab-width=4'
 autocmd vimrc FileType typescript nnoremap <leader>pe :ALEFix<cr>
 autocmd vimrc FileType javascript nnoremap <leader>pe :ALEFix<cr>
 autocmd vimrc FileType java nnoremap <leader>pe :ALEFix<cr>
+
+let g:ale_linters['elm'] = ['make']
 
 let g:ale_linters['java'] = []
 
