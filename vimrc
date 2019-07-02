@@ -159,15 +159,17 @@ autocmd vimrc ColorScheme * highlight ColorColumn ctermbg=237 ctermfg=2
 function! HighlightLines()
     silent! call matchdelete(51)
     if line('.') > 10
-        call matchadd('RelativeLine', '\%'.(line('.') - 10).'l\%1c', 100, 51)
+        call matchadd('RelativeLine', '\%'.(line('.') - 10).'l\%1v', 100, 51)
     endif
     silent! call matchdelete(52)
-    call matchadd('RelativeLine', '\%'.(line('.') + 10).'l\%1c', 100, 52)
+    call matchadd('RelativeLine', '\%'.(line('.') + 10).'l\%1v', 100, 52)
 endfunction
 autocmd vimrc CursorMoved * call HighlightLines()
-autocmd vimrc ColorScheme * highlight RelativeLine ctermbg=7
+autocmd vimrc ColorScheme * highlight RelativeLine ctermbg=8
 nnoremap <c-p> 10k
+nnoremap <c-k> 10k
 nnoremap <c-n> 10j
+nnoremap <c-j> 10j
 
 " use background from terminal, not from colorscheme
 autocmd vimrc ColorScheme * highlight Normal ctermbg=None
@@ -611,23 +613,9 @@ nnoremap <leader>u :UndotreeToggle<cr>
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 0
 
-" keymappings primarly for elm
-" pretty cases -> turns your comma separated list in case statements
-autocmd vimrc FileType elm nmap <buffer> <leader>pc ^dt,Op==<<A ->wx<leader>pc
-
-" gruvbox tuning for elm
-" autocmd vimrc FileType elm highlight! link elmType GruvBoxYellow
-" autocmd vimrc FileType elm highlight! link elmTypedef GruvBoxRed
-" autocmd vimrc FileType elm highlight! link elmImport GruvBoxRed
-
-" fahrenheit
-autocmd vimrc FileType elm highlight! link elmType Type
-
-
 " go to the definition of the function under the cursoer
 " Ilist is the ilist variant from romainl/vim-qlist
 autocmd vimrc FileType elm nnoremap <buffer> <leader>] yiw:Ilist \s<c-r>"\s.*=$<cr>
-
 
 " I add .elm at the end so Html.elm is not skipped when the directory Html/
 " exists in the same directory...
