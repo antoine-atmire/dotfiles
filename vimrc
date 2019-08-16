@@ -100,8 +100,8 @@ set shiftround  " When at 3 spaces, and I hit > ... go to 4, not 5
 set hidden
 set lazyredraw
 set scroll=15 "number of lines to scroll for c-u and c-d
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 set autoread
 set showbreak=↪\ 
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:␣,space:␣,eol:$
@@ -164,7 +164,7 @@ function! HighlightLines()
     silent! call matchdelete(52)
     call matchadd('RelativeLine', '\%'.(line('.') + 10).'l\%1v', 100, 52)
 endfunction
-autocmd vimrc CursorMoved * call HighlightLines()
+" autocmd vimrc CursorMoved * call HighlightLines()
 autocmd vimrc ColorScheme * highlight RelativeLine ctermbg=8
 nnoremap <c-p> 10k
 nnoremap <c-k> 10k
