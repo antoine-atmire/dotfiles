@@ -79,9 +79,13 @@ function gitlab () {
     echo $GITLAB_URL | pbcopy
 }
 
+function getTrackingRemote() {
+    git config branch.`git name-rev --name-only HEAD`.remote
+}
+
 function glomd1 () {
     # git log to markdown
-    local urlPre=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')"/commit/"
+    local urlPre=$(git remote show $(getTrackingRemote) | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')"/commit/"
     local repo=$(echo $urlPre | rev | cut -d'/' -f 3,4 | rev)
     echo "$repo -> $(git_current_branch)"
     git log --reverse --format=format:"- [%s]($urlPre%H)" -1
@@ -91,7 +95,7 @@ function glomd () {
     # git log to markdown
     local nCommits=$((0-1+$1))
     # echo $nCommits
-    local repoUrl=$(git remote show origin | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')
+    local repoUrl=$(git remote show $(getTrackingRemote) | grep Fetch | cut -d' ' -f 5 | sed 's/\.git//')
     local repo=$(echo $repoUrl | rev | cut -d'/' -f 1,2 | rev)
     local latest=$(git log -1 --format=format:"%H" | head -n 1)
     local earliest=$(git log --format=format:"%H" --reverse $nCommits | head -n 1)
@@ -167,7 +171,8 @@ alias grep="grep --color=auto"
 alias remote_debug_java_opts_on='export JAVA_OPTS="-Dfile.encoding=UTF-8 -Xmx512m -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5010"'
 alias remote_debug_java_opts_off='export JAVA_OPTS="-Dfile.encoding=UTF-8 -Xmx512m"'
 alias npm-exec='PATH=$(npm bin):$PATH'
-alias tmux="TERM=screen-256color-bce tmux"
+# alias tmux="TERM=screen-256color-bce tmux"
+alias tmux="TERM=screen-256color tmux"
 
 alias -g C="| pbcopy"
 alias -g D="| tr -d '\n'"
