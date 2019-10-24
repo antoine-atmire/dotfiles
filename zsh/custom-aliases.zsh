@@ -80,7 +80,12 @@ function gitlab () {
 }
 
 function getTrackingRemote() {
-    git config branch.`git name-rev --name-only HEAD`.remote
+    branch=`git name-rev --name-only HEAD`
+    if [[ $(git config branch.$branch.remote) ]]; then
+        git config branch.$branch.remote
+    else
+        echo origin
+    fi
 }
 
 function glomd1 () {
