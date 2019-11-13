@@ -29,8 +29,46 @@ if (StringUtils.isNotBlank($1)) {
 }
 endsnippet
 
+snippet if "if"
+if ($1) {
+$2
+}
+endsnippet
+
+snippet ifn "if null"
+if ($1 == null) {
+$2
+}
+endsnippet
+
 snippet ifnn "if not null"
 if ($1 != null) {
 $2
+}
+endsnippet
+
+snippet psvm "main method" b
+public static void main(String[] args) {
+    $1
+}
+endsnippet
+
+
+snippet log "slf4j logger" b
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+    private static final Logger log = LoggerFactory.getLogger($1.class);
+endsnippet
+
+snippet inst "instanceof" 
+if ($1 instanceof $2) {
+    $2 $3 = (($2) $1);
+    $4
+}
+endsnippet
+
+snippet get "getter" b
+public $1 get$2() {
+    return this.$2;
 }
 endsnippet
