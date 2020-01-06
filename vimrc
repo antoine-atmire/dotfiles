@@ -299,15 +299,29 @@ nnoremap <leader>as yip:silent ! tmux send-keys -t 0 "<c-r>=
             \,'#','\\#','g')
             \,';','\\;','g')
             \<cr>" Enter<cr><c-l>
+" send current line (for vimgolf)
+nmap <leader>av 0yg_:silent ! tmux send-keys -t 0 "<c-r>=
+            \substitute(
+            \substitute(
+            \substitute(
+            \substitute(
+            \substitute(
+            \substitute(@",'"','\\"','g')
+            \,'\s\s\s*','','g')
+            \,'\n','" Enter "','g')
+            \,'!','\\!','g')
+            \,'%','\\%','g')
+            \,'#','\\#','g')
+            \<cr>"<cr><c-l>
 " list of buffers, ready to choose one by number
 nnoremap <leader>m :buffers<cr>:b
 " go to the previous buffer. [N]ctrl-^ (qwerty: ctrl-6)
 " nnoremap <leader><tab> :buffer #<cr>
 " go to the next double empty lines
-nnoremap <leader>} }/\n\n\n/1<cr>
+nnoremap <leader>} }/\n\n\n/3<cr>:let @/=''<cr>
 vnoremap <leader>} }/\n\n\n/1<cr>
 " go to the previous double empty lines
-nnoremap <leader>{ {?\n\n\n?1<cr>
+nnoremap <leader>{ {?\n\n\n?1<cr>:let @/=''<cr>
 vnoremap <leader>{ {?\n\n\n?1<cr>
 nnoremap <leader>pp "+p
 vnoremap <leader>pp "+p
@@ -322,6 +336,7 @@ nnoremap <leader>/ :let @/=''<cr>
 " wrap the line so far in ()
 nnoremap () mMI(<esc>`Mla)<esc>
 nnoremap <leader>- :e %:h<cr>
+nnoremap <leader><tab> :e#<cr>
 
 " http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
 " replace current word and go to the next occurrence (n. combo)
@@ -434,6 +449,10 @@ let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_virtualtext_cursor = 1
 let g:ale_elm_analyse_use_global = 1
+
+nnoremap ]<c-a> :ALENext<cr>
+nnoremap [<c-a> :ALEPrevious<cr>
+nnoremap _a :ALEDetail<cr>
 
 let g:ale_linters = {}
 let g:ale_fixers = {}
