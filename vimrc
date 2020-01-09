@@ -842,3 +842,19 @@ function! IndTxtObj(inner)
         normal! $
     endif
 endfunction
+
+
+" https://vim.fandom.com/wiki/Auto_highlight_current_word_when_idle
+" autosave delay, cursorhold trigger, default: 4000ms
+setl updatetime=300
+" highlight the word under cursor (CursorMoved is inperformant)
+highlight WordUnderCursor cterm=underline gui=underline
+autocmd CursorHold * call HighlightCursorWord()
+function! HighlightCursorWord()
+    " if hlsearch is active, don't overwrite it!
+    let search = getreg('/')
+    let cword = expand('<cword>')
+    if match(cword, search) == -1
+        exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
+    endif
+endfunction
